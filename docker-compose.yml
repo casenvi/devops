@@ -10,10 +10,16 @@ services:
         container_name: app
         volumes: 
             - ./Data/laravel:/var/www
+            - .docker/app:/opt/docker
         networks: 
             - app-network
-        entrypoint: dockerize --wait tcp://mysql:3306 -timeout 40s .docker/app/entrypoint.sh
-
+        entrypoint: dockerize -template /opt/docker/.env:.env --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+        
+        environment: 
+            - DB_HOST=mysql
+            - DB_DATABASE=laravel
+            - DB_USERNAME=root
+            - DB_PASSWORD=root
     nginx:
         build: .docker/nginx
         container_name: nginx
