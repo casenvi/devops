@@ -29,10 +29,16 @@ services:
             - "80:80"
         volumes: 
             - ./Data/laravel:/var/www
+            - .docker/nginx:/opt/docker
         networks: 
             - app-network
         depends_on: 
             - app
+        entrypoint: dockerize -template /opt/docker/nginx.conf:/etc/nginx/conf.d/default.conf nginx -g 'daemon off;'
+
+        environment: 
+            - PHP_FPM_HOST=app
+            - PHP_FPM_PORT=9000
 
     redis:
         image: redis:alpine
