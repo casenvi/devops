@@ -71,4 +71,4 @@ linha de comando para baixar o composer. Clique aqui.
 
 Desafio Docker
 ---
-https://hub.docker.com/repository/docker/casenvi/hello
+https://hub.docker.com/repository/docker/casenvi/codeeducation
