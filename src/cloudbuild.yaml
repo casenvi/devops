@@ -1,14 +1,15 @@
 steps:
+
 - name: 'gcr.io/cloud-builders/go'
-  args: ['install', '.']
-  env: ['PROJECT_ROOT=soma', 'GOPATH=/src']
+  args: ['get', '-d', './...']
+  env: ['GOPATH=/src']
   volumes:
   - name: 'go'
     path: '/src'
 
-- name: 'gcr.io/cloud-builders/go'
-  args: ['test', 'soma']
-  env: ['PROJECT_ROOT=soma', 'GOPATH=/src']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/$PROJECT_ID/soma', '.']
-images: ['gcr.io/$PROJECT_ID/soma']
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
+  env: ['GOPATH=/src']
+  volumes:
+  - name: 'go'
+    path: '/src'
