@@ -1,5 +1,5 @@
 FROM scratch
 
-COPY gopath/bin/sum /sum
+COPY gopath/bin/soma /soma
 
-ENTRYPOINT ["/sum"]
+ENTRYPOINT ["/soma"]
