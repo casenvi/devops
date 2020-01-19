@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['install', '.']
+  env: ['PROJECT_ROOT=sum']
+- name: 'gcr.io/cloud-builders/go'
+  args: ['build', 'sum']
+  env: ['PROJECT_ROOT=sum']
+artifacts:
+  objects:
+    location: 'gs://code_education/'
+    paths: ['sum']
