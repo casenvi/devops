@@ -12,6 +12,6 @@
 steps:
 - name: 'golang'
   args: ['go', 'build', '.']
-  env: ['GO111MODULE=on']
+ # env: ['GO111MODULE=on']
 - name: 'busybox'
-  args: ['./module']
+  args: ['./main']
