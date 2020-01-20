@@ -1,15 +1,12 @@
 steps:
+  - id: "Rodando testes"
+    name: "gcr.io/cloud-builders/go"
+    args: ["test", "."]
+    env: ["GOPATH=."]
+    dir: "./src"
 
-- name: 'gcr.io/cloud-builders/go'
-  args: ['get', '-d', './src/']
-  env: ['GOPATH=/gopath']
-  volumes:
-  - name: 'go'
-    path: '/gopath'
-
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy']
-  env: ['GOPATH=/gopath']
-  volumes:
-  - name: 'go'
-    path: '/gopath'
+  - id: "Executando o script"
+    name: "gcr.io/cloud-builders/go"
+    args: ["run", "."]
+    env: ["GOPATH=."]
+    dir: "./src"
