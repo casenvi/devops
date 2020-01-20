@@ -1,12 +1,12 @@
 steps:
   - id: "Rodando testes"
     name: "gcr.io/cloud-builders/go"
-    args: ["test", "."]
+    args: ["test", "main_test.go"]
     env: ["GOPATH=."]
     dir: "./src"
 
   - id: "Executando o script"
     name: "gcr.io/cloud-builders/go"
-    args: ["run", "."]
+    args: ["run", "main.go"]
     env: ["GOPATH=."]
     dir: "./src"
