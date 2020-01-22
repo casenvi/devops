@@ -13,12 +13,14 @@ RUN go get -d -v
 # Build the binary.
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/webserver
 #EXPOSE 8000
+#ENTRYPOINT ["/go/bin/webserver"]
 ############################
 # STEP 2 build a small image
 ############################
-FROM scratch
+FROM alpine
 # Copy our static executable.
 COPY --from=builder /go/bin/webserver /go/bin/webserver
-# Run the  binary.
+# Expose port
 EXPOSE 8000
+# Run the  binary.
 ENTRYPOINT ["/go/bin/webserver"]
