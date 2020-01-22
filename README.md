@@ -37,6 +37,6 @@ Utilizando os conhecimentos adquiridos até o momento, crie os arquivos declarat
 3. Desafio Go!
    1. [x]Encontra-se em Desafio_GO/main.go
    2. [x]Encontra-se em Desafio_GO/main_test.go
-   3. [ ]Encontra-se ativo neste branch
-   4. [ ]Encontra-se disponível no endereço https://hub.docker.com/repository/docker/casenvi/webserver_golang ou docker push casenvi/webserver_golang:tagname
+   3. [x]Encontra-se ativo neste branch
+   4. [x]Encontra-se disponível no endereço https://hub.docker.com/repository/docker/casenvi/webserver_golang ou docker push casenvi/webserver_golang:tagname
    5. [ ]Encontra-se disponível no endereço 
