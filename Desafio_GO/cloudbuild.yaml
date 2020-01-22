@@ -1,6 +1,6 @@
 steps:
   - id: "Rodando testes"
     name: "gcr.io/cloud-builders/go"
-    args: ["test", "Desafio_GO/main_test.go"]
+    args: ["test", "main_test.go"]
     env: ["GOPATH=."]
     dir: "./src"
