@@ -35,8 +35,8 @@ Utilizando os conhecimentos adquiridos até o momento, crie os arquivos declarat
 2. Configuração do MySQL
    1. Encontra-se na pasta /K8S/mysql
 3. Desafio Go!
-   1. [x]Encontra-se em Desafio_GO/main.go
-   2. [x]Encontra-se em Desafio_GO/main_test.go
-   3. [x]Encontra-se ativo neste branch
-   4. [x]Encontra-se disponível no endereço https://hub.docker.com/repository/docker/casenvi/webserver_golang ou docker push casenvi/webserver_golang:tagname
-   5. [ ]Encontra-se disponível no endereço 
+   1. Encontra-se em Desafio_GO/main.go
+   2. Encontra-se em Desafio_GO/main_test.go
+   3. Encontra-se ativo neste branch
+   4. Encontra-se disponível no endereço https://hub.docker.com/repository/docker/casenvi/webserver_golang ou docker push casenvi/webserver_golang:tagname
+   5. Encontra-se disponível no endereço http://34.70.202.175/
