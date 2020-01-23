@@ -1,8 +1,6 @@
-# Devops
+# Catalog
 
-Este repositório foi criado para a entrega dos exercicios desenvolvidos durante o curso *Desenvolvimento de Aplicações Modernas e Escaláveis com Microserviços*. 
-
-Para uma melhor organização das entregas, após o Exercicio DevOps/Desafio_CI eu decidi que as entregas seriam por branches, sendo assim caso queira ver algum exercicio poderá ser verificado consultando a branch especifica. 
+Este branch é utilizado para as entregas do projeto prático *CATÁLOGO DE VÍDEOS* do curso *Desenvolvimento de Aplicações Modernas e Escaláveis com Microserviços*. 
 
 ## Glossário / Linguagem Ubíqua
 
@@ -17,11 +15,17 @@ Para uma melhor organização das entregas, após o Exercicio DevOps/Desafio_CI 
 * Client - Quem contrata o aceso a plataforma de videos.
 * User - Qualquer pessoa com acesso ao sistema.
 
-## Definição dos nomes das branches
+## Etapas
+### Criando o recurso Category
+Nesta primeira fase de projeto, crie o recurso de Category como descrito nas aulas:
 
-Para definição dos nomes está sendo utilizado o seguinte formato:
-### Módulo DevOps
-Apenas o nome do exercicio, alterando os espaços em branco por Underline. 
+* Model
+* Factory e seeder
+* Controller
 
-### Módulo Microserviço: Catálogo de vídeos
-O projeto prático *Catálogo de Vídeos* será inicialmente criado na branch *Catalog* conforme Glossário da linguagem Ubíqua.
+E crie mais um recurso, que chamaremos de Gênero.
+Lembrando que o Gênero no sistema significa: Terror, ação, comédia e etc. Ele será relacionado com o Vídeo mais tarde.
+
+O Gênero deverá ter os seguintes campos: 
+* nome
+* is_active (Se está ativo ou não).
