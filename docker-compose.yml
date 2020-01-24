@@ -14,13 +14,14 @@ services:
         networks: 
             - app-network
         entrypoint: 
-            dockerize -template /opt/docker/.env:.env --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+            dockerize -template /opt/docker/.env:.env -template /opt/docker/.env.testing:.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
         
         environment: 
-            - DB_HOST=Catalog-mysql
-            - DB_DATABASE=catalog
-            - DB_USERNAME=root
-            - DB_PASSWORD=root
+            - _DB_HOST=Catalog-mysql
+            - _DB_DATABASE=catalog_prod
+            - _DB_USERNAME=root
+            - _DB_PASSWORD=root
+            - _DB_DATABASE_TEST=catalog_test
     nginx:
         build: .docker/nginx
         container_name: Catalog-nginx
@@ -60,11 +61,11 @@ services:
         networks: 
             - app-network
         environment: 
-            - MYSQL_DATABASE="catalog"
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root
         volumes: 
             - ./Data/database:/var/lib/mysql
+            - ./.docker/mysql:/docker-entrypoint-initdb.d #para rodar scripts na criação da máquina
 
 networks:
     app-network:

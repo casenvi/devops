@@ -1,3 +1,4 @@
 Data/database/
 Data/laravel/_ide_helper*.php
+Data/laravel/.env*
 composer.lock
