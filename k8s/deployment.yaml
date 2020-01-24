@@ -41,7 +41,7 @@ spec:
 
 ---
 
-apiVersion: autoscaing/v1
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: go-hpa
