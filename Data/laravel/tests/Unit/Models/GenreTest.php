@@ -6,54 +6,53 @@ use App\Models\Genre;
 use App\Models\Traits\Uuid;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class GenreTest extends TestCase
 {
-    private $genre;
+  private $genre;
 
-    protected function setUp() : void
-    {
-      parent::setUp();
-      $this->genre = new genre();
-    }
+  protected function setUp(): void
+  {
+    parent::setUp();
+    $this->genre = new genre();
+  }
 
-    public function testIfUseTraits()
-    {
-      $traits = [
-        SoftDeletes::class,
-        Uuid::class
-      ];
-      $genreTraits = array_keys(class_uses(genre::class));
-      $this->assertEquals($traits, $genreTraits);
-    }
+  public function testIfUseTraits()
+  {
+    $traits = [
+      SoftDeletes::class,
+      Uuid::class
+    ];
+    $genreTraits = array_keys(class_uses(genre::class));
+    $this->assertEquals($traits, $genreTraits);
+  }
 
-    public function testFillableAttribute()
-    {
-      $fillable = ['name', 'is_active'];
-      $this->assertEquals($fillable, $this->genre->getFillable());
-    }
+  public function testFillableAttribute()
+  {
+    $fillable = ['name', 'is_active'];
+    $this->assertEquals($fillable, $this->genre->getFillable());
+  }
 
-    public function testDatesAttribute()
-    {
-      $dates = [
-        'deleted_at', 
-        'created_at', 
-        'updated_at'
-      ];
-      $this->assertEqualsCanonicalizing($dates, $this->genre->getDates());
-      $this->assertCount(count($dates), $this->genre->getDates());
-    }
+  public function testDatesAttribute()
+  {
+    $dates = [
+      'deleted_at',
+      'created_at',
+      'updated_at'
+    ];
+    $this->assertEqualsCanonicalizing($dates, $this->genre->getDates());
+    $this->assertCount(count($dates), $this->genre->getDates());
+  }
 
-    public function testCastsAttribute()
-    {
-      $casts = ['id' => 'string', 'is_active' => 'boolean'];      
-      $this->assertEquals($casts, $this->genre->getCasts());
-    }
+  public function testCastsAttribute()
+  {
+    $casts = ['id' => 'string', 'is_active' => 'boolean'];
+    $this->assertEquals($casts, $this->genre->getCasts());
+  }
 
-    public function testIncrementingAttribute()
-    {
-      $this->assertFalse($this->genre->incrementing);
-    }
+  public function testIncrementingAttribute()
+  {
+    $this->assertFalse($this->genre->incrementing);
+  }
 }
