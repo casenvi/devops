@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class GenreController extends BasicCrudController
 {
     protected $rules = [
-        'name' => 'required|max:255',
+        'name' => 'required|max:255|min:3',
         'is_active' => 'boolean'
     ];
 
@@ -19,11 +19,11 @@ class GenreController extends BasicCrudController
     }
     protected function rulesStore()
     {
-        $this->rules;
+        return $this->rules;
     }
 
     protected function rulesUpdate()
     {
-        $this->rules;
+        return $this->rules;
     }
 }
