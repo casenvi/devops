@@ -13,8 +13,8 @@ services:
             - .docker/app:/opt/docker
         networks: 
             - app-network
-        #entrypoint: 
-        #    dockerize -template /opt/docker/.env:.env -template /opt/docker/.env.testing:.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+        entrypoint: 
+            dockerize -template /opt/docker/.env:.env -template /opt/docker/.env.testing:.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
         environment: 
             - _DB_HOST=Catalog-mysql
             - _DB_DATABASE=catalog_prod
@@ -65,7 +65,7 @@ services:
             - MYSQL_USER=root
         volumes: 
             - ./Data/database:/var/lib/mysql
-            - ./.docker/mysql:/docker-entrypoint-initdb.sql #para rodar scripts na criação da máquina
+            - ./.docker/mysql:/docker-entrypoint-initdb.d #para rodar scripts na criação da máquina
 
 networks:
     app-network:
