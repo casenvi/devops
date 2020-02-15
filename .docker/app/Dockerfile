@@ -12,7 +12,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 WORKDIR /var/www
 RUN rm -rf /var/www/html
 RUN ln -s public html
-RUN usermod -u 1000 www-data
+#RUN usermod -u 1000 www-data
 RUN mkdir /opt/docker
 
 EXPOSE 9000
