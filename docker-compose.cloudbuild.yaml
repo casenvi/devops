@@ -65,7 +65,7 @@ services:
             - MYSQL_USER=root
         volumes: 
             - ./Data/database:/var/lib/mysql
-            - ./.docker/mysql:/docker-entrypoint-initdb.d #para rodar scripts na criação da máquina
+            - ./.docker/mysql:/docker-entrypoint-initdb.sql #para rodar scripts na criação da máquina
 
 networks:
     app-network:
