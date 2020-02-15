@@ -23,12 +23,14 @@ class CastMemberControllerTest extends TestCase
   protected function setUp(): void
   {
     parent::setUp();
-    $this->castMember = factory(CastMember::class)->create();
+    $this->castMember = factory(CastMember::class)->create([
+      'type' => CastMember::TYPE_DIRECTOR
+    ]);
   }
 
   public function testIndex()
   {
-    $response = $this->get(route('castmembers.index'));
+    $response = $this->get(route('cast_members.index'));
     $response
       ->assertStatus(200)
       ->assertJson([$this->castMember->toArray()]);
@@ -36,7 +38,7 @@ class CastMemberControllerTest extends TestCase
 
   public function testShow()
   {
-    $response = $this->get(route('castmembers.show', ['castmember' => $this->castMember->id]));
+    $response = $this->get(route('cast_members.show', ['cast_member' => $this->castMember->id]));
     $response
       ->assertStatus(200)
       ->assertJson($this->castMember->toArray());
@@ -46,7 +48,7 @@ class CastMemberControllerTest extends TestCase
   {
     $data = [
       'name' => 'test',
-      'type' => 2
+      'type' => CastMember::TYPE_DIRECTOR
     ];
     $this->assertStore($data, $data + ['is_active' => true]);
   }
@@ -59,47 +61,44 @@ class CastMemberControllerTest extends TestCase
 
     $data = [
       'name' => str_repeat('a', 256),
-     // 'type' => 2
     ];
-    $this->assertInvalidationInStoreAction($data, 'validation.max.string', ['max' => 255]);
-    $this->assertInvalidationInUpdateAction($data, 'validation.max.string', ['max' => 255]);
+    $this->assertInvalidationInStoreAction($data, 'max.string', ['max' => 255]);
+    $this->assertInvalidationInUpdateAction($data, 'max.string', ['max' => 255]);
 
     $data = [
       'name' => false,
-      'type' => 2
     ];
-    $this->assertInvalidationInStoreAction($data, 'validation.min.string', ['min' => 3]);
-    $this->assertInvalidationInUpdateAction($data, 'validation.min.string', ['min' => 3]);
+    $this->assertInvalidationInStoreAction($data, 'min.string', ['min' => 3]);
+    $this->assertInvalidationInUpdateAction($data, 'min.string', ['min' => 3]);
 
     $data = [
-      'type' => 1,
       'is_active' => 'a'
     ];
-    $this->assertInvalidationInStoreAction($data,'validation.boolean');
-    $this->assertInvalidationInUpdateAction($data, 'validation.boolean');
+    $this->assertInvalidationInStoreAction($data, 'boolean', []);
+    $this->assertInvalidationInUpdateAction($data, 'boolean', []);
 
     $data = [
-      'type' => false,
+      'type' => '3'
     ];
-    $this->assertInvalidationInStoreAction($data, 'required');
-    $this->assertInvalidationInUpdateAction($data, 'required');
 
-
+    $this->assertInvalidationInStoreAction($data, 'in', [], []);
+    $this->assertInvalidationInUpdateAction($data, 'in', [], []);
   }
+  
 
   public function testDestroy()
   {
     $response = $this->json(
       'DELETE',
       route(
-        'castmembers.destroy',
-        ['castMember' => $this->castMember->id]
+        'cast_members.destroy',
+        ['cast_member' => $this->castMember->id]
       )
     );
     $response->assertStatus(204);
     $this->assertNull($this->castMember::find($this->castMember->id));
     $this->assertNotNull($this->castMember::withTrashed()->find($this->castMember->id));
-  }/* */
+  }
 
   protected function model()
   {
@@ -108,11 +107,11 @@ class CastMemberControllerTest extends TestCase
 
   protected function routeStore()
   {
-    return route('castmembers.store');
+    return route('cast_members.store');
   }
 
   protected function routeUpdate()
   {
-    return route('castmembers.update', ['castmember' => $this->castMember->id]);
+    return route('cast_members.update', ['cast_member' => $this->castMember->id]);
   }
 }

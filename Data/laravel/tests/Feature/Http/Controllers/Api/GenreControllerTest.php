@@ -56,21 +56,21 @@ class GenreControllerTest extends TestCase
         $data = [
             'name' => str_repeat('a', 256)
         ];
-        $this->assertInvalidationInStoreAction($data, 'validation.max.string', ['max' => 255]);
-        $this->assertInvalidationInUpdateAction($data, 'validation.max.string', ['max' => 255]);
+        $this->assertInvalidationInStoreAction($data, 'max.string', ['max' => 255]);
+        $this->assertInvalidationInUpdateAction($data, 'max.string', ['max' => 255]);
 
         $data = [
             'name' => false
         ];
-        $this->assertInvalidationInStoreAction($data, 'validation.min.string', ['min' => 3]);
-        $this->assertInvalidationInUpdateAction($data, 'validation.min.string', ['min' => 3]);
+        $this->assertInvalidationInStoreAction($data, 'min.string', ['min' => 3]);
+        $this->assertInvalidationInUpdateAction($data, 'min.string', ['min' => 3]);
 
         $data = [
             'is_active' => 'a'
         ];
         $this->assertInvalidationInStoreAction(
             $data,
-            'validation.boolean'
+            'boolean'
         );
     }
 

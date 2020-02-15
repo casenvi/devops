@@ -15,7 +15,7 @@ trait TestValidations
   protected abstract function routeUpdate();
 
   protected function assertInvalidationInStoreAction(
-    array $data, 
+    array $data,
     string $rule,
     array $ruleParams = []
   ) {
@@ -40,16 +40,19 @@ trait TestValidations
     string $rule,
     array $ruleParams = []
   ) {
+
     $response->assertStatus(422);
-    if (count($fields) ){
+
+    if (count($fields)) {
       $response->assertJsonValidationErrors($fields);
     } else {
       $response->assertJsonMissingValidationErrors($fields);
     }
+
     foreach ($fields as $field) {
       $fieldName = str_replace('_', ' ', $field);
       $response->assertJsonFragment([
-        \Lang::get($rule, ['attribute' => $fieldName] + $ruleParams)
+        \Lang::get("validation.{$rule}", ['attribute' => $fieldName] + $ruleParams)
       ]);
     }
   }
