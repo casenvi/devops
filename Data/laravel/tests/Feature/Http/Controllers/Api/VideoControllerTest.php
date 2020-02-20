@@ -69,7 +69,7 @@ class VideoControllerTest extends TestCase
       'opened' => false
     ];
     $this->assertStore($data, $data);
-  }/*
+  }
 
   public function  testInvalidationData()
   {
@@ -77,31 +77,60 @@ class VideoControllerTest extends TestCase
     $this->assertInvalidationInStoreAction($data, 'required');
     $this->assertInvalidationInUpdateAction($data, 'required');
 
-    $data = [
-      'title' => str_repeat('a', 256),
-    ];
-    $this->assertInvalidationInStoreAction($data, 'max.string', ['max' => 255]);
-    $this->assertInvalidationInUpdateAction($data, 'max.string', ['max' => 255]);
-
-    $data = [
-      'title' => false,
-    ];
-    $this->assertInvalidationInStoreAction($data, 'min.string', ['min' => 3]);
-    $this->assertInvalidationInUpdateAction($data, 'min.string', ['min' => 3]);
-
-    $data = [
-      'is_active' => 'a'
-    ];
-    $this->assertInvalidationInStoreAction($data, 'boolean', []);
-    $this->assertInvalidationInUpdateAction($data, 'boolean', []);
-
-    $data = [
-      'type' => '3'
-    ];
-
-    $this->assertInvalidationInStoreAction($data, 'in', [], []);
-    $this->assertInvalidationInUpdateAction($data, 'in', [], []);
-  }/**/
+    $data_attribute = array(
+      'title' => array(
+        'max.string' => array(
+          'value' => [
+            'title' => str_repeat('a', 256),
+          ],
+          'ruleParams' => [
+            'max' => 255
+          ]
+        ),
+        'min.string' => array(
+          'value' => [
+            'title' => '12'
+          ],
+          'ruleParams' => [
+            'min' => 3
+          ]
+        )
+      ),
+      'opened' => array(
+        'boolean' => array(
+          'value' => [
+            'opened' => 'a'
+          ],
+          'ruleParams' => []
+        )
+      ), 
+      'rating' => array(
+        'in' => array(
+          'value' => [
+            'rating' => 3
+          ],
+          'ruleParams' => Video::RATTING
+        )
+      ),
+      'duration' => array(
+          'required' => array(
+            'value' => [
+              'title' => 'teste',
+              'year_launched' => 1985,
+              'rating' => 'free',
+              'duration' => 'teste'
+            ],
+            'ruleParams' => []
+          )
+        )
+    );
+    foreach ($data_attribute as $attribute) {
+      foreach ($attribute as $key => $value) {
+        $this->assertInvalidationInStoreAction($value['value'], $key, $value['ruleParams']);
+        $this->assertInvalidationInUpdateAction($value['value'], $key, $value['ruleParams']);
+      }
+    }
+  }
 
   protected function model()
   {
