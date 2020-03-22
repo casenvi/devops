@@ -6,6 +6,8 @@
 
 namespace Tests\Feature\Http\Controllers\Api;
 
+use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Video;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -58,6 +60,8 @@ class VideoControllerTest extends TestCase
 
   public function testStore()
   {
+    $categoryId = factory(Category::class)->create()->id;
+    $genreId = factory(Genre::class)->create()->id;
     $data = [
       'title' => 'teste_1',
       'rating' => 'free',
@@ -65,7 +69,12 @@ class VideoControllerTest extends TestCase
       'duration' => 2,
       'opened' => false
     ];
-    $this->assertStore($data, $data);
+    $response = $this->assertStore($data + [
+      'categories_id' => [$categoryId],
+      'genres_id' => [$genreId]
+    ], $data);
+    $this->assertHasCategory($response->json('id'), $categoryId);
+    $this->assertHasGenre($response->json('id'), $genreId);
   }
 
   public function  testInvalidationData()
@@ -73,6 +82,12 @@ class VideoControllerTest extends TestCase
     $data = [];
     $this->assertInvalidationInStoreAction($data, 'required');
     $this->assertInvalidationInUpdateAction($data, 'required');
+
+    $category = factory(Category::class)->create(); 
+    $category->delete();
+
+    $genre = factory(Genre::class)->create(); 
+    $genre->delete();
 
     $data_attribute = array(
       'title' => array(
@@ -107,8 +122,41 @@ class VideoControllerTest extends TestCase
             'rating' => 3
           ],
           'ruleParams' => Video::RATTING
-        )
-      )
+        ),
+      ),
+      'categories_id' => array(
+        'exists' => array(
+          'value' => [
+            'categories_id' => [100]
+          ],
+          'ruleParams' => []
+        ),
+      ),
+      'categories_id' => array(
+        'exists' => array(
+          'value' => [
+            'categories_id' => [$category->id]
+          ],
+          'ruleParams' => []
+        ),
+      ),
+      'genres_id' => array(
+        'exists' => array(
+          'value' => [
+            'genres_id' => [100]
+          ],
+          'ruleParams' => []
+        ),
+      ),
+      'genres_id' => array(
+        'exists' => array(
+          'value' => [
+            'genres_id' => [$genre->id]
+          ],
+          'ruleParams' => []
+        ),
+      ),
+
     );
     foreach ($data_attribute as $attribute) {
       foreach ($attribute as $key => $value) {
@@ -118,6 +166,21 @@ class VideoControllerTest extends TestCase
     }
   }
 
+  protected function assertHasCategory($videoID, $categoryID)
+  {
+    $this->assertDatabaseHas('category_video', [
+      'video_id' => $videoID,
+      'category_id' => $categoryID
+    ]);
+  }
+
+  protected function assertHasGenre($videoID, $genreId)
+  {
+    $this->assertDatabaseHas('genre_video', [
+      'video_id' => $videoID,
+      'genre_id' => $genreId
+    ]);
+  }
   protected function model()
   {
     return Video::class;

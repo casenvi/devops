@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
@@ -11,7 +10,7 @@ class GenreController extends BasicCrudController
     protected $rules = [
         'name' => 'required|max:255|min:3',
         'is_active' => 'boolean',
-        'categories_id' => 'required|array|exists:categories,id,deleted_at,null'
+        'categories_id' => 'required|array|exists:categories,id,deleted_at,NULL'
     ];
 
     public function store(Request $request)
