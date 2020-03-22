@@ -29,6 +29,7 @@ abstract class BasicCrudController extends Controller
     {
         $validatedData = $this->validate($request, $this->rulesStore());
         $obj = $this->model()::create($validatedData);
+        $obj->categories()->sync($request->get('categories_id'));
         $obj->refresh();
         return $obj;
     }

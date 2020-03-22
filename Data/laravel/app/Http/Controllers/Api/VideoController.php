@@ -24,14 +24,25 @@ class VideoController extends BasicCrudController
                 'date_format:Y'
             ],
             'duration' => [
-                'required'
+                'required',
+                int
             ],
             'opened' => [
                 'boolean'
             ],
             'rating' => [
                 'required',
-                'in:' . implode (',', Video::RATTING)
+                'in:' . implode(',', Video::RATTING)
+            ],
+            'categories_id' => [
+                'required',
+                'array',
+                'exists:categories,id,deleted_at,null'
+            ],
+            'genres_id' => [
+                'required',
+                'array',
+                'exists:genres,id,deleted_at,null'
             ]
         ];
     }

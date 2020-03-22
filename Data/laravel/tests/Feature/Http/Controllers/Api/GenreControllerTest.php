@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\Api;
 
+use App\Models\Category;
 use App\Models\Genre;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -41,10 +42,13 @@ class GenreControllerTest extends TestCase
 
     public function testStore()
     {
+        $categoryID = factory(Category::class)->create()->id; // para criar a categoria e fazer o teste se ela existe
         $data = [
             'name' => 'test'
         ];
-        $this->assertStore($data, $data + ['is_active' => true]);
+        $response = $this->assertStore($data + ['categories_id' => [$categoryID]], $data + ['is_active' => true]);
+
+        $this->assertHasCategory($response->json('id'), $categoryID);
     }
 
     public function  testInvalidationData()
@@ -68,10 +72,30 @@ class GenreControllerTest extends TestCase
         $data = [
             'is_active' => 'a'
         ];
-        $this->assertInvalidationInStoreAction(
-            $data,
-            'boolean'
-        );
+        $this->assertInvalidationInStoreAction($data,'boolean');
+        $this->assertInvalidationInUpdateAction($data, 'boolean');
+
+        $data = [
+            'categories_id' => 'a'
+        ];
+        $this->assertInvalidationInStoreAction($data, 'array');
+        $this->assertInvalidationInUpdateAction($data, 'array');
+
+        $data = [
+            'categories_id' => [100]
+        ];
+        $this->assertInvalidationInStoreAction($data, 'exists');
+        $this->assertInvalidationInUpdateAction($data, 'exists');
+
+        $category = factory(Category::class)->create(); // para criar a categoria e fazer o teste se ela existe
+        $category->delete();
+
+        $data = [
+            'categories_id' => [$category->id]
+        ];
+        $this->assertInvalidationInStoreAction($data, 'exists');
+        $this->assertInvalidationInUpdateAction($data, 'exists');
+
     }
 
     public function testDestroy()
@@ -87,6 +111,23 @@ class GenreControllerTest extends TestCase
         $this->assertNull($this->genre::find($this->genre->id));
         $this->assertNotNull($this->genre::withTrashed()->find($this->genre->id));
     }
+
+    protected function assertHasCategory($genreID, $categoryID)
+    {
+        $this->assertDatabaseHas('category_genre', [
+            'genre_id' => $genreID,
+            'category_id' => $categoryID
+        ]);
+    }
+
+    /*public function testSyncCategories(){
+        $categoriesID = factory(Category::class, 3)->create()->pluck('id')->toArray();
+
+        $sendData = [
+            'name' => 'teste',
+            'categories_id' => [$categoriesID[0]]
+        ];
+    }/**/
 
     protected function model()
     {

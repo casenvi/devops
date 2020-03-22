@@ -1,10 +1,7 @@
 <?php
 
-// TODO: Create category relationship with genre
 // TODO: Update genre CRUD to add the categories relationship
-// TODO: Update genre controller test to check it categoriies relationship
-// TODO: Create video relationship with category 
-// TODO: Create video relationship with genre
+// TODO: Update genre controller test to check it categoriies relationship0
 // TODO: Create video validation between category and genre
 
 namespace Tests\Feature\Http\Controllers\Api;
@@ -103,7 +100,7 @@ class VideoControllerTest extends TestCase
           ],
           'ruleParams' => []
         )
-      ), 
+      ),
       'rating' => array(
         'in' => array(
           'value' => [
@@ -111,18 +108,7 @@ class VideoControllerTest extends TestCase
           ],
           'ruleParams' => Video::RATTING
         )
-      ),
-      'duration' => array(
-          'required' => array(
-            'value' => [
-              'title' => 'teste',
-              'year_launched' => 1985,
-              'rating' => 'free',
-              'duration' => 'teste'
-            ],
-            'ruleParams' => []
-          )
-        )
+      )
     );
     foreach ($data_attribute as $attribute) {
       foreach ($attribute as $key => $value) {
