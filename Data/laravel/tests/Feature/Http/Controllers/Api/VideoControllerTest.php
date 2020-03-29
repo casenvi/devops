@@ -61,7 +61,9 @@ class VideoControllerTest extends TestCase
   public function testStore()
   {
     $categoryId = factory(Category::class)->create()->id;
-    $genreId = factory(Genre::class)->create()->id;
+    $genre = factory(Genre::class)->create();
+    $genre->categories()->sync($categoryId);
+    $genreId = $genre->id;
     $data = [
       'title' => 'teste_1',
       'rating' => 'free',
