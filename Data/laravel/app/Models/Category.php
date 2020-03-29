@@ -17,7 +17,7 @@ class Category extends Model
     ];
     public $incrementing = false;
 
-    public function genres()
+    /*public function genres()
     {
         return $this->belongsToMany(Genre::class);
     }
@@ -25,5 +25,5 @@ class Category extends Model
     public function videos()
     {
         return $this->belongsToMany(Video::class);
-    }
+    }*/
 }

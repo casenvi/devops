@@ -17,7 +17,7 @@ class GenreController extends BasicCrudController
     {
         $validatedData = $this->validate($request, $this->rulesStore());
         $self = $this;
-        $obj = \DB::transaction(function () use ($self, $request, $validatedData) {
+        $obj = \DB::transaction(function () use ($request, $validatedData, $self) {
             $obj = $this->model()::create($validatedData);
             $self->handleRelations($obj, $request);
             return $obj;
@@ -31,9 +31,10 @@ class GenreController extends BasicCrudController
         $obj = $this->findOrFail($id);
         $validatedData = $this->validate($request, $this->rulesUpdate());
         $self = $this;
-        \DB::transaction(function () use ($self, $request, $obj, $validatedData) {
+        $obj = \DB::transaction(function () use ($self, $request, $obj, $validatedData) {
             $obj->update($validatedData);
             $self->handleRelations($obj, $request);
+            return $obj;
         });
         return $obj;
     }
