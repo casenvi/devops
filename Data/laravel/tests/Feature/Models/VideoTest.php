@@ -3,13 +3,25 @@
 namespace Tests\Feature\Models;
 
 use App\Models\Video;
-
+use App\Models\Category;
+use App\Models\Genre;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+
+
 use Tests\TestCase;
 
 class VideoTest extends TestCase
 {
   use DatabaseMigrations;
+
+  private $data = [
+    'title' => 'teste_1',
+    'rating' => 'free',
+    'year_launched' => 1985,
+    'duration' => 2,
+
+  ];
 
   public function testList()
   {
@@ -34,78 +46,279 @@ class VideoTest extends TestCase
     );
   }
 
-  public function testCreate()
+  public function testCreateWithBasicsFields()
   {
-    $video = Video::create([
-      'title' => 'teste_1',
-      'rating' => 'free',
-      'year_launched' => 1985,
-      'duration' => 2,
 
-    ]);
+    $video = Video::create($this->data);
+
     $video->refresh();
+
     $this->assertEquals(36, strlen($video->id));
-    $this->assertEquals('teste_1', $video->title);
-    $this->assertEquals('free', $video->rating);
-    $this->assertEquals(1985, $video->year_launched);
-    $this->assertEquals(2, $video->duration);
-    $this->assertFalse($video->opened);
-  }
-
-  public function testCreateOpened()
-  {
-    $video = Video::create([
-      'title' => 'teste_1',
-      'rating' => 'free',
-      'year_launched' => 1985,
-      'duration' => 2,
-      'opened' => false
-    ]);
-    $video->refresh();
     $this->assertFalse($video->opened);
 
-    $video = Video::create([
-      'title' => 'teste_1',
-      'rating' => 'free',
-      'year_launched' => 1985,
-      'duration' => 2,
-      'opened' => true
-    ]);
-    $video->refresh();
+
+    $this->assertDatabaseHas(
+      'videos',
+      $this->data + ['opened' => false]
+    );
+
+    $video = Video::create($this->data + ['opened' => true]);
     $this->assertTrue($video->opened);
+    $this->assertDatabaseHas('videos', $this->data + ['opened' => true]);
   }
 
-  // UPDATES
+  public function testCreateWithRelations()
+  {
 
-  public function testUpdate()
+    $category = factory(Category::class)->create();
+    $genre = factory(Genre::class)->create();
+
+    $video = Video::create($this->data + [
+      'categories_id' => [$category->id],
+      'genres_id' => [$genre->id],
+
+    ]);
+
+    $this->assertHasCategory($video->id, $category->id);
+    $this->assertHasGenre($video->id, $genre->id);
+  }
+
+  public function testUpdateWithBasicsFields()
   {
     $video = factory(Video::class)->create([
-      'title' => 'teste_1',
-      'rating' => 'free',
-      'year_launched' => 1985,
-      'duration' => 2,
       'opened' => false
     ]);
-    $data = [
-      'title' => 'teste_changed',
-      'rating' => '+18',
-      'year_launched' => 1989,
-      'duration' => 20,
-      'opened' => true
-    ];
-    $video->update($data);
-    foreach ($data as $key => $value) {
-      $this->assertEquals($value, $video->{$key});
-    }
+
+    $video->update($this->data);
+    $this->assertFalse($video->opened);
+    $this->assertDatabaseHas('videos', $this->data + ['opened' => false]);
+
+    $video = factory(Video::class)->create(
+      ['opened' => false]
+    );
+
+    $video->update($this->data + ['opened' => true]);
+    $this->assertTrue($video->opened);
+
+    $this->assertDatabaseHas('videos', $this->data + ['opened' => true]);
   }
 
-  // DELETE
+  public function testUpdateWithRelations()
+  {
+
+    $category = factory(Category::class)->create();
+    $genre = factory(Genre::class)->create();
+
+    $video = factory(Video::class)->create();
+
+    $video->update($this->data + [
+      'categories_id' => [$category->id],
+      'genres_id' => [$genre->id],
+
+    ]);
+
+    $this->assertHasCategory($video->id, $category->id);
+    $this->assertHasGenre($video->id, $genre->id);
+  }
+
   public function testDelete()
   {
+
     $video = factory(Video::class)->create();
+
     $video->delete();
     $this->assertNull(Video::find($video->id));
+
     $video->restore();
     $this->assertNotNull(Video::find($video->id));
+  }
+
+  public function testRollBackCreate()
+  {
+
+    $hasError = false;
+
+    try {
+      Video::create($this->data + [
+        'categories_id' => [0, 1, 2]
+      ]);
+    } catch (QueryException $exception) {
+      $this->assertCount(0, Video::all());
+
+      $hasError = true;
+    }
+
+    $this->assertTrue($hasError);
+  }
+
+  public function testRollBackUpdate()
+  {
+
+    $hasError = false;
+
+    $video = factory(Video::class)->create();
+
+    $oldTitle = $video->title;
+
+    try {
+      $video->update($this->data + [
+
+        'categories_id' => [0, 1, 2]
+      ]);
+    } catch (QueryException $exception) {
+
+      $this->assertDatabaseHas('videos', [
+        'title' => $oldTitle
+      ]);
+
+      $hasError = true;
+    }
+
+    $this->assertTrue($hasError);
+  }
+
+  public function testHandleRelations()
+  {
+    $video = factory(Video::class)->create();
+
+    Video::handleRelations($video, []);
+
+    $this->assertCount(0, $video->categories);
+    $this->assertCount(0, $video->genres);
+
+    $category = factory(Category::class)->create();
+
+    Video::handleRelations($video, [
+      'categories_id' => [$category->id]
+    ]);
+
+    $video->refresh();
+
+    $this->assertCount(1, $video->categories);
+
+    $genre = factory(Genre::class)->create();
+
+    Video::handleRelations($video, [
+      'genres_id' => [$genre->id],
+
+    ]);
+
+    $video->refresh();
+
+    $this->assertCount(1, $video->genres);
+
+    $video->categories()->delete();
+
+    $video->genres()->delete();
+
+    Video::handleRelations($video, [
+      'categories_id' => [$category->id],
+      'genres_id' => [$genre->id],
+
+    ]);
+
+    $video->refresh();
+    $this->assertCount(1, $video->categories);
+    $this->assertCount(1, $video->genres);
+  }
+
+  public function testSyncCategories()
+  {
+    $categoriesId =  factory(Category::class, 3)->create()->pluck('id')->toArray();
+
+    $video = factory(Video::class)->create();
+
+    Video::handleRelations($video, [
+      'categories_id' => [$categoriesId[0]],
+    ]);
+
+
+    $this->assertHasCategory($video->id, $categoriesId[0]);
+
+    Video::handleRelations($video, [
+      'categories_id' => [$categoriesId[1], $categoriesId[2]],
+    ]);
+
+    $this->assertMissingHasCategory($video->id, $categoriesId[0]);
+
+    $this->assertHasCategory($video->id, $categoriesId[1]);
+
+    $this->assertHasCategory($video->id, $categoriesId[2]);
+  }
+
+  public function testSyncGenres()
+  {
+
+    $genresId =  factory(Genre::class, 3)->create()->pluck('id')->toArray();
+
+    $video = factory(Video::class)->create();
+
+    Video::handleRelations($video, [
+      'genres_id' => [$genresId[0]],
+    ]);
+
+
+    $this->assertHasGenre($video->id, $genresId[0]);
+
+    Video::handleRelations($video, [
+      'genres_id' => [$genresId[1], $genresId[2]],
+    ]);
+
+    $this->assertMissingHasGenre($video->id, $genresId[0]);
+
+    $this->assertHasGenre($video->id, $genresId[1]);
+
+    $this->assertHasGenre($video->id, $genresId[2]);
+  }
+
+
+
+  public function assertHasCategory($videoId, $categoryId)
+  {
+
+    $this->assertDatabaseHas(
+      'category_video',
+      [
+        'video_id' => $videoId,
+        'category_id' => $categoryId
+      ]
+    );
+  }
+
+  public function assertHasGenre($videoId, $genreId)
+  {
+
+    $this->assertDatabaseHas(
+      'genre_video',
+      [
+        'video_id' => $videoId,
+        'genre_id' => $genreId
+      ]
+    );
+  }
+
+  public function assertMissingHasCategory($videoId, $categoryId)
+  {
+
+    $this->assertDatabaseMissing(
+      'category_video',
+      [
+        'video_id' => $videoId,
+        'category_id' => $categoryId
+      ]
+    );
+  }
+
+
+  public function assertMissingHasGenre($videoId, $genreId)
+  {
+
+    $this->assertDatabaseMissing(
+      'genre_video',
+      [
+        'video_id' => $videoId,
+        'genre_id' => $genreId
+      ]
+    );
   }
 }
