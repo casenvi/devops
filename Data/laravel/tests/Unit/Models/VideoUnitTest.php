@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Traits\UploadFiles;
 use App\Models\Video;
 use App\Models\Traits\Uuid;
 
@@ -22,7 +23,8 @@ class VideoUnitTest extends TestCase
   {
     $traits = [
       SoftDeletes::class,
-      Uuid::class
+      Uuid::class,
+      UploadFiles::class
     ];
     $videoTraits = array_keys(class_uses(video::class));
     $this->assertEquals($traits, $videoTraits);
@@ -36,7 +38,8 @@ class VideoUnitTest extends TestCase
       'year_launched',
       'duration',
       'opened',
-      'rating'
+      'rating',
+      'video_file'
     ];
     $this->assertEquals($fillable, $this->video->getFillable());
   }
