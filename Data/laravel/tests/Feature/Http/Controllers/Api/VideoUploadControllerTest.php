@@ -11,9 +11,7 @@ use App\Models\Genre;
 use App\Models\Video;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\TestResponse;
-use Illuminate\Http\UploadedFile;
-use Tests\TestCase;
+
 use Tests\Traits\TestSaves;
 use Tests\Traits\TestUploads;
 use Tests\Traits\TestValidations;

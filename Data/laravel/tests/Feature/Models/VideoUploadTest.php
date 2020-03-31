@@ -18,7 +18,7 @@ class VideoUploadTest extends VideoBaseTest
     $video = Video::create(
 
       $this->data + [
-        'video_file' =>  UploadedFile::fake()->create("video.mp4")
+        'video_file' =>  UploadedFile::fake()->image("video.jpeg")
       ]
     );
 
