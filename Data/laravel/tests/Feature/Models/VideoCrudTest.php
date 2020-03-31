@@ -6,22 +6,14 @@ use App\Models\Video;
 use App\Models\Category;
 use App\Models\Genre;
 use Illuminate\Database\QueryException;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-
-use Tests\TestCase;
-
-class VideoTest extends TestCase
+class VideoCrudTest extends VideoBaseTest
 {
-  use DatabaseMigrations;
 
-  private $data = [
-    'title' => 'teste_1',
-    'rating' => 'free',
-    'year_launched' => 1985,
-    'duration' => 2,
-
-  ];
+  protected function setUp(): void
+  {
+    parent::setUp();
+  }
 
   public function testList()
   {
@@ -270,56 +262,5 @@ class VideoTest extends TestCase
     $this->assertHasGenre($video->id, $genresId[1]);
 
     $this->assertHasGenre($video->id, $genresId[2]);
-  }
-
-
-
-  public function assertHasCategory($videoId, $categoryId)
-  {
-
-    $this->assertDatabaseHas(
-      'category_video',
-      [
-        'video_id' => $videoId,
-        'category_id' => $categoryId
-      ]
-    );
-  }
-
-  public function assertHasGenre($videoId, $genreId)
-  {
-
-    $this->assertDatabaseHas(
-      'genre_video',
-      [
-        'video_id' => $videoId,
-        'genre_id' => $genreId
-      ]
-    );
-  }
-
-  public function assertMissingHasCategory($videoId, $categoryId)
-  {
-
-    $this->assertDatabaseMissing(
-      'category_video',
-      [
-        'video_id' => $videoId,
-        'category_id' => $categoryId
-      ]
-    );
-  }
-
-
-  public function assertMissingHasGenre($videoId, $genreId)
-  {
-
-    $this->assertDatabaseMissing(
-      'genre_video',
-      [
-        'video_id' => $videoId,
-        'genre_id' => $genreId
-      ]
-    );
   }
 }

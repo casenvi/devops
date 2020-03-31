@@ -1,41 +1,21 @@
 <?php
 
-// TODO: Update genre CRUD to add the categories relationship
-// TODO: Update genre controller test to check it categoriies relationship0
-// TODO: Create video validation between category and genre
-
 namespace Tests\Feature\Http\Controllers\Api;
 
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Video;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\TestResponse;
-use Illuminate\Http\UploadedFile;
-use Tests\TestCase;
 use Tests\Traits\TestSaves;
-use Tests\Traits\TestUploads;
 use Tests\Traits\TestValidations;
 
-class VideoControllerTest extends TestCase
+class VideoCrudControllerTest extends VideoBaseControllerTest
 {
-  use DatabaseMigrations, TestValidations, TestSaves, TestUploads;
-
-  private $video;
-
-  private $sendData = [
-    'title' => 'teste_1',
-    'rating' => 'free',
-    'year_launched' => 1985,
-    'duration' => 2,
-    'opened' => false
-  ];
+  use TestValidations, TestSaves;
 
   protected function setUp(): void
   {
-    parent::setUp();
-    $this->video = factory(Video::class)->create();
+    parent::setUp();    
   }
 
   public function testIndex()
@@ -249,124 +229,5 @@ class VideoControllerTest extends TestCase
     $this->assertMissingHasGenre($response->json('id'), $genresId[0]);
     $this->assertHasGenre($response->json('id'), $genresId[1]);
     $this->assertHasGenre($response->json('id'), $genresId[2]);
-  }
-
-  public function testInvalidationVideoField()
-  {
-
-    $this->assertInvalidationFile(
-      'video_file',
-      'mp4',
-      Video::VIDEO_FILE_MAX_SIZE,
-      'mimetypes',
-      ['values' => 'video/mp4']
-    );
-  }
-
-  public function testStoreWithFiles()
-  {
-    $categoryId = factory(Category::class)->create()->id;
-    $genre = factory(Genre::class)->create();
-    $genre->categories()->sync($categoryId);
-    $genreId = $genre->id;
-    \Storage::fake();
-    $files = $this->getFiles();
-    $response = $this->json(
-      'POST',
-      $this->routeStore(),
-      $this->sendData + [
-        'categories_id' => [$categoryId],
-        'genres_id' => [$genreId]
-      ] +
-        $files
-    );
-
-    $response->assertStatus(201);
-
-    $this->assertFilesOnPersist($response,  $files);
-
-    $video = Video::find($response->json('id'));
-
-    $this->assertIfFileUrlExists($video, $response);
-  }
-
-
-  /************* Protected functions ********************************* */
-
-  protected function assertIfFileUrlExists(Video $video, TestResponse $response)
-  {
-
-    $fileFields = Video::$fileFields;
-
-    $data = $response->json('id');
-
-    foreach ($fileFields as $field) {
-
-      $file = $video->{$field};
-
-      \Storage::assertExists($video->relativeFilePath($file));
-    }
-  }
-
-  protected function assertFilesOnPersist(TestResponse $response, $files)
-  {
-    $id = $response->json('id') ?? $response->json('data.id');
-
-    $video = Video::find($id);
-    $this->assertFilesExistsInStorage($video, $files);
-  }
-
-  protected function assertHasCategory($videoID, $categoryID)
-  {
-    $this->assertDatabaseHas('category_video', [
-      'video_id' => $videoID,
-      'category_id' => $categoryID
-    ]);
-  }
-
-  protected function assertHasGenre($videoID, $genreId)
-  {
-    $this->assertDatabaseHas('genre_video', [
-      'video_id' => $videoID,
-      'genre_id' => $genreId
-    ]);
-  }
-
-  protected function assertMissingHasCategory($videoID, $categoryID)
-  {
-    $this->assertDatabaseMissing('category_video', [
-      'video_id' => $videoID,
-      'category_id' => $categoryID
-    ]);
-  }
-
-  protected function assertMissingHasGenre($videoID, $genreId)
-  {
-    $this->assertDatabaseMissing('genre_video', [
-      'video_id' => $videoID,
-      'genre_id' => $genreId
-    ]);
-  }
-
-  protected function model()
-  {
-    return Video::class;
-  }
-
-  protected function routeStore()
-  {
-    return route('video.store');
-  }
-
-  protected function routeUpdate()
-  {
-    return route('video.update', ['video' => $this->video->id]);
-  }
-  protected function getFiles()
-  {
-    return
-      [
-        'video_file' => UploadedFile::fake()->create('video_file.mp4')
-      ];
   }
 }

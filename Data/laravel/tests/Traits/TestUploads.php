@@ -18,6 +18,10 @@ trait TestUploads
         'method' => 'POST',
         'route'  => $this->routeStore()
 
+      ], [
+        'method' => 'PUT',
+        'route'  => $this->routeUpdate()
+
       ],
     ];
     foreach ($routes as $route) {
