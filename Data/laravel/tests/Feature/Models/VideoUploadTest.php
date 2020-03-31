@@ -6,22 +6,69 @@ use App\Models\Video;
 use Illuminate\Http\UploadedFile;
 use Tests\Exceptions\TestException;
 use Illuminate\Database\Events\TransactionCommitted;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class VideoUploadTest extends VideoBaseTest
 {
+  private $fileFields = [];
+
+  protected function setUp():void
+  {
+    parent::setUp();
+    foreach (Video::$fileFields as $field) {
+      $this->fileFields[$field] = "$field.test";
+    }
+  }
+
+  public function testCreateWithBasicsFields()
+  {    
+    $video = Video::create($this->data + $this->fileFields);
+
+    $video->refresh();
+
+    $this->assertEquals(36, strlen($video->id));
+    $this->assertFalse($video->opened);
+    $this->assertDatabaseHas(
+      'videos',
+      $this->data + $this->fileFields + ['opened' => false]
+    );
+
+    $video = Video::create($this->data + ['opened' => true]);
+    $this->assertTrue($video->opened);
+    $this->assertDatabaseHas('videos', $this->data + ['opened' => true]);
+  }
+
+  public function testUpdateWithBasicsFields()
+  {
+    $video = factory(Video::class)->create($this->data + $this->fileFields + [
+      'opened' => false
+    ]);
+
+    $video->update($this->data);
+    $this->assertFalse($video->opened);
+    $this->assertDatabaseHas('videos', $this->data + $this->fileFields  + ['opened' => false]);
+
+    $video = factory(Video::class)->create(
+      ['opened' => false]
+    );
+
+    $video->update($this->data + $this->fileFields  + ['opened' => true]);
+    $this->assertTrue($video->opened);
+
+    $this->assertDatabaseHas('videos', $this->data + $this->fileFields  + ['opened' => true]);
+  }
+
   public function testCreatedWithFiles()
   {
 
     \Storage::fake();
 
     $video = Video::create(
-
       $this->data + [
-        'video_file' =>  UploadedFile::fake()->image("video.jpeg")
+        'thumb_file' =>  UploadedFile::fake()->image("thumb.jpeg"),
+        'video_file' =>  UploadedFile::fake()->image("video.mp4"),
       ]
     );
-
+    \Storage::assertExists("{$video->id}/{$video->thumb_file}");
     \Storage::assertExists("{$video->id}/{$video->video_file}");
   }
 
