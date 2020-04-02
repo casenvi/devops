@@ -37,24 +37,28 @@ class VideoUploadTest extends VideoBaseTest
     $this->assertDatabaseHas('videos', $this->data + ['opened' => true]);
   }
 
-  public function testUpdateWithBasicsFields()
+  public function testUpdateWithFiles()
   {
-    $video = factory(Video::class)->create($this->data + $this->fileFields + [
-      'opened' => false
+    \Storage::fake();
+
+    $video_file = UploadedFile::fake()->image("video.mp4");
+    $thumb_file = UploadedFile::fake()->image("thumb.jpeg");
+    $new_video =  UploadedFile::fake()->image("video2.mp4");
+
+    $video = factory(Video::class)->create();    
+    $video->update($this->data + [
+      'thumb_file' =>  $thumb_file,
+      'video_file' =>  $video_file,
     ]);
+    \Storage::assertExists("{$video->id}/{$video->thumb_file}");
+    \Storage::assertExists("{$video->id}/{$video->video_file}");
 
-    $video->update($this->data);
-    $this->assertFalse($video->opened);
-    $this->assertDatabaseHas('videos', $this->data + $this->fileFields  + ['opened' => false]);
-
-    $video = factory(Video::class)->create(
-      ['opened' => false]
-    );
-
-    $video->update($this->data + $this->fileFields  + ['opened' => true]);
-    $this->assertTrue($video->opened);
-
-    $this->assertDatabaseHas('videos', $this->data + $this->fileFields  + ['opened' => true]);
+    $video->update($this->data + [
+      'video_file' =>  $new_video,
+    ]);
+    \Storage::assertExists("{$video->id}/{$thumb_file->hashName()}");
+    \Storage::assertExists("{$video->id}/{$new_video->hashName()}");
+    \Storage::assertMissing("{$video->id}/{$video_file->hashName()}");
   }
 
   public function testCreatedWithFiles()
@@ -71,6 +75,8 @@ class VideoUploadTest extends VideoBaseTest
     \Storage::assertExists("{$video->id}/{$video->thumb_file}");
     \Storage::assertExists("{$video->id}/{$video->video_file}");
   }
+
+
 
   public function testCreateIfRollbackFiles()
   {
