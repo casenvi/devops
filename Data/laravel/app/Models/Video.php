@@ -21,6 +21,9 @@ class Video extends Model
     ];
 
     const VIDEO_FILE_MAX_SIZE = 1024 * 1024 * 5; //5GB
+    const THUMB_FILE_MAX_SIZE = 1024 * 5; //5MB
+    const BANNER_FILE_MAX_SIZE = 1024 * 10; //10MB
+    const TRAILER_FILE_MAX_SIZE = 1024 * 1024 * 1; //1GB
 
     protected $fillable = [
         'title',
@@ -30,7 +33,9 @@ class Video extends Model
         'opened',
         'rating',
         'video_file',
-        'thumb_file'
+        'thumb_file',
+        'banner_file',
+        'trailer_file'
     ];
     protected $dates = [
         'deleted_at'
@@ -44,7 +49,7 @@ class Video extends Model
     ];
     public $incrementing = false;
 
-    public static $fileFields = ['video_file', 'thumb_file'];
+    public static $fileFields = ['video_file', 'thumb_file','banner_file','trailer_file'];
 
     public static function create(array $att = [])
     {

@@ -8,10 +8,11 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestResponse;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
+use Tests\Traits\TestUploads;
 
 abstract class VideoBaseControllerTest extends TestCase
 {
-  use DatabaseMigrations;
+  use DatabaseMigrations, TestUploads;
 
   protected $video;
 
@@ -104,7 +105,10 @@ abstract class VideoBaseControllerTest extends TestCase
   {
     return
       [
-        'video_file' => UploadedFile::fake()->create('video_file.mp4')
+        'video_file' => UploadedFile::fake()->create('video_file.mp4'),
+        'thumb_file' => UploadedFile::fake()->create('thumb_file.jpg'),
+        'banner_file' => UploadedFile::fake()->create('banner_file.jpg'),
+        'trailer_file' => UploadedFile::fake()->create('trailer_file.mp4')
       ];
   }
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Tests\Traits;
 
@@ -6,13 +6,13 @@ trait TestProd
 {
   protected function skipTestIfNotProd($message = '')
   {
-    if($this->isTestingProd()){
-      $this->markTestSkiped($message);
+    if ($this->notRunTestingProd()) {
+      $this->markTestSkipped($message);
     }
   }
 
-  protected function isTestingProd()
+  protected function notRunTestingProd()
   {
-    return env('TEST_PROD') !== false;
+    return env('TEST_PROD') !== true;
   }
 }

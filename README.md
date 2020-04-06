@@ -104,9 +104,29 @@ Nesta fase você deve criar o campo para upload do vídeo na tabela vídeos:
 1. video_file, string e nullable
 
 2. Validação
-* Os uploads não serão obrigatórios ao se enviar um POST ou PUT para /videos, logo nas regras de validação não teremos a regra required
-* Devemos validar o upload de vídeo requerendo somente o tipo video/mp4 e um tamanho máximo (especifique um valor simbolico para o tamanho). Pesquise na documentação do Laravel como validar tipos de arquivo e o tamanho máximo de um arquivo.
-* Crie o teste de validação do upload de vídeo, é necessário testar a invalidação do tipo do vídeo e o tamanho máximo.
+   * Os uploads não serão obrigatórios ao se enviar um POST ou PUT para /videos, logo nas regras de validação não teremos a regra required
+   * Devemos validar o upload de vídeo requerendo somente o tipo video/mp4 e um tamanho máximo (especifique um valor simbolico para o tamanho). Pesquise na documentação do Laravel como validar tipos de arquivo e o tamanho máximo de um arquivo.
+   * Crie o teste de validação do upload de vídeo, é necessário testar a invalidação do tipo do vídeo e o tamanho máximo.
 
 3. Upload
-* Implemente o upload do vídeo (somente com POST) como foi mostrado no capítulo e aplique um teste para verificar se o arquivo foi criado corretamente após o término do cadastro.
+   * Implemente o upload do vídeo (somente com POST) como foi mostrado no capítulo e aplique um teste para verificar se o arquivo foi criado corretamente após o término do cadastro.
+
+### Terminando uploads do model vídeo
+Nesta fase, você deverá acrescentar mais campos de upload na tabela e no model Vídeo. Já temos video_file e thumb_file.
+
+1. Agora teremos:
+   * banner_file
+   * trailer_file
+
+2. Você deve criar também os testes de validação de tamanho máximo para os 4 campos. Abaixo está o tamanho máximo permitido:
+   * video_file - 50GB
+   * thumb_file - 5MB
+   * banner_file - 10MB
+   * trailer_file - 1GB
+
+3. Agora com todos estes arquivos em mãos, consolide os testes de upload no teste de integração do model Vídeo. Precisamos saber se no próprio model Video, os uploads estão funcionando. Você pode criar 4 testes: 
+   * testCreateWithBasicFields e testUpdateWithBasicFields para testar somente a criação ou atualização do vídeo sem upload 
+   * testCreateWithFiles  e testUpdateWithFiles para focar somente no upload.
+
+4. Desafio (Opcional): Na trait de uploads, crie um método que receba o nome de um arquivo e devolva o endereço correto do arquivo, ou seja, o endereço WEB de acesso ao arquivo. Este método servirá como base para gerar qualquer endereço de qualquer arquivo do vídeo.
+   * Você deve criar o teste deste método e criar mutators do Eloquent para permitir que os endereços sejam acessíveis como campos, exemplo: $video->thumb_file_url ou $video->video_file_url.
