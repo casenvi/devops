@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\UploadFiles;
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use PhpParser\Node\Stmt\TryCatch;
 
 class Video extends Model
 {
-    use SoftDeletes, Traits\Uuid;
+    use SoftDeletes, Uuid, UploadFiles;
 
     const RATTING = [
         'free',
@@ -19,13 +20,16 @@ class Video extends Model
         '+18'
     ];
 
+    const VIDEO_FILE_MAX_SIZE = 1024 * 1024 * 5; //5GB
+
     protected $fillable = [
         'title',
         'description',
         'year_launched',
         'duration',
         'opened',
-        'rating'
+        'rating',
+        'video_file'
     ];
     protected $dates = [
         'deleted_at'
@@ -39,18 +43,21 @@ class Video extends Model
     ];
     public $incrementing = false;
 
+    public static $fileFields = ['video_file'];
+
     public static function create(array $att = [])
     {
+        $files = self::extractFiles($att);
         try {
             \DB::beginTransaction();
             $obj = static::query()->create($att);
             static::handleRelations($obj, $att);
-            //Uploads here
+            $obj->uploadFiles($files);
             \DB::commit();
             return $obj;
         } catch (\Exception $e) {
-            if (isset($obj)){
-                // Delete files
+            if (isset($obj)) {
+                $obj->deleteFiles($files);
             }
             \DB::rollBack();
             throw $e;
@@ -59,31 +66,32 @@ class Video extends Model
 
     public function update(array $att = [], $options = [])
     {
+        $files = self::extractFiles($att);
         try {
             \DB::beginTransaction();
             $saved = parent::update($att, $options);
             static::handleRelations($this, $att);
-            if ($saved){
-                //Uploads here
+            if ($saved) {
+                $this->uploadFiles($files);
                 // delete old files
             }
             \DB::commit();
             return $saved;
         } catch (\Exception $e) {
             if (isset($saved)) {
-                // Delete files
+                $this->deleteFiles($files);
             }
             \DB::rollBack();
             throw $e;
-        }        
+        }
     }
 
     protected static function handleRelations(Video $video, array $att)
     {
-        if (isset($att['categories_id'])){
+        if (isset($att['categories_id'])) {
             $video->categories()->sync($att['categories_id']);
         }
-        if (isset($att['genres_id'])){
+        if (isset($att['genres_id'])) {
             $video->genres()->sync($att['genres_id']);
         }
     }
@@ -96,5 +104,10 @@ class Video extends Model
     public function genres()
     {
         return $this->belongsToMany(Genre::class)->withTrashed();
+    }
+
+    protected function uploadDir()
+    {
+        return $this->id;
     }
 }
