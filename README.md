@@ -130,3 +130,21 @@ Nesta fase, você deverá acrescentar mais campos de upload na tabela e no model
 
 4. Desafio (Opcional): Na trait de uploads, crie um método que receba o nome de um arquivo e devolva o endereço correto do arquivo, ou seja, o endereço WEB de acesso ao arquivo. Este método servirá como base para gerar qualquer endereço de qualquer arquivo do vídeo.
    * Você deve criar o teste deste método e criar mutators do Eloquent para permitir que os endereços sejam acessíveis como campos, exemplo: $video->thumb_file_url ou $video->video_file_url.
+
+### Implementando API Resource
+Nesta fase, você deve implementar o recurso API Resource nos controllers e testa-los.
+
+1. Crie os resources para: 
+   1. Category
+   2. CastMember
+   3. Genre
+      1. incluir na serialização, as categorias relacionadas.
+   4. Video.
+      1. incluir na serialização, as categorias e gêneros relacionados e as urls dos arquivos.
+
+2. Aplique todos os resources nos controllers e faça os testes em todos os métodos do CRUD, exceto no destroy. Lembre-se de testar sempre a estrutura do JSON, com o método jsonStructure e também usando o método assertResource.
+
+3. Desafio (Opcional): Agora com a mudança para o API Resource, o controller básico de CRUD foi modificado, será necessário testa-lo também.
+   1. Aplique os testes em todos os métodos, exceto no destroy. Lembre-se que neste controller não temos resposta HTTP, logo em cada retorno de cada ação do controller, teremos a instância do Resource para avaliar.
+   2. Somente avalie se os dados do resource são iguais ao toArray do model CategoryStub.
+   
