@@ -9,7 +9,7 @@ services:
             - redis
         container_name: Catalog-app
         volumes: 
-            - ./Data/laravel:/var/www
+            - ./backend/Data/laravel:/var/www
             - .docker/app:/opt/docker
         networks: 
             - app-network
@@ -30,7 +30,7 @@ services:
         ports: 
             - "80:80"
         volumes: 
-            - ./Data/laravel:/var/www
+            - ./backend/Data/laravel:/var/www
             - .docker/nginx:/opt/docker
         networks: 
             - app-network
@@ -64,7 +64,7 @@ services:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root
         volumes: 
-            - ./Data/database:/var/lib/mysql
+            - ./backend/Data/database:/var/lib/mysql
             - ./.docker/mysql:/docker-entrypoint-initdb.d #para rodar scripts na criação da máquina
 
 networks:
