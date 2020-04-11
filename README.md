@@ -135,9 +135,9 @@ Nesta fase, você deverá acrescentar mais campos de upload na tabela e no model
 Nesta fase, você deve implementar o recurso API Resource nos controllers e testa-los.
 
 1. Crie os resources para: 
-   1. Category [ ]
-   2. CastMember [ ]
-   3. Genre [ ]
+   1. Category [X]
+   2. CastMember [X]
+   3. Genre []
       1. incluir na serialização, as categorias relacionadas.
    4. Video. [ ]
       1. incluir na serialização, as categorias e gêneros relacionados e as urls dos arquivos.

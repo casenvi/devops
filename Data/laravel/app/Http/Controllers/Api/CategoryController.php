@@ -9,7 +9,7 @@ class CategoryController extends BasicCrudController
 {
     protected $rules = [
         'name' => 'required|max:255|min:3',
-        'decription' => 'nullable',
+        'description' => 'nullable',
         'is_active' => 'boolean'
     ];
 

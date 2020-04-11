@@ -1,24 +1,31 @@
 <?php
 
-# Classe especifica                 vendor/bin/phpunit tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php
-# Método especifico em um arquivo   vendor/bin/phpunit --filter testIndex tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php
-# Método especifico em uma classe   vendor/bin/phpunit --filter CastMemberTest::testIndex
-
 namespace Tests\Feature\Http\Controllers\Api;
 
+use App\Http\Resources\CastMemberResource;
 use App\Models\CastMember;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 use Tests\TestCase;
+use Tests\Traits\TestResource;
 use Tests\Traits\TestSaves;
 use Tests\Traits\TestValidations;
 
 class CastMemberControllerTest extends TestCase
 {
-  use DatabaseMigrations, TestValidations, TestSaves;
+  use DatabaseMigrations, TestValidations, TestSaves, TestResource;
 
   private $castMember;
+
+  private $serializedFields = [
+    'id',
+    'name',
+    'type',
+    'created_at',
+    'updated_at',
+    'deleted_at'
+  ];
 
   protected function setUp(): void
   {
@@ -33,7 +40,20 @@ class CastMemberControllerTest extends TestCase
     $response = $this->get(route('cast_members.index'));
     $response
       ->assertStatus(200)
-      ->assertJson([$this->castMember->toArray()]);
+      ->assertJson([
+        'meta' => ['per_page' => 15]
+      ])
+      ->assertJsonStructure([
+        'data' => [
+          '*' => $this->serializedFields
+        ],
+        'links' => [],
+        'meta'  => [],
+      ]);
+
+    $resource = CastMemberResource::collection(collect([$this->castMember]));
+
+    $this->assertResource($response, $resource);    
   }
 
   public function testShow()
@@ -41,16 +61,55 @@ class CastMemberControllerTest extends TestCase
     $response = $this->get(route('cast_members.show', ['cast_member' => $this->castMember->id]));
     $response
       ->assertStatus(200)
-      ->assertJson($this->castMember->toArray());
+      ->assertJsonStructure([
+        'data' => $this->serializedFields
+      ]);
+    $id = $response->json('data.id');
+    $resource = new CastMemberResource(CastMember::find($id));
+    $this->assertResource($response, $resource);
   }
 
   public function testStore()
   {
     $data = [
-      'name' => 'test',
-      'type' => CastMember::TYPE_DIRECTOR
+      [
+        'name' => 'test',
+        'type' => CastMember::TYPE_DIRECTOR
+      ],
+      [
+        'name' => 'test',
+        'type' => CastMember::TYPE_ACTOR
+      ]
     ];
-    $this->assertStore($data, $data + ['is_active' => true]);
+    foreach ($data as $value) {
+      $response = $this->assertStore($value, $value + ['deleted_at' => null]);
+      $response->assertJsonStructure([
+        'data' => $this->serializedFields
+      ]);
+      $id = $response->json('data.id');
+      $resource = new CastMemberResource(CastMember::find($id));
+      $this->assertResource($response, $resource);
+    }
+
+  }
+
+  public function testUpdate()
+  {
+
+    factory(CastMember::class)->create([
+      'type' => CastMember::TYPE_DIRECTOR
+    ]);
+    $data = [
+      'name' => 'test',
+      'type' => CastMember::TYPE_ACTOR
+    ];
+    $response = $this->assertUpdate($data, $data + ['deleted_at' => null]);
+    $response->assertJsonStructure([
+      'data' => $this->serializedFields
+    ]);
+    $id = $response->json('data.id');
+    $resource = new CastMemberResource(CastMember::find($id));
+    $this->assertResource($response, $resource);
   }
 
   public function  testInvalidationData()
