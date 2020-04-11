@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\TestResponse;
 
 trait TestSaves
 {
+
   protected function assertStore(
     array $sendData,
     array $testDatabase,
@@ -20,6 +21,7 @@ trait TestSaves
     $this->assertJsonResponseContent($response, $testDatabase, $testJsonData);
     return $response;
   }
+
   protected function assertUpdate(
     array $sendData,
     array $testDatabase,
@@ -34,6 +36,7 @@ trait TestSaves
     $this->assertJsonResponseContent($response, $testDatabase, $testJsonData);
     return $response;
   }
+
   private function assertInDatabase(
     TestResponse $response,
     array $testDatabase
@@ -42,6 +45,7 @@ trait TestSaves
     $table = (new $model)->getTable();
     $this->assertDatabaseHas($table, $testDatabase + ['id' => $this->getIdFromResponse($response)]);
   }
+
   private function assertJsonResponseContent(
     TestResponse $response,
     array $testDatabase,
