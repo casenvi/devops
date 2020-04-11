@@ -24,6 +24,7 @@ class GenreControllerTest extends TestCase
     private $serializedFields = [
         'id',
         'name',
+        'categories',
         'created_at',
         'updated_at',
         'deleted_at'

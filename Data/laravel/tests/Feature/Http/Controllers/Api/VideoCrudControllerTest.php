@@ -21,6 +21,12 @@ class VideoCrudControllerTest extends VideoBaseControllerTest
     'created_at',
     'year_launched',
     'duration',
+    'categories',
+    'genres',
+    'video_file_url',
+    'thumb_file_url',
+    'banner_file_url',
+    'trailer_file_url',
     'opened',
     'updated_at',
     'deleted_at'
