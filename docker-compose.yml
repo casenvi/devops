@@ -18,13 +18,15 @@ services:
         entrypoint: 
             dockerize -template /opt/docker/.env:backend/.env -template /opt/docker/.env.testing:backend/.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
         ports:
-            - "3000:3000"
+            - "3000:3000"  
+            - "35729:35729"          
         environment: 
             - _DB_HOST=Catalog-mysql
             - _DB_DATABASE=catalog_prod
             - _DB_USERNAME=root
             - _DB_PASSWORD=root
             - _DB_DATABASE_TEST=catalog_test
+            - CHOKIDAR_USEPOLLING=true
     
     nginx:
         build: .docker/nginx
