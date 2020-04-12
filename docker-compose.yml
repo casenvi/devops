@@ -9,12 +9,16 @@ services:
             - redis
         container_name: Catalog-app
         volumes: 
-            - ./backend/Data/laravel:/var/www
+            - ./Data/backend/laravel:/var/www/backend
+            - ./Data/frontend:/var/www/frontend
+            - ./Data/.npm-cache:/var/www/.npm-cache
             - .docker/app:/opt/docker
         networks: 
             - app-network
         entrypoint: 
-            dockerize -template /opt/docker/.env:.env -template /opt/docker/.env.testing:.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+            dockerize -template /opt/docker/.env:backend/.env -template /opt/docker/.env.testing:backend/.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+        ports:
+            - "3000:3000"
         environment: 
             - _DB_HOST=Catalog-mysql
             - _DB_DATABASE=catalog_prod
@@ -30,7 +34,8 @@ services:
         ports: 
             - "80:80"
         volumes: 
-            - ./backend/Data/laravel:/var/www
+            - ./Data/backend/laravel:/var/www/backend
+            - ./Data/frontend:/var/www/frontend
             - .docker/nginx:/opt/docker
         networks: 
             - app-network
@@ -64,7 +69,7 @@ services:
             - MYSQL_ROOT_PASSWORD=root
             - MYSQL_USER=root
         volumes: 
-            - ./backend/Data/database:/var/lib/mysql
+            - ./Data/database:/var/lib/mysql
             - ./.docker/mysql:/docker-entrypoint-initdb.d #para rodar scripts na criação da máquina
 
 networks:
