@@ -40,5 +40,4 @@ RUN echo "xdebug.remote_connect_back=1" | tee -a /usr/local/etc/php/conf.d/docke
 RUN echo "xdebug.remote_host=172.172.0.1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 
 EXPOSE 9000
-ENTRYPOINT [ "php-fpm" ]
 

@@ -1,6 +1,8 @@
 #!/bin/bash
 
-chmod 777 * -R
+chown -R www-data:www-data /var/www
+
+chmod -R 755 /var/www/storage
 
 ## FRONT-END
 npm config set cache /var/www/.npm-cache --global
