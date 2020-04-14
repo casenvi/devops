@@ -18,6 +18,10 @@ trait TestUploads
         'method' => 'POST',
         'route'  => $this->routeStore()
 
+      ], [
+        'method' => 'PUT',
+        'route'  => $this->routeUpdate()
+
       ],
     ];
     foreach ($routes as $route) {
@@ -38,9 +42,7 @@ trait TestUploads
   {
     /** @var UploadFiles $model */
     foreach ($files as $file) {
-
       \Storage::assertExists($model->relativeFilePath($file->hashName()));
     }
   }
-
 }

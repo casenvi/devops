@@ -33,8 +33,14 @@ class BasicCrudControllerTest extends TestCase
             'name' => 'name_test',
             'description' => 'description_teste'
         ]);
-        $result = $this->controller->index()->toArray();
-        $this->assertEquals([$category->toArray()], $result);
+        $result = $this->controller->index();
+        $serialized = $result->response()->getData(true);
+        $this->assertEquals(
+            [$category->toArray()],
+            $serialized['data']
+        );
+        $this->assertArrayHasKey('meta',  $serialized);
+        $this->assertArrayHasKey('links',  $serialized);
     }
 
     public function testInvalidationDataInStore()
@@ -59,10 +65,11 @@ class BasicCrudControllerTest extends TestCase
                 'name' => 'teste_name',
                 'description' => 'description_teste']);
         $obj = $this->controller->store($request);
+        $serialized = $obj->response()->getData(true);
         $this->assertEquals(
             CategoryStub::find(1)->toArray(),
-            $obj->toArray()
-        );
+            $serialized['data']
+        ); 
     }
 
     public function testShow()
@@ -72,8 +79,9 @@ class BasicCrudControllerTest extends TestCase
             'description' => 'description_teste'
         ]);
         $result = $this->controller->show($category->id);
-        $this->assertEquals( 
-            $result->toArray(), 
+        $serialized = $result->response()->getData(true);
+        $this->assertEquals(
+            $serialized['data'], 
             CategoryStub::find(1)->toArray()
         );
     }
@@ -92,10 +100,11 @@ class BasicCrudControllerTest extends TestCase
                 'name' => 'teste_name_changed',
                 'description' => 'description_teste_changed'
             ]);
-        $result = $this->controller->update($request, $category->id);        
+        $result = $this->controller->update($request, $category->id);
+        $serialized = $result->response()->getData(true);        
         $this->assertEquals(
             CategoryStub::find(1)->toArray(),
-            $result->toArray()
+            $serialized['data']
         );
     }
 
