@@ -10,6 +10,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Location } from 'history';
 import routes from '../../routes';
 import RouteParser from 'route-parser';
+import { Box } from '@material-ui/core';
 
 const breadcrumbNameMap: { [key: string]: string } = {};
 routes.forEach(route => breadcrumbNameMap[route.path as string] = route.label);
@@ -72,11 +73,13 @@ export default function Breadcrumb() {
 
   return (
     <Container>
-      <Route>
-        {
-          ({ location }: { location: Location }) => makeBreadcrumb(location)
-        }
-      </Route>
+      <Box paddingBottom={2}>
+        <Route>
+          {
+            ({ location }: { location: Location }) => makeBreadcrumb(location)
+          }
+        </Route>
+      </Box>
     </Container>
   );
 }

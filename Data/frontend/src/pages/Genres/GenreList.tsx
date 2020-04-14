@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom';
 import AddIcon from '@material-ui/icons/Add';
 import { Table } from './Table';
 
-export const CategoryList = () => {
+export const GenreList = () => {
   return (
-    <Page title='Listagem de categorias'>
+    <Page title='Listagem de gêneros'>
       <Box dir={'rtl'}>
         <Fab
-          title="Adicionar categoria"
+          title="Adicionar gêneros"
           size="small"
           component={Link}
-          to="/categories/create"
+          to="/genres/create"
         >
           <AddIcon />
         </Fab>

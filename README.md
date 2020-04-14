@@ -147,4 +147,22 @@ Nesta fase, você deve implementar o recurso API Resource nos controllers e test
 3. Desafio (Opcional): Agora com a mudança para o API Resource, o controller básico de CRUD foi modificado, será necessário testa-lo também.
    1. Aplique os testes em todos os métodos, exceto no destroy. Lembre-se que neste controller não temos resposta HTTP, logo em cada retorno de cada ação do controller, teremos a instância do Resource para avaliar.
    2. Somente avalie se os dados do resource são iguais ao toArray do model CategoryStub.
-   
+
+### Construindo listagens no front-end
+Parabéns por chegar até aqui! Já temos nossa aplicação backend e vamos implementar o front-end com React.js.
+Agora que entendemos como desenvolver com Laravel e React dentro do Docker, realizaremos a integração da SPA com a API Rest.
+Nesta fase crie o ambiente do React mostrado no curso e crie três listagens:
+
+1. Listagem de categorias com os dados:
+   1.  name
+   2.   is_active (formate se é ativo ou não para Sim ou Não)
+   3.   created_at (formate a data no formato brasileiro)
+2.   Listagem de membros do elenco com os dados:
+     1.   name
+     2.   type (mostre o texto correspondente ao tipo, 1 - Diretor, 2 - Ator, encontre uma maneira de fazer isto com o TypeScript sem usar IFs).
+     3.   created_at (formate a data no formato brasileiro)
+3.   Listagem de gêneros com os dados:
+     1.   name
+     2.   categories (Mostre todos os nomes das categorias separados por vírgula).
+     3.    is_active (formate se é ativo ou não para Sim ou Não)
+     4.    created_at (formate a data no formato brasileiro)
