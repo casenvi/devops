@@ -166,3 +166,15 @@ Nesta fase crie o ambiente do React mostrado no curso e crie três listagens:
      2.   categories (Mostre todos os nomes das categorias separados por vírgula).
      3.    is_active (formate se é ativo ou não para Sim ou Não)
      4.    created_at (formate a data no formato brasileiro)
+
+### CRUD de cast member e genre no front-end
+Nesta fase de projeto, você deverá criar os CRUDs de genre e cast member no front-end.
+
+1. Detalhes importantes para cast member:
+   1. Para o campo type você poderá usar o componente Radio ou RadioGroup (preferível). Vide doc do Material UI
+   2. Você deverá usar o conceito de Controlled Components do React para lidar com o campo type, pois não será um campo HTML nativo e necessitará de especificação do evento onChage para pegar o novo valor e guardar no react-hook-form via setValue.
+2. Detalhes importantes para genre:
+   1. Para o campo categories você poderá usar o componente Select ou Select nativo. Vide doc do Material UI
+   2. Você deverá usar o conceito de Controlled Components do React para lidar com o campo categories, pois não será um campo HTML nativo e necessita de especificação do evento onChage para pegar o novo valor e guardar no react-hook-form via setValue.
+   3. Este campo Select necessitará de uma alimentação do que o usuário escolhe, logo será necessário sempre atualizar a propriedade value dele, senão as opções escolhidas não serão de fato selecionadas. Use o método watch do react-hook-form no value do campo para mante-lo atualizado.
+   4. Use AJAX para pegar as categorias e hidratar o campo Select.
