@@ -20,34 +20,28 @@ export const Form = () => {
   const classes = useStyles();
 
   const buttonProps: ButtonProps = {
-    variant: "outlined",
+    variant: 'contained',
+    color: 'secondary',
     className: classes.submit
   }
-  const { register, getValues, setValue, watch } = useForm({
-    defaultValues: {
-      is_active: true,
-      categories_id: []
-    }
-  });
+  const [categories, setCategories] = useState<any[]>([]);
+  const { register, getValues, setValue, watch } = useForm();
+
+  useEffect(() => {
+    register({ name: "categories_id" })
+  }, [register]);
+
+  useEffect(() => {
+    categoryHttp
+      .list()
+      .then(({ data }) => setCategories(data.data))
+  }, []);
 
   function onSubmit(formData, event) {
     genreHttp
       .create(formData)
       .then((response) => console.log(response));
   }
-
-
-  const [categories, setCategories] = useState<any[]>([]);
-
-  useEffect(() => {
-    register({ name: 'categories_id' })
-  }, [register]);
-
-  useEffect(() => {
-    categoryHttp
-      .list()
-      .then(response => setCategories(response.data.data))
-  }, [])
 
   return (
     <form>
