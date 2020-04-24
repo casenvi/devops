@@ -36,6 +36,13 @@ const routes: MyRouteProp[] = [
     component: CategoryForm,
     exact: true
   },
+  {
+    name: 'category.edit',
+    label: 'Editar categorias',
+    path: '/categories/:id/edit',
+    component: CategoryForm,
+    exact: true
+  },
   //castmember
   {
     name: 'castmember.list',

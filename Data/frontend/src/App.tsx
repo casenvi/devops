@@ -6,20 +6,24 @@ import { BrowserRouter } from 'react-router-dom';
 import { AppRouter } from './routes/AppRouter';
 import Breadcrumb from './components/Breadcrumb/';
 import theme from './theme';
+import { SnackbarProvider } from './components/SnackbarProvider';
 
 function App() {
   return (
     <React.Fragment>
       <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <BrowserRouter>
-          <NavBar />
-          <Box paddingTop={'70px'}>
-            <Breadcrumb />
-            <AppRouter />
-          </Box>
-        </BrowserRouter>
+        <SnackbarProvider>
+          <CssBaseline />
+          <BrowserRouter>
+            <NavBar />
+            <Box paddingTop={'70px'}>
+              <Breadcrumb />
+              <AppRouter />
+            </Box>
+          </BrowserRouter>
+        </SnackbarProvider>
       </MuiThemeProvider>
+
     </React.Fragment>
   );
 }
