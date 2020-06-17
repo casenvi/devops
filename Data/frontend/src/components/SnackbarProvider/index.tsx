@@ -22,6 +22,7 @@ export const SnackbarProvider: React.FC<SnackbarProviderProps> = (props) => {
   const classes = useStyles();
   const defaultProps: SnackbarProviderProps = {
     classes,
+    children: 'App',
     autoHideDuration: 3000,
     maxSnack: 3,
     anchorOrigin: {

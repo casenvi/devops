@@ -40,7 +40,6 @@ export const Form = () => {
     register,
     handleSubmit,
     getValues,
-    errors,
     reset,
     setValue,
     watch } = useForm({
@@ -75,13 +74,13 @@ export const Form = () => {
       .finally(
         () => setLoading(false)
       );
-  }, []);
+  }, [id, reset]);
 
   useEffect(() => {
     snackbar.enqueueSnackbar('Helloworld', {
       variant: "success"
     })
-  },[]);
+  },[snackbar]);
 
   function onSubmit(formData, event) {
     setLoading(true);
