@@ -74,13 +74,7 @@ export const Form = () => {
       .finally(
         () => setLoading(false)
       );
-  }, [id, reset]);
-
-  useEffect(() => {
-    snackbar.enqueueSnackbar('Helloworld', {
-      variant: "success"
-    })
-  },[snackbar]);
+  }, []);
 
   function onSubmit(formData, event) {
     setLoading(true);
@@ -91,7 +85,7 @@ export const Form = () => {
       .then((response) => {
         snackbar.enqueueSnackbar(
           'Categoria salva com sucesso',
-          {variant: 'success'}
+          { variant: 'success' }
         )
         setTimeout(() => {
           event

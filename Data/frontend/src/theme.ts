@@ -4,11 +4,11 @@ import { red, green } from "@material-ui/core/colors";
 
 const palette: PaletteOptions = {
   primary: {
-    main: '#79aec8',
+    main: '#000000',
     contrastText: '#fff',
   },
   secondary: {
-    main: '#4db5ab',
+    main: '#cccccc',
     contrastText: '#fff',
     dark: '#055a52'
   },

@@ -6,7 +6,9 @@ import { InputLabel, MenuItem } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { genreHttp } from '../../util/http/genre-http';
 import { categoryHttp } from '../../util/http/category-http';
-
+import * as yup from '../../util/vendor/yup';
+import { useParams, useHistory } from 'react-router';
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles((theme: Theme) => {
   return {
@@ -19,38 +21,92 @@ const useStyles = makeStyles((theme: Theme) => {
 export const Form = () => {
   const classes = useStyles();
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const buttonProps: ButtonProps = {
     variant: 'contained',
     color: 'secondary',
     className: classes.submit
   }
   const [categories, setCategories] = useState<any[]>([]);
-  const { register, getValues, setValue, watch } = useForm();
+  const { register,
+    handleSubmit,
+    getValues,
+    reset,
+    setValue,
+    watch } = useForm(
+      //validationSchema
+    );
+  const snackbar = useSnackbar();
+  const history = useHistory();
+  const { id } = useParams();
+
+  const [genre, setGenre] = useState<{ id: string } | null>(null);
 
   useEffect(() => {
     register({ name: "categories_id" })
   }, [register]);
 
   useEffect(() => {
-    categoryHttp
-      .list()
-      .then(({ data }) => setCategories(data.data))
+    if (!id) {
+      return;
+    }
+    setLoading(true);
+    genreHttp
+      .get(id)
+      .then(
+        ({ data }) => {
+          setGenre(data.data)
+          reset(data.data)
+        }
+      )
+      .finally(
+        () => setLoading(false)
+      );
   }, []);
 
   function onSubmit(formData, event) {
-    genreHttp
-      .create(formData)
-      .then((response) => console.log(response));
+    setLoading(true);
+    const http = !genre
+      ? genreHttp.create(formData)
+      : genreHttp.update(genre.id, formData);
+    http
+      .then((response) => {
+        snackbar.enqueueSnackbar(
+          'Genero salva com sucesso',
+          { variant: 'success' }
+        )
+        setTimeout(() => {
+          event
+            ? (
+              genre
+                ? history.replace(`/genres/${response.data.id}/edit`)
+                : history.push(`/genres/${response.data.id}/edit`)
+            )
+            : history.push('/genres')
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        snackbar.enqueueSnackbar(
+          'Não foi possível salvar o Genero',
+          { variant: 'error' }
+        )
+      })
+      .finally(
+        () => setLoading(false)
+      );
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <TextField
         name="name"
         label="Nome"
         fullWidth
         variant={"outlined"}
         margin={"normal"}
+        disabled={loading}
         inputRef={register}
       />
 

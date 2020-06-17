@@ -5,6 +5,10 @@ import { useEffect, useState } from 'react';
 import { BadgeYes, BadgeNo } from '../../components/Badge';
 import format from 'date-fns/format';
 import parseIso from 'date-fns/parseISO';
+import { IconButton } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { Link } from 'react-router-dom';
 
 const columnsDefinition: MUIDataTableColumn[] = [
   {
@@ -35,6 +39,32 @@ const columnsDefinition: MUIDataTableColumn[] = [
     options: {
       customBodyRender(value, tableMeta, updateValue) {
         return <span>{format(parseIso(value), 'dd/MM/yyyy')}</span>;
+      }
+    }
+  },
+  {
+    name: "id",
+    label: "Ações",
+    options: {
+      customBodyRender(value, tableMeta, updateValue) {
+        return (
+          <span>
+            <IconButton
+              color={'primary'}
+              component={Link}
+              to={`/genres/${value}/edit`}
+            >
+              <EditIcon fontSize={'inherit'} />
+            </IconButton>
+            <IconButton
+              color={'primary'}
+              component={Link}
+              to={`/genres/${value}/delete`}
+            >
+              <DeleteIcon fontSize={'inherit'} />
+            </IconButton>
+          </span>
+        )
       }
     }
   }
