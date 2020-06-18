@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export const Form = () => {
-
   const classes = useStyles();
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -119,8 +118,6 @@ export const Form = () => {
         margin={"normal"}
         inputRef={register}
         disabled={loading}
-        //error={errors.name !== undefined}
-        //helperText={errors.name && errors.name.message}
         InputLabelProps={{ shrink: true }}
 
       />

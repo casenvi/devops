@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { TextField, Checkbox, Box, Button, ButtonProps } from '@material-ui/core';
+import { TextField, Checkbox, Box, Button, ButtonProps, FormControlLabel } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core';
 import { InputLabel, MenuItem } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
@@ -9,6 +9,15 @@ import { categoryHttp } from '../../util/http/category-http';
 import * as yup from '../../util/vendor/yup';
 import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
+import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
+
+const validationSchema = yup.object().shape({
+  name: yup.string()
+    .label('Nome')
+    .max(255)
+    .required(),
+});
 
 const useStyles = makeStyles((theme: Theme) => {
   return {
@@ -28,18 +37,37 @@ export const Form = () => {
     color: 'secondary',
     className: classes.submit
   }
-  const [categories, setCategories] = useState<any[]>([]);
+
   const { register,
     handleSubmit,
     getValues,
-    reset,
     setValue,
+    reset,
     watch } = useForm(
-      //validationSchema
+      {
+        validationSchema,
+        defaultValues: {
+          is_active: true
+        }
+      }
     );
+
   const snackbar = useSnackbar();
   const history = useHistory();
   const { id } = useParams();
+  const [categories, setCategories] = useState<any[]>([]);
+  const [all_categories, setAllCategories] = useState<any[]>([]);
+  const categoryChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setCategories(event.target.value as string[]);
+  };
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: 48 * 4.5 + 8,
+        width: '100%',
+      },
+    },
+  };
 
   const [genre, setGenre] = useState<{ id: string } | null>(null);
 
@@ -48,15 +76,23 @@ export const Form = () => {
   }, [register]);
 
   useEffect(() => {
+    setLoading(true);
+    categoryHttp
+      .list()
+      .then(
+        ({ data }) => {
+          setAllCategories(data.data)
+        }
+      );
     if (!id) {
       return;
     }
-    setLoading(true);
     genreHttp
       .get(id)
       .then(
         ({ data }) => {
           setGenre(data.data)
+          // setCategories(data.data.category_id)
           reset(data.data)
         }
       )
@@ -66,6 +102,7 @@ export const Form = () => {
   }, []);
 
   function onSubmit(formData, event) {
+    formData['categories_id'] = categories;
     setLoading(true);
     const http = !genre
       ? genreHttp.create(formData)
@@ -108,42 +145,45 @@ export const Form = () => {
         margin={"normal"}
         disabled={loading}
         inputRef={register}
+        InputLabelProps={{ shrink: true }}
       />
-
-      <InputLabel id="categories_id_label">Categorias</InputLabel>
-      <TextField
-        select
-        name="categories_id"
-        value={watch('categories_id')}
-        label="Categorias"
-        margin={"normal"}
-        variant={"outlined"}
-        fullWidth
-        onChange={(e) => {
-          setValue('categories_id', e.target.value);
-        }}
-        SelectProps={{
-          multiple: true
-        }}
-      >
-        <MenuItem value="" disabled>
-          <em>Selecione categorias</em>
-        </MenuItem>
-        {
-          categories.map(
-            (category, key) => (
-              <MenuItem key={key} value={category.id}>{category.name}</MenuItem>
-            )
-          )
+      <Box width={1}>
+        <InputLabel id="categories_id_label">Categorias</InputLabel>
+        <Select
+          label="Categorias"
+          name="categories_id"
+          multiple
+          value={categories}
+          onChange={categoryChange}
+          input={<Input />}
+          renderValue={(selected) => (selected as string[]).join(', ')}
+        >
+          <MenuItem value="" disabled>
+            <em>Selecione categorias</em>
+          </MenuItem>
+          {
+            all_categories.map((category) => (
+              <MenuItem key={category.id} value={category.id} >
+                {category.name}
+              </MenuItem>
+            ))
+          }
+        </Select>
+      </Box>
+      <FormControlLabel
+        control={
+          <Checkbox
+            name={"is_active"}
+            onChange={
+              () => setValue('is_active', !getValues()['is_active'])
+            }
+            checked={watch('is_active')}
+          />
         }
-      </TextField>
-
-      <Checkbox
-        name="is_active"
-        inputRef={register}
-        defaultChecked
+        label={"Ativo?"}
+        labelPlacement={'end'}
+        disabled={loading}
       />
-      Ativo?
       <Box dir="rtl">
         <Button {...buttonProps} onClick={() => onSubmit(getValues(), null)}>Salvar</Button>
         <Button {...buttonProps} type="submit">Salvar e continur editando</Button>
