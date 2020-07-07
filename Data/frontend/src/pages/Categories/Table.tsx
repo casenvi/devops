@@ -9,11 +9,19 @@ import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from 'react-router-dom';
+import { DefaultTable, TableColumn } from '../../components/Table';
+import { useSnackbar } from 'notistack';
 
-const columnsDefinition: MUIDataTableColumn[] = [
+const columnsDefinition: TableColumn[] = [
+  {
+    name: "id",
+    label: "ID",
+    width: '35%'
+  },
   {
     name: "name",
-    label: "Nome"
+    label: "Nome",
+    width: '35%'
   },
   {
     name: "is_active",
@@ -68,20 +76,45 @@ interface Category {
 
 export const Table = () => {
 
+  const snackbar = useSnackbar();
   const [data, setData] = useState<Category[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    categoryHttp
-      .list<{ data: Category[] }>()
-      .then(({ data }) => setData(data.data));
+    let isCancelled = false;
+    (async () => {
+      setLoading(true);
+      try {
+        const { data } = await categoryHttp.list()
+        if (!isCancelled) {
+          setData(data.data);
+        }
+      } catch (error) {
+        console.error(error);
+        snackbar.enqueueSnackbar(
+          'Não foi possível carregar as informações',
+          { variant: 'error' }
+        )
+      } finally {
+        setLoading(false);
+      }
+    })();
+    return () => {
+      isCancelled = true
+    }
   }, []
   );
 
   return (
-    <MUIDataTable
+    <DefaultTable
       title=""
       columns={columnsDefinition}
       data={data}
+      isLoading={loading}
+      options={{
+        responsive: "scrollMaxHeight"
+      }
+      }
     />
   );
 }

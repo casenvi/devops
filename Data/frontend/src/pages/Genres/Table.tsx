@@ -8,6 +8,7 @@ import parseIso from 'date-fns/parseISO';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { DefaultTable } from '../../components/Table';
 import { Link } from 'react-router-dom';
 
 const columnsDefinition: MUIDataTableColumn[] = [
@@ -82,7 +83,7 @@ export const Table = () => {
   );
 
   return (
-    <MUIDataTable
+    <DefaultTable
       title=""
       columns={columnsDefinition}
       data={data}

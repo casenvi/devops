@@ -31,73 +31,23 @@ const theme = createMuiTheme(
         paper: {
           boxShadow: "none",
         },
-      },
-      MUIDataTableToolbar: {
-        root: {
-          minHeight: '58px',
-          backgroundColor: palette!.background!.default,
-        },
-        icon: {
-          color: (palette!.primary as SimplePaletteColorOptions).main,
-          "&:hover, &:active, &:focus": {
-            color: '#055a52',
-          },
-        },
-        iconActive: {
-          color: '#055a52',
-          "&:hover, &:active, &:focus": {
-            color: '#055a52',
-          },
-        },
+
       },
       MUIDataTableHeadCell: {
-        fixedHeader: {
-          paddingTop: 8,
-          paddingBottom: 8,
-          backgroundColor: (palette!.primary as SimplePaletteColorOptions).main,
-          color: '#ffffff',
-          '&[aria-short]': {
-            backgroundColor: '#459ac4',
-          },
-        },
-        sortActive: {
+        root: {
           color: '#ffffff'
         },
-        sortAction: {
-          alignItems: 'center',
+        fixedHeaderCommon: {
+          backgroundColor: '#000000',
         },
-        sortLabelRoot: {
-          '& svg': {
-            color: '#ffffff !important',
-          },
+        sortActive: {
+          backgroundColor: '#ffffff',
+          color: '#000000',
         },
-      },
-      MUIDataTableSelectCell: {
-        headerCell: {
-          backgroundColor: (palette!.primary as SimplePaletteColorOptions).main,
-          '& span': {
-            color: '#fff !important'
-          },
-        },
-      },
-      MUIDataTableBodyCell: {
-        root: {
-          backgroundColor: (palette!.secondary as SimplePaletteColorOptions).main,
-          "&:hover, &:active, &:focus": {
-            color: (palette!.secondary as SimplePaletteColorOptions).main,
-          },
-        }
-      },
-      MUIDataTableToolbarSelect: {
-        title: {
-          color: (palette!.primary as SimplePaletteColorOptions).main,
-          iconButton: {
-            color: (palette!.primary as SimplePaletteColorOptions).main,
-          },
-        }
       },
       MUIDataTableBodyRow: {
         root: {
+          backgroundColor: '#ffffff',
           "&:ntn-child(odd)": {
             backgroundColor: palette!.background!.default,
           },

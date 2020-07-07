@@ -170,11 +170,23 @@ Nesta fase crie o ambiente do React mostrado no curso e crie três listagens:
 ### CRUD de cast member e genre no front-end
 Nesta fase de projeto, você deverá criar os CRUDs de genre e cast member no front-end.
 
-1. Detalhes importantes para cast member:
+1. Detalhes importantes para cast member: 
    1. Para o campo type você poderá usar o componente Radio ou RadioGroup (preferível). Vide doc do Material UI
    2. Você deverá usar o conceito de Controlled Components do React para lidar com o campo type, pois não será um campo HTML nativo e necessitará de especificação do evento onChage para pegar o novo valor e guardar no react-hook-form via setValue.
 2. Detalhes importantes para genre:
    1. Para o campo categories você poderá usar o componente Select ou Select nativo. Vide doc do Material UI
-   2. Você deverá usar o conceito de Controlled Components do React para lidar com o campo categories, pois não será um campo HTML nativo e necessita de especificação do evento onChage para pegar o novo valor e guardar no react-hook-form via setValue.
+   2. Você deverá usar o conceito de Controlled Components do React para lidar com o campo categories, pois não será um campo HTML nativo e necessita de especificação do evento onChange para pegar o novo valor e guardar no react-hook-form via setValue.
    3. Este campo Select necessitará de uma alimentação do que o usuário escolhe, logo será necessário sempre atualizar a propriedade value dele, senão as opções escolhidas não serão de fato selecionadas. Use o método watch do react-hook-form no value do campo para mante-lo atualizado.
    4. Use AJAX para pegar as categorias e hidratar o campo Select.
+
+
+### Terminando sistema de filtro e utilizando fowardRef
+Nesta fase, você deverá aplicar a lógica de sistema de filtro, usando reducer, useFilter nas listagens de categorias, gêneros e cast members.
+Além disto, será necessário criar:
+1. Um método dentro da classe FilterManager para controlar a limpeza dos filtros aplicados. O componente Table apenas chamará filterManager.resetFilter() e os filtros serão limpos.
+2. Quando acontece a limpeza dos filtros ou a aplicação da ordenação e a paginação atual está na página > 1, a paginação atual retorna a 1, porém isto não se reflete no visual, como vimos nas aulas. Este é um bug no state do componente Table do mui-datatables. 
+3. Para resolve-lo, devemos pegar a referência do Table do mui-datatables e chamar o método changePage para forçar a mudança do estado novamente.
+Para pegar a referência da tabela você deverá usar a técnica ForwardRef do React (consulte a documentação da biblioteca)
+4. A referência deverá ser passada para o useFilter e usada no FilterManager como última instrução no resetFilter e no changeColumnSort ou seja, após estas duas operações forçarem a atualização do estado de paginação do Table do mui-datatables
+
+### Iniciando CRUD de vídeo
