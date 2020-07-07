@@ -2,25 +2,12 @@
 
 namespace App\ModelFilters;
 
-use EloquentFilter\ModelFilter;
-
-abstract class DefaultModelFilter extends ModelFilter
+class CategoryFilter extends DefaultModelFilter
 {
-    protected $sortable = [];
+    protected $sortable = ['name', 'created_at', 'is_active'];
 
-    public function setup()
+    public function search($search)
     {
-        $noShort = $this->input('sort', '') === '';
-        if ($noShort) {
-            $this->orderBy('created_at' . 'DESC');
-        }
-    }
-
-    public function sort($column)
-    {
-        if ($this->isSortable($column)) {
-            $dir = strtolower($this->input('dir')) == 'asc' ? 'ASC' : 'DESC';
-            $this->orderBy($column, $dir);
-        }
+        $this->where('name', 'LIKE', "%$search%");
     }
 }

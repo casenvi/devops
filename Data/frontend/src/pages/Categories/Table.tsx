@@ -1,15 +1,14 @@
 import * as React from 'react';
-import MUIDataTable, { MUIDataTableColumn } from 'mui-datatables';
 import { useEffect, useState } from 'react';
 import format from 'date-fns/format';
 import parseIso from 'date-fns/parseISO';
 import { categoryHttp } from '../../util/http/category-http';
 import { BadgeYes, BadgeNo } from '../../components/Badge';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Theme, MuiThemeProvider } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from 'react-router-dom';
-import { DefaultTable, TableColumn } from '../../components/Table';
+import { DefaultTable, TableColumn, makeActionStyles } from '../../components/Table';
 import { useSnackbar } from 'notistack';
 
 const columnsDefinition: TableColumn[] = [
@@ -106,6 +105,7 @@ export const Table = () => {
   );
 
   return (
+    //<MuiThemeProvider theme={makeActionStyles(columnsDefinition.length - 1)}>
     <DefaultTable
       title=""
       columns={columnsDefinition}
@@ -116,5 +116,6 @@ export const Table = () => {
       }
       }
     />
+    // </MuiThemeProvider>
   );
 }
