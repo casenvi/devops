@@ -3,8 +3,9 @@ import * as React from 'react';
 import MUIDataTable, { MUIDataTableOptions, MUIDataTableProps, MUIDataTableColumn } from 'mui-datatables';
 import { merge, omit, cloneDeep } from 'lodash';
 import { useTheme, MuiThemeProvider, Theme, useMediaQuery } from '@material-ui/core';
+import DebouncedTableSearch from './DebouncedTableSearch.js';
 
-const defaultOptions: MUIDataTableOptions = {
+const makeDefaultOptions = (debouncedSearchTime?): MUIDataTableOptions => ({
   print: false,
   download: false,
   textLabels: {
@@ -39,14 +40,28 @@ const defaultOptions: MUIDataTableOptions = {
       delete: "Excluir",
       deleteAria: "Excluir registro(s) selecionados"
     }
+  },
+  customSearchRender: (searchText: string,
+    handleSearch: any,
+    hideSearch: any,
+    options: any
+  ) => {
+    return <DebouncedTableSearch
+      searchText={searchText}
+      onSearch={handleSearch}
+      onHide={hideSearch}
+      options={options}
+      debounceTime={debouncedSearchTime}
+    />
   }
-}
+});
 export interface TableColumn extends MUIDataTableColumn {
   width?: string;
 }
 interface TableProps extends MUIDataTableProps {
   columns: TableColumn[];
   isLoading?: boolean;
+  debounceSearchTime?: number;
 }
 
 export const DefaultTable: React.FC<TableProps> = (props) => {
@@ -83,6 +98,7 @@ export const DefaultTable: React.FC<TableProps> = (props) => {
 
   const theme = cloneDeep<Theme>(useTheme());
   const isSmOrDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const defaultOptions = makeDefaultOptions(props.debounceSearchTime);
   const newProps = merge(
     { options: cloneDeep(defaultOptions) },
     props,
@@ -105,12 +121,11 @@ export const DefaultTable: React.FC<TableProps> = (props) => {
 export function makeActionStyles(column) {
   return theme => {
     const copyTheme = cloneDeep<Theme>(useTheme());
-    const selector = `&[data-testid^="MuiDataTAbleBodyCell-${column}"]`;
-    (copyTheme.overrides as any).MuiDataTAbleBodyCell.root[selector] = {
+    const selector = `&[data-testid^="MuiDataTableBodyCell-${column}"]`;
+    (copyTheme.overrides as any).MuiDataTableBodyCell.root[selector] = {
       paddingTop: '0px',
       paddingBottom: '0px'
     };
     return copyTheme;
   }
-
 }
