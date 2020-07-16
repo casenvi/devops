@@ -4,7 +4,7 @@ import ClearAllIcon from '@material-ui/icons/ClearAll'
 
 const useStyles = makeStyles(theme => ({
   iconButton: (theme as any).overrides.MUIDataTableToolbar.icon
-}))
+}));
 
 interface FilterResetButtonProps {
   handleClick: () => void

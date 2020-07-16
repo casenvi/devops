@@ -122,7 +122,7 @@ export function makeActionStyles(column) {
   return theme => {
     const copyTheme = cloneDeep(theme);
     const selector = `&[data-testid^="MuiDataTableBodyCell-${column}"]`;
-    (copyTheme.overrides as any).MuiDataTableBodyCell.root[selector] = {
+    (copyTheme.overrides as any).MUIDataTableBodyCell.root[selector] = {
       paddingTop: '0px',
       paddingBottom: '0px'
     };

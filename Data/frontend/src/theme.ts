@@ -53,11 +53,21 @@ const theme = createMuiTheme(
           },
         },
       },
+      MUIDataTableBodyCell: {
+        root: {
+          backgroundColor: '#ffffff',
+        }
+      },
       MUIDataTablePagination: {
         root: {
           color: (palette!.primary as SimplePaletteColorOptions).main,
         },
       },
+      MUIDataTableToolbar: {
+        icon: {
+
+        }
+      }
     }
   }
 );
