@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
 import format from 'date-fns/format';
 import parseIso from 'date-fns/parseISO';
 import { categoryHttp } from '../../util/http/category-http';
@@ -12,6 +12,7 @@ import { DefaultTable, TableColumn, makeActionStyles } from '../../components/Ta
 import { useSnackbar } from 'notistack';
 import { Category, ListResponse } from "../../util/models"
 import { FilterResetButton } from '../../components/Table/FilterResetButton';
+import { Creators, reducer, INITIAL_STATE } from '../../store/search';
 
 const columnsDefinition: TableColumn[] = [
   {
@@ -76,42 +77,12 @@ const columnsDefinition: TableColumn[] = [
   },
 ];
 
-interface SearchState {
-  search: string;
-  pagination: Pagination;
-  order: Order;
-
-}
-
-interface Pagination {
-  page: number;
-  total: number;
-  per_page: number;
-}
-
-interface Order {
-  sort: string | null;
-  dir: string | null;
-}
-
 export const Table = () => {
-  const initialState = {
-    search: '',
-    pagination: {
-      page: 1,
-      total: 0,
-      per_page: 10
-    },
-    order: {
-      sort: null,
-      dir: null
-    }
-  };
   const snackbar = useSnackbar();
   const subscribed = React.useRef(true);
   const [data, setData] = useState<Category[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [searchState, setSearchState] = useState<SearchState>(initialState);
+  const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   useEffect(() => {
     subscribed.current = true;
@@ -194,53 +165,32 @@ export const Table = () => {
         options={{
           serverSide: true,
           responsive: "scrollMaxHeight",
-          searchText: searchState.search,
+          searchText: (searchState.search) as any,
           page: searchState.pagination.page - 1,
           rowsPerPage: searchState.pagination.per_page,
           count: searchState.pagination.total,
           customToolbar: () => (
             <FilterResetButton
               handleClick={() => {
-                setSearchState({
+                /* setSearchState({
                   ...initialState,
                   search: {
                     value: initialState.search,
                     updated: true
                   } as any
-                });
+                }); */
               }}
             />
           ),
-          onSearchChange: (value) => setSearchState((prevState => ({
-            ...prevState,
-            search: value
-          }
-          ))),
-          onChangePage: (page) => setSearchState((prevState => ({
-            ...prevState,
-            pagination: {
-              ...prevState.pagination,
-              page: page + 1
-            }
-          }
-          ))),
-
-          onChangeRowsPerPage: (per_page) => setSearchState((prevState => ({
-            ...prevState,
-            pagination: {
-              ...prevState.pagination,
-              per_page: per_page
-            }
-          }
-          ))),
-          onColumnSortChange: (changedColumn, direction) => setSearchState((prevState => ({
-            ...prevState,
-            order: {
+          onSearchChange: (value) => dispatch(Creators.setSearch({ search: value })),
+          onChangePage: (page) => dispatch(Creators.setPage({ page: page + 1 })),
+          onChangeRowsPerPage: (perPage) => dispatch(Creators.setPerPage({ per_page: perPage })),
+          onColumnSortChange: (changedColumn, direction) =>
+            dispatch(Creators.setOrder({
               sort: changedColumn,
               dir: direction.includes('desc') ? 'desc' : 'asc'
-            }
-          }
-          ))),
+            })
+            ),
         }}
       />
     </MuiThemeProvider>
