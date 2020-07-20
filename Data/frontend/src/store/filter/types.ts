@@ -1,7 +1,7 @@
 import { AnyAction } from "redux";
 
 export interface State {
-  search: string | { value, [key: string]: any };
+  search: string | { value, [key: string]: any } | null;
   pagination: Pagination;
   order: Order;
 
@@ -20,7 +20,7 @@ export interface Order {
 
 export interface SetSearchAction extends AnyAction {
   payload: {
-    search: string | { value, [key: string]: any }
+    search: string | { value, [key: string]: any } | null
   }
 }
 

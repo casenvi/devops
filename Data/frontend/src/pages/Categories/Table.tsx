@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { useEffect, useState, useReducer } from 'react';
+import { useEffect, useState } from 'react';
 import format from 'date-fns/format';
 import parseIso from 'date-fns/parseISO';
-import { categoryHttp } from '../../util/http/category-http';
 import { BadgeYes, BadgeNo } from '../../components/Badge';
-import { IconButton, Theme, MuiThemeProvider } from '@material-ui/core';
+import { IconButton, MuiThemeProvider } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from 'react-router-dom';
-import { DefaultTable, TableColumn, makeActionStyles } from '../../components/Table';
+import { DefaultTable, TableColumn, makeActionStyles, MuiDataTableComponent } from '../../components/Table';
 import { useSnackbar } from 'notistack';
-import { Category, ListResponse } from "../../util/models"
 import { FilterResetButton } from '../../components/Table/FilterResetButton';
-import { Creators, reducer, INITIAL_STATE } from '../../store/search';
+import useFilter from '../../hooks/useFilter';
+import { Category, ListResponse } from "../../util/models"
+import { categoryHttp } from '../../util/http/category-http';
 
 const columnsDefinition: TableColumn[] = [
   {
@@ -77,24 +77,47 @@ const columnsDefinition: TableColumn[] = [
   },
 ];
 
+const debounceTime = 300;
+const debounceSearchTime = 300;
+const rowsPerPage = 15;
+const rowsPerPageOptions = [15, 25, 50];
 export const Table = () => {
   const snackbar = useSnackbar();
   const subscribed = React.useRef(true);
   const [data, setData] = useState<Category[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [searchState, dispatch] = useReducer(reducer, INITIAL_STATE);
+  const tableRef = React.useRef() as React.MutableRefObject<MuiDataTableComponent>;
+  const {
+    columns,
+    filterManager,
+    filterState,
+    deboundedFilterState,
+    dispatch,
+    totalRecords,
+    setTotalRecords
+  } = useFilter({
+    columns: columnsDefinition,
+    debounceTime: debounceTime,
+    rowsPerPage: rowsPerPage,
+    rowsPerPageOptions: rowsPerPageOptions,
+    tableRef
+  });
+  useEffect(() => {
+    filterManager.replaceHistory();
+  }, []);
 
   useEffect(() => {
     subscribed.current = true;
+    filterManager.pushHistory();
     getData();
     return () => {
       subscribed.current = false;
     }
   }, [
-    searchState.search,
-    searchState.pagination.page,
-    searchState.pagination.per_page,
-    searchState.order
+    filterManager.cleanSearchText(deboundedFilterState.search),
+    deboundedFilterState.pagination.page,
+    deboundedFilterState.pagination.per_page,
+    deboundedFilterState.order
   ]);
 
   async function getData() {
@@ -102,23 +125,17 @@ export const Table = () => {
     try {
       const { data } = await categoryHttp.list<ListResponse<Category>>({
         queryParams: {
-          search: cleanSearchText(searchState.search),
-          page: searchState.pagination.page,
-          per_page: searchState.pagination.per_page,
-          sort: searchState.order.sort,
-          dir: searchState.order.dir
+          search: filterManager.cleanSearchText(filterState.search),
+          page: filterState.pagination.page,
+          per_page: filterState.pagination.per_page,
+          sort: filterState.order.sort,
+          dir: filterState.order.dir
         }
       }
       );
       if (subscribed.current) {
         setData(data.data);
-        setSearchState((prevState => ({
-          ...prevState,
-          pagination: {
-            ...prevState.pagination,
-            total: data.meta.total
-          }
-        })))
+        setTotalRecords(data.meta.total);
       }
     } catch (error) {
       console.error(error);
@@ -134,63 +151,33 @@ export const Table = () => {
     }
   }
 
-  const columns = columnsDefinition.map(column => {
-    if (column.name == searchState.order.sort) {
-      (column.options as any).sortDirection = searchState.order.dir;
-    }
-    return {
-      ...column,
-      options: {
-        ...column.options
-      }
-    };
-  })
-
-  function cleanSearchText(text) {
-    let newText = text;
-    if (text && text.value !== undefined) {
-      newText = text.value;
-    }
-    return newText;
-  }
-
   return (
     <MuiThemeProvider theme={makeActionStyles(columnsDefinition.length - 1)}>
       <DefaultTable
         title=""
         columns={columns}
+        ref={tableRef}
         data={data}
         isLoading={loading}
-        debounceSearchTime={500}
+        debounceSearchTime={debounceSearchTime}
         options={{
           serverSide: true,
           responsive: "scrollMaxHeight",
-          searchText: (searchState.search) as any,
-          page: searchState.pagination.page - 1,
-          rowsPerPage: searchState.pagination.per_page,
-          count: searchState.pagination.total,
+          searchText: (filterState.search) as any,
+          page: filterState.pagination.page - 1,
+          rowsPerPage: filterState.pagination.per_page,
+          rowsPerPageOptions,
+          count: totalRecords,
           customToolbar: () => (
             <FilterResetButton
-              handleClick={() => {
-                /* setSearchState({
-                  ...initialState,
-                  search: {
-                    value: initialState.search,
-                    updated: true
-                  } as any
-                }); */
-              }}
+              handleClick={() => filterManager.resetFilter()}
             />
           ),
-          onSearchChange: (value) => dispatch(Creators.setSearch({ search: value })),
-          onChangePage: (page) => dispatch(Creators.setPage({ page: page + 1 })),
-          onChangeRowsPerPage: (perPage) => dispatch(Creators.setPerPage({ per_page: perPage })),
+          onSearchChange: (value) => filterManager.changeSearch(value),
+          onChangePage: (page) => filterManager.changePage(page),
+          onChangeRowsPerPage: (perPage) => filterManager.changeRowsPerPage(perPage),
           onColumnSortChange: (changedColumn, direction) =>
-            dispatch(Creators.setOrder({
-              sort: changedColumn,
-              dir: direction.includes('desc') ? 'desc' : 'asc'
-            })
-            ),
+            filterManager.changeColumnSort(changedColumn, direction),
         }}
       />
     </MuiThemeProvider>
