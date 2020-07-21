@@ -80,7 +80,7 @@ export class FilterManager {
   }
 
   resetFilter() {
-    this.dispatch(Creators.setReset());
+    this.dispatch(Creators.setReset({state: this.state}));
     this.resetTablePagination();
   }
 
