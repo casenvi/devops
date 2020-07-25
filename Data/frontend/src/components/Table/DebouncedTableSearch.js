@@ -34,27 +34,26 @@ class DebouncedTableSearch extends React.PureComponent {
     const { searchText } = this.props;
     let value = searchText;
     if (searchText && searchText.value !== undefined) {
-      const value = searchText.value;
+      value = searchText.value;
     }
     this.state = {
       text: value
     }
-    this.dispatchOnSearch = debounce(this.dispatchOnSearch.bind(this), this.props.debounceSearchTime);
+    this.debouncedOnSearch = debounce(this.debouncedOnSearch.bind(this), this.props.debounceSearchTime );
   }
   handleTextChange = event => {
     const value = event.target.value;
     this.setState({
       text: value
-    }, () => this.dispatchOnSearch(value));
+    }, () => this.debouncedOnSearch(value));
   };
 
-  dispatchOnSearch = value => {
+  debouncedOnSearch = value => {
     this.props.onSearch(value)
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { searchText } = this.props;
-    let value = this.state.text;
     if (searchText && searchText.value !== undefined && prevProps.searchText !== this.props.searchText) {
       const value = searchText.value;
       this.setState({
@@ -80,6 +79,9 @@ class DebouncedTableSearch extends React.PureComponent {
   render() {
     const { classes, options, onHide, searchText } = this.props;
     let value = this.state.text;
+    if (searchText && searchText.value !== undefined) {
+      value = searchText.value
+    }
     return (
       <Grow appear in={true} timeout={300}>
         <div className={classes.main} ref={el => (this.rootRef = el)}>
@@ -91,7 +93,7 @@ class DebouncedTableSearch extends React.PureComponent {
               'data-test-id': options.textLabels.toolbar.search,
               'aria-label': options.textLabels.toolbar.search,
             }}
-            value={searchText || ''}
+            value={value || ''}
             onChange={this.handleTextChange}
             fullWidth={true}
             inputRef={el => (this.searchField = el)}

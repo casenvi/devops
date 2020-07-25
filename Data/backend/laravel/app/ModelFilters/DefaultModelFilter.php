@@ -3,6 +3,7 @@
 namespace App\ModelFilters;
 
 use EloquentFilter\ModelFilter;
+use Str;
 
 abstract class DefaultModelFilter extends ModelFilter
 {
@@ -13,7 +14,7 @@ abstract class DefaultModelFilter extends ModelFilter
         $this->blacklistMethod('isSortable');
         $noShort = $this->input('sort', '') === '';
         if ($noShort) {
-            $this->orderBy('created_at' . 'DESC');
+            $this->orderBy('created_at' , 'DESC');
         }
     }
 

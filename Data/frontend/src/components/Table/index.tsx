@@ -5,7 +5,7 @@ import { merge, omit, cloneDeep } from 'lodash';
 import { useTheme, MuiThemeProvider, Theme, useMediaQuery } from '@material-ui/core';
 import DebouncedTableSearch from './DebouncedTableSearch.js';
 
-const makeDefaultOptions = (debouncedSearchTime?): MUIDataTableOptions => ({
+const makeDefaultOptions = (debouncedSearchTime?,debounceTime?): MUIDataTableOptions => ({
   print: false,
   download: false,
   textLabels: {
@@ -51,7 +51,8 @@ const makeDefaultOptions = (debouncedSearchTime?): MUIDataTableOptions => ({
       onSearch={handleSearch}
       onHide={hideSearch}
       options={options}
-      debounceTime={debouncedSearchTime}
+      debounceTime={debounceTime}
+      debouncedSearchTime={debouncedSearchTime}
     />
   }
 });

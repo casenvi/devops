@@ -1,5 +1,5 @@
 import { useState, useReducer, Dispatch, Reducer, useEffect } from "react";
-import { reducer, Creators } from "../store/filter";
+import { reducer, Creators, INITIAL_STATE } from "../store/filter";
 import { State as FilterState, Actions as FilterActions } from "../store/filter/types";
 import { MUIDataTableColumn } from "mui-datatables";
 import { useDebounce } from 'use-debounce';
@@ -79,8 +79,14 @@ export class FilterManager {
     this.dispatch(Creators.setPerPage({ per_page: perPage }));
   }
 
-  resetFilter() {
-    this.dispatch(Creators.setReset({state: this.state}));
+  resetFilter() {    
+    this.dispatch(Creators.setReset(
+      {
+        state: {
+          ...this.schema.cast({}),
+          search:{value:null, update: true}
+        }
+    }));
     this.resetTablePagination();
   }
 

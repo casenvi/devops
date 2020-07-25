@@ -6,7 +6,8 @@ RUN apk add --no-cache  bash \
                         npm \
                         freetype-dev \
                         libjpeg-turbo-dev \
-                        libpng-dev
+                        libpng-dev \
+                        shadow
 
 RUN touch /root/.bashrc | echo "PS1='\w\$ '" >> /root/.bashrc
 
@@ -38,6 +39,9 @@ RUN echo "xdebug.remote_autostart=1" | tee -a /usr/local/etc/php/conf.d/docker-p
 RUN echo "xdebug.remote_enable=1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 RUN echo "xdebug.remote_connect_back=1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 RUN echo "xdebug.remote_host=172.172.0.1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
+
+#RUN usermod -u 1000 www-data
+#USER www-data
 
 EXPOSE 9000
 
