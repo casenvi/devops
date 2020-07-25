@@ -33,7 +33,13 @@ class BasicCrudControllerTest extends TestCase
             'name' => 'name_test',
             'description' => 'description_teste'
         ]);
-        $result = $this->controller->index();
+        $request = \Mockery::mock(Request::class);
+        $request
+            ->shouldReceive('has')
+            ->shouldReceive('get')
+            ->once()
+            ->andReturn(['name'=>'']);
+        $result = $this->controller->index($request);
         $serialized = $result->response()->getData(true);
         $this->assertEquals(
             [$category->toArray()],
