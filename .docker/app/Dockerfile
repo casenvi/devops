@@ -1,4 +1,4 @@
-FROM php:7.3.6-fpm-alpine3.9
+FROM php:7.3.6-fpm-alpine3.10
 RUN apk add --no-cache  bash \
                         mysql-client \
                         openssl \
@@ -6,7 +6,10 @@ RUN apk add --no-cache  bash \
                         npm \
                         freetype-dev \
                         libjpeg-turbo-dev \
-                        libpng-dev
+                        libpng-dev \
+                        shadow
+
+RUN touch /root/.bashrc | echo "PS1='\w\$ '" >> /root/.bashrc
 
 RUN apk add -u $PHPIZE_DEPS
 
@@ -28,12 +31,17 @@ WORKDIR /var/www
 RUN rm -rf /var/www/html
 RUN ln -s public html
 RUN mkdir /opt/docker
+RUN mkdir /var/www/backend
+RUN mkdir /var/www/frontend
+RUN mkdir /var/www/.npm-cache
 
 RUN echo "xdebug.remote_autostart=1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 RUN echo "xdebug.remote_enable=1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 RUN echo "xdebug.remote_connect_back=1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 RUN echo "xdebug.remote_host=172.172.0.1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 
+#RUN usermod -u 1000 www-data
+#USER www-data
+
 EXPOSE 9000
-ENTRYPOINT [ "php-fpm" ]
 

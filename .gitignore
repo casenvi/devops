@@ -1,4 +1,6 @@
-Data/database/
-Data/laravel/_ide_helper*.php
-Data/laravel/.env*
-composer.lock
+Data/database/*
+Data/backend/laravel/_ide_helper*.php
+Data/backend/laravel/.env*
+Data/backend/laravel/composer.lock
+.npm-cache
+node_modules

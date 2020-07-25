@@ -147,4 +147,46 @@ Nesta fase, você deve implementar o recurso API Resource nos controllers e test
 3. Desafio (Opcional): Agora com a mudança para o API Resource, o controller básico de CRUD foi modificado, será necessário testa-lo também.
    1. Aplique os testes em todos os métodos, exceto no destroy. Lembre-se que neste controller não temos resposta HTTP, logo em cada retorno de cada ação do controller, teremos a instância do Resource para avaliar.
    2. Somente avalie se os dados do resource são iguais ao toArray do model CategoryStub.
-   
+
+### Construindo listagens no front-end
+Parabéns por chegar até aqui! Já temos nossa aplicação backend e vamos implementar o front-end com React.js.
+Agora que entendemos como desenvolver com Laravel e React dentro do Docker, realizaremos a integração da SPA com a API Rest.
+Nesta fase crie o ambiente do React mostrado no curso e crie três listagens:
+
+1. Listagem de categorias com os dados:
+   1.  name
+   2.   is_active (formate se é ativo ou não para Sim ou Não)
+   3.   created_at (formate a data no formato brasileiro)
+2.   Listagem de membros do elenco com os dados:
+     1.   name
+     2.   type (mostre o texto correspondente ao tipo, 1 - Diretor, 2 - Ator, encontre uma maneira de fazer isto com o TypeScript sem usar IFs).
+     3.   created_at (formate a data no formato brasileiro)
+3.   Listagem de gêneros com os dados:
+     1.   name
+     2.   categories (Mostre todos os nomes das categorias separados por vírgula).
+     3.    is_active (formate se é ativo ou não para Sim ou Não)
+     4.    created_at (formate a data no formato brasileiro)
+
+### CRUD de cast member e genre no front-end
+Nesta fase de projeto, você deverá criar os CRUDs de genre e cast member no front-end.
+
+1. Detalhes importantes para cast member: 
+   1. Para o campo type você poderá usar o componente Radio ou RadioGroup (preferível). Vide doc do Material UI
+   2. Você deverá usar o conceito de Controlled Components do React para lidar com o campo type, pois não será um campo HTML nativo e necessitará de especificação do evento onChage para pegar o novo valor e guardar no react-hook-form via setValue.
+2. Detalhes importantes para genre:
+   1. Para o campo categories você poderá usar o componente Select ou Select nativo. Vide doc do Material UI
+   2. Você deverá usar o conceito de Controlled Components do React para lidar com o campo categories, pois não será um campo HTML nativo e necessita de especificação do evento onChange para pegar o novo valor e guardar no react-hook-form via setValue.
+   3. Este campo Select necessitará de uma alimentação do que o usuário escolhe, logo será necessário sempre atualizar a propriedade value dele, senão as opções escolhidas não serão de fato selecionadas. Use o método watch do react-hook-form no value do campo para mante-lo atualizado.
+   4. Use AJAX para pegar as categorias e hidratar o campo Select.
+
+
+### Terminando sistema de filtro e utilizando fowardRef
+Nesta fase, você deverá aplicar a lógica de sistema de filtro, usando reducer, useFilter nas listagens de categorias, gêneros e cast members.
+Além disto, será necessário criar:
+1. Um método dentro da classe FilterManager para controlar a limpeza dos filtros aplicados. O componente Table apenas chamará filterManager.resetFilter() e os filtros serão limpos.
+2. Quando acontece a limpeza dos filtros ou a aplicação da ordenação e a paginação atual está na página > 1, a paginação atual retorna a 1, porém isto não se reflete no visual, como vimos nas aulas. Este é um bug no state do componente Table do mui-datatables. 
+3. Para resolve-lo, devemos pegar a referência do Table do mui-datatables e chamar o método changePage para forçar a mudança do estado novamente.
+Para pegar a referência da tabela você deverá usar a técnica ForwardRef do React (consulte a documentação da biblioteca)
+4. A referência deverá ser passada para o useFilter e usada no FilterManager como última instrução no resetFilter e no changeColumnSort ou seja, após estas duas operações forçarem a atualização do estado de paginação do Table do mui-datatables
+
+### Iniciando CRUD de vídeo

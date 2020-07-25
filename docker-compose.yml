@@ -9,18 +9,24 @@ services:
             - redis
         container_name: Catalog-app
         volumes: 
-            - ./Data/laravel:/var/www
+            - ./Data/backend/laravel:/var/www/backend
+            - ./Data/frontend:/var/www/frontend
+            - ./Data/.npm-cache:/var/www/.npm-cache
             - .docker/app:/opt/docker
         networks: 
             - app-network
         entrypoint: 
-            dockerize -template /opt/docker/.env:.env -template /opt/docker/.env.testing:.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+            dockerize -template /opt/docker/.env:backend/.env -template /opt/docker/.env.testing:backend/.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+        ports:
+            - "3000:3000"  
+            - "35729:35729"          
         environment: 
             - _DB_HOST=Catalog-mysql
             - _DB_DATABASE=catalog_prod
             - _DB_USERNAME=root
             - _DB_PASSWORD=root
             - _DB_DATABASE_TEST=catalog_test
+            - CHOKIDAR_USEPOLLING=true
     
     nginx:
         build: .docker/nginx
@@ -30,7 +36,8 @@ services:
         ports: 
             - "80:80"
         volumes: 
-            - ./Data/laravel:/var/www
+            - ./Data/backend/laravel:/var/www/backend
+            - ./Data/frontend:/var/www/frontend
             - .docker/nginx:/opt/docker
         networks: 
             - app-network
@@ -51,7 +58,7 @@ services:
             - app-network
     
     mysql:
-        image: mysql:5.7
+        build: .docker/mysql
         command: --innodb-use-native-aio=0
         container_name: Catalog-mysql
         restart: always
