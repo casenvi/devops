@@ -20,7 +20,8 @@ const columnsDefinition: TableColumn[] = [
     label: "ID",
     width: '35%',
     options: {
-      sort: false
+      sort: false,
+      filter: false
     }
   },
   {
@@ -28,7 +29,8 @@ const columnsDefinition: TableColumn[] = [
     label: "Nome",
     width: '35%',
     options: {
-      sortDirection: 'desc'
+      sortDirection: 'desc',
+      filter: false
     }
   },
   {
@@ -37,6 +39,10 @@ const columnsDefinition: TableColumn[] = [
     options: {
       customBodyRender(value, tableMeta, updateValue) {
         return value ? <BadgeYes /> : <BadgeNo />
+      },
+      filterList: ['Sim'],
+      filterOptions: {
+        names: ['Sim', 'Não']
       }
     }
   },
@@ -46,7 +52,8 @@ const columnsDefinition: TableColumn[] = [
     options: {
       customBodyRender(value, tableMeta, updateValue) {
         return <span>{format(parseIso(value), 'dd/MM/yyyy')}</span>;
-      }
+      },
+      filter: false
     }
   },
   {
@@ -72,7 +79,8 @@ const columnsDefinition: TableColumn[] = [
             </IconButton>
           </span>
         )
-      }
+      },
+      filter: false
     }
   },
 ];
@@ -91,7 +99,7 @@ export const Table = () => {
     columns,
     filterManager,
     filterState,
-    deboundedFilterState,
+    debouncedFilterState,
     dispatch,
     totalRecords,
     setTotalRecords
@@ -114,10 +122,10 @@ export const Table = () => {
       subscribed.current = false;
     }
   }, [
-    filterManager.cleanSearchText(deboundedFilterState.search),
-    deboundedFilterState.pagination.page,
-    deboundedFilterState.pagination.per_page,
-    deboundedFilterState.order
+    filterManager.cleanSearchText(debouncedFilterState.search),
+    debouncedFilterState.pagination.page,
+    debouncedFilterState.pagination.per_page,
+    debouncedFilterState.order
   ]);
 
   async function getData() {
@@ -160,7 +168,7 @@ export const Table = () => {
         data={data}
         isLoading={loading}
         debounceSearchTime={debounceSearchTime}
-        options={{
+        options={{          
           serverSide: true,
           responsive: "scrollMaxHeight",
           searchText: (filterState.search) as any,

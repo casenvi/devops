@@ -16,6 +16,13 @@ interface FilterManagerOptions {
   debounceTime: number;
   history: History;
   tableRef: React.MutableRefObject<MuiDataTableComponent>;
+  extraFilter?: ExtraFilter
+}
+
+interface ExtraFilter {
+  getStateFromUrl: (queryParams: URLSearchParams) => any,
+  formatSearchParams: (debouncedState: FilterState) => any,
+  createValidationSchema: () => any,
 }
 
 interface UserFilterOptions extends Omit<FilterManagerOptions, 'history'> { }
@@ -25,7 +32,7 @@ export default function useFIlter(options: UserFilterOptions) {
   const filterManager = new FilterManager({ ...options, history });
   const INITIAL_STATE = filterManager.getStateFromURL();
   const [filterState, dispatch] = useReducer<Reducer<FilterState, FilterActions>>(reducer, INITIAL_STATE);
-  const [deboundedFilterState] = useDebounce(filterState, options.debounceTime);
+  const [debouncedFilterState] = useDebounce(filterState, options.debounceTime);
   const [totalRecords, setTotalRecords] = useState<number>(0);
   filterManager.state = filterState;
   filterManager.dispatch = dispatch;
@@ -37,7 +44,7 @@ export default function useFIlter(options: UserFilterOptions) {
     columns: filterManager.columns,
     filterManager,
     filterState,
-    deboundedFilterState,
+    debouncedFilterState,
     dispatch,
     totalRecords,
     setTotalRecords
@@ -45,6 +52,7 @@ export default function useFIlter(options: UserFilterOptions) {
 }
 
 export class FilterManager {
+  schema;
   state: FilterState = null as any;
   dispatch: Dispatch<FilterActions> = null as any;
   columns: MUIDataTableColumn[];
@@ -52,23 +60,26 @@ export class FilterManager {
   rowsPerPageOptions: number[];
   history: History;
   tableRef: React.MutableRefObject<MuiDataTableComponent>;
-  schema;
+  extraFilter?: ExtraFilter;
 
   constructor(options: FilterManagerOptions) {
-    const { columns, rowsPerPage, rowsPerPageOptions, history, tableRef } = options;
+    const { columns, rowsPerPage, rowsPerPageOptions, history, tableRef, extraFilter } = options;
     this.columns = columns;
     this.rowsPerPage = rowsPerPage;
     this.rowsPerPageOptions = rowsPerPageOptions;
     this.history = history;
     this.createValidationSchema();
     this.tableRef = tableRef;
+    this.extraFilter = extraFilter;
   }
 
   private resetTablePagination() {
     this.tableRef.current.changeRowsPerPage(this.rowsPerPage);
     this.tableRef.current.changePage(0);
   }
-
+  changeExtraFilter(value) {
+    this.dispatch(Creators.updateExtraFilter(value));
+  }
   changeSearch(value) {
     this.dispatch(Creators.setSearch({ search: value }));
   }
@@ -156,6 +167,7 @@ export class FilterManager {
         sort: this.state.order.sort,
         dir: this.state.order.dir
       }),
+      ...(this.extraFilter && this.extraFilter.formatSearchParams(this.state))
     }
   }
 
@@ -170,9 +182,13 @@ export class FilterManager {
       order: {
         sort: queryParams.get('sort'),
         dir: queryParams.get('dir'),
-      }
-    }
-    )
+      },
+      ...(
+        this.extraFilter && {
+          extraFilter: this.extraFilter.getStateFromUrl(queryParams)
+        }
+      )
+    })
   }
 
   private createValidationSchema() {
@@ -203,7 +219,8 @@ export class FilterManager {
           .nullable()
           .transform(value => !value || !['asc', 'desc'].includes(value.toLowerCase()) ? value : undefined)
           .default(null)
-      })
+      }),
+      ...(this.extraFilter && {extraFilter : this.extraFilter.createValidationSchema()})
     });
   }
 }

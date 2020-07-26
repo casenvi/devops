@@ -22,7 +22,7 @@ class CastMember extends Model
         'is_active' => 'boolean'
     ];
     public $incrementing = false;
-    public $types = [
+    public static $types = [
         CastMember::TYPE_DIRECTOR,
         CastMember::TYPE_ACTOR
     ];

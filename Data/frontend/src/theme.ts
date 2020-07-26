@@ -67,6 +67,11 @@ const theme = createMuiTheme(
         icon: {
 
         }
+      },
+      MUIDataTableFilterList: {
+        root: {
+          marginBottom: '16px'
+        }
       }
     }
   }

@@ -43,3 +43,8 @@ export interface Genre extends Timestampable {
   type: number;
   categories: Category[];
 }
+
+export const CastMemberTypeMap: { [key: number]: string } = {
+  1: 'Diretor',
+  2: 'Ator'
+}

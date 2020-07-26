@@ -12,12 +12,16 @@ import { useSnackbar } from 'notistack';
 import { FilterResetButton } from '../../components/Table/FilterResetButton';
 import useFilter from '../../hooks/useFilter';
 import { genreHttp } from '../../util/http/genre-http';
+import * as yup from '../../util/vendor/yup';
 import { Genre, ListResponse } from '../../util/models';
 
 const columnsDefinition: TableColumn[] = [
   {
     name: "name",
-    label: "Nome"
+    label: "Nome",
+    options: {
+      filter: false
+    }
   },
   {
     name: "categories",
@@ -25,7 +29,8 @@ const columnsDefinition: TableColumn[] = [
     options: {
       customBodyRender(value, tableMeta, updateValue) {
         return value.map(value => value.name).join(', ');
-      }
+      },
+      filter: false
     }
   },
   {
@@ -43,7 +48,8 @@ const columnsDefinition: TableColumn[] = [
     options: {
       customBodyRender(value, tableMeta, updateValue) {
         return <span>{format(parseIso(value), 'dd/MM/yyyy')}</span>;
-      }
+      },
+      filter: false
     }
   },
   {
@@ -69,7 +75,8 @@ const columnsDefinition: TableColumn[] = [
             </IconButton>
           </span>
         )
-      }
+      },
+      filter: false
     }
   }
 ];
@@ -88,7 +95,7 @@ export const Table = () => {
     columns,
     filterManager,
     filterState,
-    deboundedFilterState,
+    debouncedFilterState,
     dispatch,
     totalRecords,
     setTotalRecords
@@ -97,7 +104,32 @@ export const Table = () => {
     debounceTime: debounceTime,
     rowsPerPage: rowsPerPage,
     rowsPerPageOptions: rowsPerPageOptions,
-    tableRef
+    tableRef,
+    extraFilter: {
+      createValidationSchema: () => {
+        return yup.object().shape({
+          categories: yup.mixed()
+          .nullable()
+          .transform(value => {
+            return !value || value ==='' ? undefined : value.split(',');
+          })
+          .default(null)
+        })
+      },
+      formatSearchParams: (debouncedFilterState) => {
+        return debouncedFilterState.extraFilter ? {
+          ...(
+            debouncedFilterState.extraFilter.categories &&
+            {type: debouncedFilterState.extraFilter.categories.join(',')}
+          )
+        } : undefined
+      },
+      getStateFromUrl: (queryParams) => {
+        return {
+          categories: queryParams.get('categories')
+        }
+      }
+    }
   });
   useEffect(() => {
     filterManager.replaceHistory();
@@ -111,10 +143,10 @@ export const Table = () => {
       subscribed.current = false;
     }
   }, [
-    filterManager.cleanSearchText(deboundedFilterState.search),
-    deboundedFilterState.pagination.page,
-    deboundedFilterState.pagination.per_page,
-    deboundedFilterState.order
+    filterManager.cleanSearchText(debouncedFilterState.search),
+    debouncedFilterState.pagination.page,
+    debouncedFilterState.pagination.per_page,
+    debouncedFilterState.order
   ]);
 
   async function getData() {

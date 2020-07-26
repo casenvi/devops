@@ -19,4 +19,18 @@ class CastMemberFilter extends DefaultModelFilter
             $this->where('type', (int)$type);
         }
     }
+   /*  public function type($typeName)
+    {
+        switch (strtoupper($typeName)) {
+            case 'DIRETOR':
+                $this->where('type', 1);
+                break;
+            case 'ATOR':
+                    $this->where('type', 2');
+                    break;
+            default:
+                # code...
+                break;
+        }
+    } */
 }
