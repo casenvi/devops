@@ -2,6 +2,8 @@
 
 namespace App\ModelFilters;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class GenreFilter extends DefaultModelFilter
 {
     protected $sortable = ['name', 'created_at', 'is_active'];
