@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CastMember;
 use App\Models\Genre;
 use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
@@ -10,8 +11,13 @@ class VideosTableSeeder extends Seeder
 {
 
     protected $allGenres;
+    protected $allCastMembers;
 
-    protected $relations;
+    protected $relations = [
+        'genres_id' => [],
+        'categories_id' => [],
+        'cast_members_id' => []
+    ];
     /**
      * Run the database seeds.
      *
@@ -24,6 +30,7 @@ class VideosTableSeeder extends Seeder
         \File::deleteDirectory($dir, true);
         $self = $this;
         $this->allGenres = Genre::all();
+        $this->allCastMembers = CastMember::all();
         Model::reguard();
         factory(\App\Models\Video::class, 10)
             ->make()
@@ -56,7 +63,7 @@ class VideosTableSeeder extends Seeder
         $genresId = $subGenres->pluck('id')->toArray();
         $this->relations['categories_id'] = $categoriesId;
         $this->relations['genres_id'] = $genresId;
-
+        $this->relations['cast_members_id'] = $this->allCastMembers->random(3)->pluck('id')->toArray();
     }
 
     public function getImageFile()

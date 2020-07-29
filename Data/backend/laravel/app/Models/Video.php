@@ -102,6 +102,9 @@ class Video extends Model
         if (isset($att['genres_id'])) {
             $video->genres()->sync($att['genres_id']);
         }
+        if (isset($att['cast_members_id'])) {
+            $video->castMembers()->sync($att['cast_members_id']);
+        }
     }
 
     public function categories()
@@ -112,6 +115,11 @@ class Video extends Model
     public function genres()
     {
         return $this->belongsToMany(Genre::class)->withTrashed();
+    }
+
+    public function castMembers()
+    {
+        return $this->belongsToMany(CastMember::class)->withTrashed();
     }
 
     protected function uploadDir()

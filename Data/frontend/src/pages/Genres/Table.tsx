@@ -130,8 +130,9 @@ export const Table = () => {
         } : undefined
       },
       getStateFromUrl: (queryParams) => {
+        const value = queryParams.get('categories');        
         return {
-          categories: queryParams.get('categories')
+          categories: value && value.split(',')
         }
       }
     }
@@ -144,9 +145,7 @@ export const Table = () => {
   const columnCategories = columns[indexColumnCategories];
   const categoriesFilterValue = filterState.extraFilter && filterState.extraFilter.categories;
   (columnCategories.options as any).filterList = categoriesFilterValue ? categoriesFilterValue : [];
-
   const serverSideFilterList = columns.map(column =>[]);
-  
   if (categoriesFilterValue){
     serverSideFilterList[indexColumnCategories] = categoriesFilterValue;
   }
@@ -157,14 +156,14 @@ export const Table = () => {
       try {
         const {data} = await categoryHttp.list({queryParams: {all:''}});
         if (isSubscribed){
-          setCategories(data.data);
+          setCategories(data.data);          
           const arrayWithDuplicates = data.data.map(category => category.name);
           (columnCategories.options as any).filterOptions.names = arrayWithDuplicates.filter((n, i) => arrayWithDuplicates.indexOf(n) === i);
         }
       } catch (error) {
         console.error(error);
         snackbar.enqueueSnackbar(
-          'Não foi possivel buscar categorias paramontagem do filtro',
+          'Não foi possivel buscar categorias para a montagem do filtro',
           {variant: 'error'}
         );
       }
@@ -201,8 +200,8 @@ export const Table = () => {
           dir: filterState.order.dir,
           ...(
             debouncedFilterState.extraFilter &&
-            debouncedFilterState.extraFilter.categories&&
-            {categories: debouncedFilterState.extraFilter.categories}
+            debouncedFilterState.extraFilter.categories !== null &&
+            {categories: debouncedFilterState.extraFilter.categories.join(',')}
           )
         }
       }
@@ -224,7 +223,6 @@ export const Table = () => {
       setLoading(false);
     }
   }
-
 
   return (
     <MuiThemeProvider theme={makeActionStyles(columnsDefinition.length - 1)}>
