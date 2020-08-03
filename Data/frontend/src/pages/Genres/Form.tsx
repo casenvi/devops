@@ -42,6 +42,7 @@ export const Form = () => {
     handleSubmit,
     getValues,
     setValue,
+    errors,
     reset,
     watch } = useForm(
       {

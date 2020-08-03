@@ -2,7 +2,8 @@ import { LocaleObject, setLocale } from 'yup';
 const ptBR: LocaleObject = {
   mixed: {
     // eslint-disable-next-line
-    required: '${path} é requerido!'
+    required: '${path} é requerido!',
+    notType: '${path} é inválido!'
   },
   string: {
     // eslint-disable-next-line

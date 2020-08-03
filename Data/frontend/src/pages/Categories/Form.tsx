@@ -39,8 +39,10 @@ export const Form = () => {
     register,
     handleSubmit,
     getValues,
+    errors,
     reset,
     setValue,
+    triggerValidation,
     watch } = useForm({
       validationSchema,
       defaultValues: {
@@ -107,19 +109,20 @@ export const Form = () => {
         () => setLoading(false)
       );
   }
-
+console.log(errors);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField
-        name="name"
+        name={"name"}
         label="Nome"
         fullWidth
         variant={"outlined"}
         margin={"normal"}
         inputRef={register}
         disabled={loading}
-        InputLabelProps={{ shrink: true }}
-
+        InputLabelProps={{ shrink: true }}                
+        error={errors.name !== undefined}
+        helperText={errors.name && errors.name.message}
       />
       <TextField
         name="description"
@@ -148,7 +151,13 @@ export const Form = () => {
         disabled={loading}
       />
       <Box dir="rtl">
-        <Button {...buttonProps} onClick={() => onSubmit(getValues(), null)}>Salvar</Button>
+        <Button 
+          {...buttonProps} 
+          onClick={() => triggerValidation().then(isValid => {
+            isValid && onSubmit(getValues(), null)
+            })
+          }
+          >Salvar</Button>
         <Button {...buttonProps} type="submit">Salvar e continur editando</Button>
       </Box>
     </form>
