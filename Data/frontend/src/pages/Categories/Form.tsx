@@ -121,8 +121,8 @@ console.log(errors);
         inputRef={register}
         disabled={loading}
         InputLabelProps={{ shrink: true }}                
-        error={errors.name !== undefined}
-        helperText={errors.name && errors.name.message}
+       /*  error={errors.name !== undefined} */
+        /* helperText={errors.name && errors.name.message} */
       />
       <TextField
         name="description"

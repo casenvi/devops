@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { TextField, Checkbox, Box, Button, ButtonProps, FormControlLabel, Grid, Typography, useMediaQuery, useTheme } from '@material-ui/core';
+import { TextField, Checkbox, Box, Button, ButtonProps, FormControlLabel, Grid, Typography, useMediaQuery, useTheme, Card, CardContent } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core';
 import { useForm, ErrorMessage } from 'react-hook-form';
 import { videoHttp } from '../../../util/http/video-http';
@@ -10,6 +10,20 @@ import { useSnackbar } from 'notistack';
 import { RatingField } from './RatingField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import InputFile from '../../../components/InputFile';
+import { UploadField } from './UploadField';
+import theme from '../../../theme';
+import { VideoFileFieldsMap } from '../../../util/models';
+
+const useStyles = makeStyles((theme: Theme) => ({
+  cardUpload: {
+    borderRadius: "4px",
+    backgroundColor: "#f5f5f5",
+    margin: theme.spacing(2, 0),    
+  },
+  submit: {
+    margin: theme.spacing(1)
+  }
+}));
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -32,13 +46,7 @@ const validationSchema = yup.object().shape({
   
 });
 
-const useStyles = makeStyles((theme: Theme) => {
-  return {
-    submit: {
-      margin: theme.spacing(1)
-    }
-  }
-});
+const fileFields = Object.keys(VideoFileFieldsMap);
 
 export const Form = () => {
   const classes = useStyles();
@@ -97,7 +105,7 @@ export const Form = () => {
   }, []);
 
   useEffect(() => {
-    const otherFields = ['rating', 'opened'].forEach(name => register(name));
+    const otherFields = ['rating', 'opened', ...fileFields].forEach(name => register(name));
   }, [register]);
 
   function onSubmit(formData, event) {
@@ -205,17 +213,43 @@ export const Form = () => {
               margin: isGreaterMd ? 'none' : 'normal'
             }}
           />
-          Uploads<br/>
-          <InputFile ButtonFile={
-            <Button
-            endIcon={<CloudUploadIcon/>}
-            variant={"contained"}
-            color={"primary"}
-            onClick={() => {}}
-        >
-            Adicionar
-        </Button>
-          }/>
+          <br/>Uploads<br/>
+          <Card className={classes.cardUpload}>
+            <CardContent>
+              <Typography color="primary" variant="h6">
+                Imagens
+              </Typography>
+            </CardContent>
+            <UploadField
+                accept={'image/*'}
+                label={'Thumb'}
+                setValue={(value) =>setValue('thumb_file', value)}
+              />
+            <UploadField
+                accept={'image/*'}
+                label={'Banner'}
+                setValue={(value) =>setValue('banner_file', value)}
+              />
+          </Card>
+          <Card className={classes.cardUpload}>
+            <CardContent>
+              <Typography color="primary" variant="h6">
+                Videos
+              </Typography>
+            </CardContent>
+            <UploadField
+              accept={'video/mp4'}
+              label={'Trailer'}
+              setValue={(value) =>setValue('trailer_file', value)}
+            />
+            <UploadField
+              accept={'video/mp4'}
+              label={'Principal'}
+              setValue={(value) =>setValue('video_file', value)}
+            />     
+                   
+          </Card>
+          <br/>          
           <FormControlLabel
             control={
               <Checkbox

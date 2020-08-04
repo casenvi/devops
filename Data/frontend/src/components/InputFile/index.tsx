@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { TextField, Button, InputAdornment, TextFieldProps } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import { useRef, MutableRefObject, useState } from 'react';
+import { useRef, MutableRefObject, useState, useImperativeHandle } from 'react';
 
-interface InputFileProps {
+export interface InputFileProps {
     ButtonFile: React.ReactNode;
     InputFileProps?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>,HTMLInputElement>;
     TextFieldProps?: TextFieldProps;
 }
 
-const InputFile = (props: InputFileProps) => {
+export interface InputFileComponent{
+    openWindow: () => void
+}
+const InputFile = React.forwardRef<InputFileComponent, InputFileProps>((props, ref) => {
     const fileRef = useRef() as MutableRefObject<HTMLInputElement>;
     const [filename, setFilename] = useState("");
 
@@ -25,14 +28,6 @@ const InputFile = (props: InputFileProps) => {
             endAdornment:(
                 <InputAdornment position={"end"}>
                     {props.ButtonFile}
-                {/* <Button
-                    endIcon={<CloudUploadIcon/>}
-                    variant={"contained"}
-                    color={"primary"}
-                    onClick={() => fileRef.current.click()}
-                >
-                    Adicionar
-                </Button> */}
                 </InputAdornment>
             )
         },
@@ -55,13 +50,15 @@ const InputFile = (props: InputFileProps) => {
                 }
             }
         };
-    
+    useImperativeHandle(ref, () => ({
+        openWindow: () => fileRef.current.click() //não esta chegando aqui
+    }));
     return (
         <>
             <input type="file" {...inputFileProps}/>
             <TextField {...textFieldProps}/>
         </>
     )
-};
+});
 
 export default InputFile;
