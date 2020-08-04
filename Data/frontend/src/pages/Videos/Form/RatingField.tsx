@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormControl, RadioGroup, FormLabel, FormControlLabel, FormHelperText, Radio, FormControlLabelProps } from '@material-ui/core';
+import { FormControl, RadioGroup, FormLabel, FormControlLabel, FormHelperText, Radio, FormControlLabelProps, Box, FormControlProps } from '@material-ui/core';
 import Rating from '../../../components/Rating';
 
 interface RatingFieldProps {
@@ -7,6 +7,7 @@ interface RatingFieldProps {
     setValue: (value) => void;
     error: any;
     disabled?: boolean;
+    FormControlProps?: FormControlProps
 }
 
 const ratings: FormControlLabelProps[] = [
@@ -24,9 +25,11 @@ export const RatingField: React.FC<RatingFieldProps> = (props) => {
         <FormControl
             margin={"normal"}
         error={error!==undefined}
-            disabled={disabled=== true}        
+            disabled={disabled=== true} 
+            {...props.FormControlProps}       
         >
             <FormLabel component="legend">Classificação</FormLabel>
+            <Box paddingTop={1}>
             <RadioGroup
                 name="rating"
                 onChange={
@@ -41,6 +44,7 @@ export const RatingField: React.FC<RatingFieldProps> = (props) => {
                    )
                }
             </RadioGroup>
+            </Box>
             {
                 error && <FormHelperText>{error.message}</FormHelperText>
             }

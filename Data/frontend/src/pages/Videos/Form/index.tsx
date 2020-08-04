@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { TextField, Checkbox, Box, Button, ButtonProps, FormControlLabel, Grid, Typography } from '@material-ui/core';
+import { TextField, Checkbox, Box, Button, ButtonProps, FormControlLabel, Grid, Typography, useMediaQuery, useTheme } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core';
 import { useForm, ErrorMessage } from 'react-hook-form';
 import { videoHttp } from '../../../util/http/video-http';
@@ -8,6 +8,8 @@ import * as yup from '../../../util/vendor/yup';
 import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
 import { RatingField } from './RatingField';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import InputFile from '../../../components/InputFile';
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -42,6 +44,8 @@ export const Form = () => {
   const classes = useStyles();
 
   const [loading, setLoading] = useState<boolean>(false);
+  const theme = useTheme();
+  const isGreaterMd = useMediaQuery(theme.breakpoints.up('md'));
 
   const buttonProps: ButtonProps = {
     variant: 'contained',
@@ -197,8 +201,21 @@ export const Form = () => {
             setValue={(value) => setValue('rating', value, true)}
             error={errors.rating}
             disabled={loading}
+            FormControlProps={{
+              margin: isGreaterMd ? 'none' : 'normal'
+            }}
           />
           Uploads<br/>
+          <InputFile ButtonFile={
+            <Button
+            endIcon={<CloudUploadIcon/>}
+            variant={"contained"}
+            color={"primary"}
+            onClick={() => {}}
+        >
+            Adicionar
+        </Button>
+          }/>
           <FormControlLabel
             control={
               <Checkbox
