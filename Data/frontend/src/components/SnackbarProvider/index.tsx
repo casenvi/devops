@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export const SnackbarProvider: React.FC<SnackbarProviderProps> = (props) => {
-  let SnackbarProviderRef;
+  let SnackbarProviderRef: any;
   const classes = useStyles();
   const defaultProps: SnackbarProviderProps = {
     classes,

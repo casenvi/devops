@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import MUIDataTable, { MUIDataTableOptions, MUIDataTableProps, MUIDataTableColumn } from 'mui-datatables';
 import { merge, omit, cloneDeep } from 'lodash';
-import { useTheme, MuiThemeProvider, Theme, useMediaQuery } from '@material-ui/core';
+import { useTheme, MuiThemeProvider, Theme, useMediaQuery, ThemeProvider } from '@material-ui/core';
 import DebouncedTableSearch from './DebouncedTableSearch.js';
 
-const makeDefaultOptions = (debouncedSearchTime?,debounceTime?): MUIDataTableOptions => ({
+const makeDefaultOptions = (debouncedSearchTime?:number,debounceTime?:number): MUIDataTableOptions => ({
   print: false,
   download: false,
   textLabels: {
@@ -127,7 +127,8 @@ export const DefaultTable = React.forwardRef<MuiDataTableComponent, TableProps>(
   )
 });
 
-export function makeActionStyles(column) {
+export function makeActionStyles(column:number) {
+  
   return theme => {
     const copyTheme = cloneDeep(theme);
     const selector = `&[data-testid^="MuiDataTableBodyCell-${column}"]`;

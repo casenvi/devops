@@ -44,7 +44,10 @@ export const Form = () => {
     setValue,
     errors,
     reset,
-    watch } = useForm(
+    watch } = useForm<{
+      name: string, 
+      is_active: boolean,
+    }>(
       {
         validationSchema,
         defaultValues: {
@@ -147,6 +150,8 @@ export const Form = () => {
         disabled={loading}
         inputRef={register}
         InputLabelProps={{ shrink: true }}
+        error={errors.name !== undefined}
+        helperText={errors.name && errors.name.message}
       />
       <Box width={1}>
         <InputLabel id="categories_id_label">Categorias</InputLabel>

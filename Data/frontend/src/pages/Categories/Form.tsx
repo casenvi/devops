@@ -43,7 +43,10 @@ export const Form = () => {
     reset,
     setValue,
     triggerValidation,
-    watch } = useForm({
+    watch } = useForm<{
+      name: string, 
+      is_active: boolean,
+    }>({
       validationSchema,
       defaultValues: {
         is_active: true
@@ -109,7 +112,7 @@ export const Form = () => {
         () => setLoading(false)
       );
   }
-console.log(errors);
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField
@@ -121,8 +124,8 @@ console.log(errors);
         inputRef={register}
         disabled={loading}
         InputLabelProps={{ shrink: true }}                
-       /*  error={errors.name !== undefined} */
-        /* helperText={errors.name && errors.name.message} */
+        error={errors.name !== undefined}
+        helperText={errors.name && errors.name.message}
       />
       <TextField
         name="description"

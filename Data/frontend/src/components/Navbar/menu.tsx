@@ -4,14 +4,20 @@ import MenuIcon from '@material-ui/icons/Menu';
 import routes, { MyRouteProp } from '../../routes';
 import { Link } from 'react-router-dom';
 
+interface listRoutesInt {
+  [selector: string]: string 
+}
+
 export const Menu = () => {
-  const listRoutes = {
+  
+  
+  const listRoutes:listRoutesInt = {
     'dashboard' : 'Dashboard',
     'category.list' : 'Categorias',
     'castmember.list' : 'Membros do Elenco',
     'genre.list': 'Gêneros',
     'video.list': 'Vídeos'
-  };
+  };  
   const menuRoutes = routes.filter(route => Object.keys(listRoutes).includes(route.name));
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -42,7 +48,7 @@ export const Menu = () => {
       >
         {
           Object.keys(listRoutes).map(
-            (routeName:string, key) => {
+            (routeName, key) => {
               const route = menuRoutes.find(route => route.name === routeName) as MyRouteProp;
               return (
                 <MenuItem

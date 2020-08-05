@@ -45,7 +45,11 @@ export const Form = () => {
     getValues,
     reset,
     setValue,
-    watch } = useForm({
+    errors,
+    watch } = useForm<{
+      name: string, 
+      is_active: boolean,
+    }>({
       validationSchema,
       defaultValues: {
         is_active: true
@@ -124,6 +128,8 @@ export const Form = () => {
         margin={"normal"}
         disabled={loading}
         inputRef={register}
+        error={errors.name !== undefined}
+        helperText={errors.name && errors.name.message}
       />
       <TextField
         name="description"
