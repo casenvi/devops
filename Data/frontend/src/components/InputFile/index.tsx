@@ -38,7 +38,7 @@ const InputFile = React.forwardRef<InputFileComponent, InputFileProps>((props, r
             ...props.InputFileProps,
             hidden: true,
             ref: fileRef,
-            onChange(event){
+            onChange(event: React.ChangeEvent<HTMLInputElement>){
                 const files = event.target.files;
                 if (files && files.length) {
                     setFilename(

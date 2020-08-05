@@ -42,7 +42,7 @@ export const Menu = () => {
       >
         {
           Object.keys(listRoutes).map(
-            (routeName, key) => {
+            (routeName:string, key) => {
               const route = menuRoutes.find(route => route.name === routeName) as MyRouteProp;
               return (
                 <MenuItem
