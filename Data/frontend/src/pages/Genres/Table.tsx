@@ -33,7 +33,7 @@ const columnsDefinition: TableColumn[] = [
         names: []
       },
       customBodyRender(value, tableMeta, updateValue) {
-        return value.map(value => value.name).join(', ');
+        return value.map((value: any) => value.name).join(', ');
       },
     }
   },
@@ -157,8 +157,8 @@ export const Table = () => {
         const {data} = await categoryHttp.list({queryParams: {all:''}});
         if (isSubscribed){
           setCategories(data.data);          
-          const arrayWithDuplicates = data.data.map(category => category.name);
-          (columnCategories.options as any).filterOptions.names = arrayWithDuplicates.filter((n, i) => arrayWithDuplicates.indexOf(n) === i);
+          const arrayWithDuplicates = data.data.map((category: any) => category.name);
+          (columnCategories.options as any).filterOptions.names = arrayWithDuplicates.filter((n:any, i:any) => arrayWithDuplicates.indexOf(n) === i);
         }
       } catch (error) {
         console.error(error);

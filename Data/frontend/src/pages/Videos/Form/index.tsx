@@ -108,7 +108,7 @@ export const Form = () => {
     const otherFields = ['rating', 'opened', ...fileFields].forEach(name => register(name));
   }, [register]);
 
-  function onSubmit(formData, event) {
+  function onSubmit(formData: any, event: any) {
     setLoading(true);
     const http = !video
       ? videoHttp.create(formData)

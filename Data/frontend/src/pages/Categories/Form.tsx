@@ -80,7 +80,7 @@ export const Form = () => {
       );
   }, []);
 
-  function onSubmit(formData, event) {
+  function onSubmit(formData: any, event: any) {
     setLoading(true);
     const http = !category
       ? categoryHttp.create(formData)

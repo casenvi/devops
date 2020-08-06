@@ -2,7 +2,7 @@ import { AnyAction } from "redux";
 import { TablePagination } from "@material-ui/core";
 
 export interface State {
-  search: string | { value, [key: string]: any } | null;
+  search: string | { value:string, [key: string]: any } | null;
   pagination: Pagination;
   order: Order;
   extraFilter?: { [key: string]: any }
@@ -22,7 +22,7 @@ export interface Order {
 
 export interface SetSearchAction extends AnyAction {
   payload: {
-    search: string | { value, [key: string]: any } | null
+    search: string | { value:string, [key: string]: any } | null
   }
 }
 

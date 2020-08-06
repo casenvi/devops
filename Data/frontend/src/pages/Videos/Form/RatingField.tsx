@@ -4,7 +4,7 @@ import Rating from '../../../components/Rating';
 
 interface RatingFieldProps {
     value: string;
-    setValue: (value) => void;
+    setValue: (value:any) => void;
     error: any;
     disabled?: boolean;
     FormControlProps?: FormControlProps

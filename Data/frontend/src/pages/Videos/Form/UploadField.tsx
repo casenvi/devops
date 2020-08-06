@@ -8,7 +8,7 @@ import { useRef } from 'react';
 interface UploadFieldProps {
     accept: string;
     label: string;    
-    setValue: (value) => void;
+    setValue: (value:any) => void;
     error?: any;
     disabled?: boolean;
     FormControlProps?: FormControlProps

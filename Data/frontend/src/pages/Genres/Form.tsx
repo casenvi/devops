@@ -105,7 +105,7 @@ export const Form = () => {
       );
   }, []);
 
-  function onSubmit(formData, event) {
+  function onSubmit(formData: any, event: any) {
     formData['categories_id'] = categories;
     setLoading(true);
     const http = !genre

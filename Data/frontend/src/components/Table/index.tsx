@@ -129,7 +129,7 @@ export const DefaultTable = React.forwardRef<MuiDataTableComponent, TableProps>(
 
 export function makeActionStyles(column:number) {
   
-  return theme => {
+  return (theme: Theme) => {
     const copyTheme = cloneDeep(theme);
     const selector = `&[data-testid^="MuiDataTableBodyCell-${column}"]`;
     (copyTheme.overrides as any).MUIDataTableBodyCell.root[selector] = {

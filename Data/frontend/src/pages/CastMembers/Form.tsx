@@ -84,7 +84,7 @@ export const Form = () => {
       );
   }, []);
 
-  function onSubmit(formData, event) {
+  function onSubmit(formData: any, event: any) {
     setLoading(true);
     formData['type'] = typeValue;
     const http = !castMember
