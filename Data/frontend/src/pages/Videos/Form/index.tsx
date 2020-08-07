@@ -2,17 +2,16 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { TextField, Checkbox, Box, Button, ButtonProps, FormControlLabel, Grid, Typography, useMediaQuery, useTheme, Card, CardContent } from '@material-ui/core';
 import { makeStyles, Theme } from '@material-ui/core';
-import { useForm, ErrorMessage } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { videoHttp } from '../../../util/http/video-http';
 import * as yup from '../../../util/vendor/yup';
 import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
 import { RatingField } from './RatingField';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import InputFile from '../../../components/InputFile';
 import { UploadField } from './UploadField';
-import theme from '../../../theme';
 import { VideoFileFieldsMap } from '../../../util/models';
+import AsyncAutoComplete from '../../../components/AsyncAutoComplete';
+import { genreHttp } from '../../../util/http/genre-http';
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardUpload: {
@@ -141,6 +140,13 @@ export const Form = () => {
       );
   }
 
+  const fetchOptions = (searchText:string) => genreHttp.list({
+    queryParams: {
+      search: searchText, 
+      all:""    
+    }
+  }).then(({data})=> data.data);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={5}>
@@ -201,7 +207,20 @@ export const Form = () => {
             />
             </Grid>
           </Grid>
-          Elenco<br/>Gêneros<br/>Categorias
+          Elenco<br/>
+          Categorias<br/>
+          
+          <AsyncAutoComplete
+            fetchOptions={fetchOptions}
+            TextFieldProps={{
+              label: 'Gêneros'
+            }}
+            AutocompleteProps={{
+              freeSolo: true,    
+              getOptionLabel: option=>option.name                      
+            }}
+          />
+
         </Grid>
         <Grid item xs={12} md={6}>
           <RatingField
