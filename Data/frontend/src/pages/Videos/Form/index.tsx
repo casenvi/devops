@@ -12,6 +12,9 @@ import { UploadField } from './UploadField';
 import { VideoFileFieldsMap } from '../../../util/models';
 import AsyncAutoComplete from '../../../components/AsyncAutoComplete';
 import { genreHttp } from '../../../util/http/genre-http';
+import { GridSelected } from '../../../components/Grid/GridSelected';
+import { GridSelectedItem } from '../../../components/Grid/GridSelectedItem';
+import useHttpHandled from '../../../hooks/useHttpHandled';
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardUpload: {
@@ -140,12 +143,14 @@ export const Form = () => {
       );
   }
 
-  const fetchOptions = (searchText:string) => genreHttp.list({
+  const autocompleteHttp = useHttpHandled();
+
+  const fetchOptions = (searchText:string) => autocompleteHttp(genreHttp.list({
     queryParams: {
       search: searchText, 
       all:""    
     }
-  }).then(({data})=> data.data);
+  })).then((data)=> data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -220,7 +225,11 @@ export const Form = () => {
               getOptionLabel: option=>option.name                      
             }}
           />
-
+          <GridSelected>
+            <GridSelectedItem onClick={()=>{console.log('clicou')}}>
+              
+            </GridSelectedItem>
+          </GridSelected>
         </Grid>
         <Grid item xs={12} md={6}>
           <RatingField
