@@ -2,18 +2,20 @@ import * as React from 'react';
 import {Autocomplete, AutocompleteProps, UseAutocompleteSingleProps} from '@material-ui/lab';
 import {TextFieldProps} from '@material-ui/core/TextField';
 import {TextField, CircularProgress} from '@material-ui/core';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, RefAttributes, useImperativeHandle } from 'react';
 import { useSnackbar } from 'notistack';
 import { useDebounce } from 'use-debounce/lib';
 
-interface AsyncAutoCompleteProps {
+interface AsyncAutoCompleteProps extends RefAttributes<AsyncAutoCompleteComponent> {
     TextFieldProps?: TextFieldProps
     fetchOptions:(searchText:string) => Promise<any>
     debounceTime?: number;
     AutocompleteProps?: Omit<AutocompleteProps<any>, 'renderInput'> & UseAutocompleteSingleProps<any>;
 }
-
-const AsyncAutoComplete: React.FC<AsyncAutoCompleteProps> = (props) => {
+export interface AsyncAutoCompleteComponent{
+    clear: () => void
+  }
+const AsyncAutoComplete = React.forwardRef<AsyncAutoCompleteComponent, AsyncAutoCompleteProps>((props, ref) => {
     const {AutocompleteProps, debounceTime = 300} = props;  
     const {freesolo, onOpen, onClose, onInputChange} = AutocompleteProps as any;
     const[open, setOpen] = useState(false);
@@ -35,7 +37,8 @@ const AsyncAutoComplete: React.FC<AsyncAutoCompleteProps> = (props) => {
         ...(AutocompleteProps && {...AutocompleteProps}), 
         open,
         options,
-        loading: loading,        
+        loading: loading, 
+        inputValue: searchText,       
         onOpen(){
             setOpen(true);
             onOpen && onOpen();
@@ -93,10 +96,16 @@ const AsyncAutoComplete: React.FC<AsyncAutoCompleteProps> = (props) => {
     
     },[freesolo ? debouncedSearchText : open]);
 
+    useImperativeHandle(ref, () => ({
+        clear: () => {
+            setSearchText("");
+            setOptions([]);
+        }
+    }))
     return(
         <Autocomplete{...autocompleteProps}/>
     );
-};
+});
 
 
 export default AsyncAutoComplete;
