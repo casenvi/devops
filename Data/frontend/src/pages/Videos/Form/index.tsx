@@ -15,6 +15,8 @@ import { genreHttp } from '../../../util/http/genre-http';
 import { GridSelected } from '../../../components/Grid/GridSelected';
 import { GridSelectedItem } from '../../../components/Grid/GridSelectedItem';
 import useHttpHandled from '../../../hooks/useHttpHandled';
+import GenreField from './GenreField';
+import CategoryField from './CategoryField';
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardUpload: {
@@ -42,6 +44,12 @@ const validationSchema = yup.object().shape({
     .label('Duração')
     .required()
     .min(1),
+  genres: yup.array()
+  .label('Gêneros')
+  .required(),
+  categories: yup.array()
+  .label('Categorias')
+  .required(),
   rating: yup.string()
     .label('Classificação')
     .required(),
@@ -71,10 +79,18 @@ export const Form = () => {
     reset,
     setValue,
     errors,
-    watch } = useForm({
+    watch } = useForm<{
+      name: string, 
+      year_launched: string,
+      duration: string,
+      rating: string,
+      genres: [],
+      categories: []
+    }>({
       validationSchema,
       defaultValues: {
-       
+        genres: [],
+        categories: [],
       },
       
     });
@@ -143,14 +159,6 @@ export const Form = () => {
       );
   }
 
-  const autocompleteHttp = useHttpHandled();
-
-  const fetchOptions = (searchText:string) => autocompleteHttp(genreHttp.list({
-    queryParams: {
-      search: searchText, 
-      all:""    
-    }
-  })).then((data)=> data);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -181,7 +189,7 @@ export const Form = () => {
             InputLabelProps={{ shrink: true }}
           />
           <Grid container spacing={1}>
-            <Grid item xs={6}>
+            <Grid item md={6} xs={12}>
               <TextField
               name="year_launched"
               label="Ano de lançamento"
@@ -196,7 +204,7 @@ export const Form = () => {
               helperText={errors.year_launched && errors.year_launched.message}
             />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item md={6} xs={12}>
               <TextField
               name="duration"
               label="Duração"
@@ -212,24 +220,25 @@ export const Form = () => {
             />
             </Grid>
           </Grid>
-          Elenco<br/>
-          Categorias<br/>
-          
-          <AsyncAutoComplete
-            fetchOptions={fetchOptions}
-            TextFieldProps={{
-              label: 'Gêneros'
-            }}
-            AutocompleteProps={{
-              freeSolo: true,    
-              getOptionLabel: option=>option.name                      
-            }}
-          />
-          <GridSelected>
-            <GridSelectedItem onClick={()=>{console.log('clicou')}}>
-              
-            </GridSelectedItem>
-          </GridSelected>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <GenreField
+              categories = {watch('categories')}
+              setCategories = {(value => setValue('categories', value, true))}
+              genres = {watch('genres')}
+              setGenres = {(value => setValue('genres', value, true))}
+              error={errors.genres}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <CategoryField
+                categories = {watch('categories')}
+                setCategories = {(value => setValue('categories', value, true))}
+                genres = {watch('genres')}
+                error={errors.categories}
+              />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={12} md={6}>
           <RatingField

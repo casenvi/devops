@@ -10,4 +10,12 @@ class CategoryFilter extends DefaultModelFilter
     {
         $this->where('name', 'LIKE', "%$search%");
     }
+    public function genres($genres)
+    {
+        $ids = explode(',', $genres);
+        $this->whereHas('genres', function (Builder $query) use ($ids) {
+            $query->whereIn('id', $ids)
+                ->orWhereIn('name', $ids);
+        });
+    }
 }

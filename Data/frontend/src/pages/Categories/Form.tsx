@@ -161,7 +161,7 @@ export const Form = () => {
             })
           }
           >Salvar</Button>
-        <Button {...buttonProps} type="submit">Salvar e continur editando</Button>
+        <Button {...buttonProps} type="submit">Salvar e continuar editando</Button>
       </Box>
     </form>
   )

@@ -23,11 +23,11 @@ class Category extends Model
         return $this->provideFilter(CategoryFilter::class);
     }
 
-    /*public function genres()
+    public function genres()
     {
-        return $this->belongsToMany(Genre::class);
+        return $this->belongsToMany(Genre::class)->withTrashed();
     }
-
+/*
     public function videos()
     {
         return $this->belongsToMany(Video::class);
