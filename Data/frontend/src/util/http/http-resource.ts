@@ -38,9 +38,9 @@ export default class HttpResource {
     let sendData = data
     if (this.containsFile(data)){
       sendData = this.getFormData(data);
-    }
-    const{http} = options as any;
-    return !options || !http || !http.usePost ?
+    }    
+    
+    return !options || !options.http || !options.http.usePost ?
       this.http.put<T>(`${this.resource}/${id}`, sendData):
       this.http.post<T>(`${this.resource}/${id}`, sendData)
   }

@@ -64,7 +64,7 @@ const validationSchema = yup.object().shape({
   categories: yup.array()
   .label('Categorias')
   .required(),
-  castMember: yup.array()
+  cast_members: yup.array()
   .label('Elenco')
   .required(),
   rating: yup.string()
@@ -92,13 +92,13 @@ export const Form = () => {
       rating: any,
       genres: any,
       categories: any,
-      castMembers: any,
+      cast_members: any,
       opened: boolean,
     }>({
       validationSchema,
       defaultValues: {
         rating: null,
-        castMembers: [],
+        cast_members: [],
         genres: [],
         categories: [],
         opened: false,
@@ -203,7 +203,7 @@ export const Form = () => {
       <Grid container spacing={5}>
         <Grid item xs={12} md={6}>
           <TextField
-            name="name"
+            name="title"
             label="Título"
             fullWidth
             variant={"outlined"}
@@ -261,9 +261,9 @@ export const Form = () => {
           <Grid container spacing={2}>
             <Grid item md={12}>
               <CastMemberField
-                castMembers = {watch('castMembers')}
-                setCastMembers = {(value => setValue('castMembers', value, true))}
-                error={errors.castMembers}
+                castMembers = {watch('cast_members')}
+                setCastMembers = {(value => setValue('cast_members', value, true))}
+                error={errors.cast_members}
                 disabled={loading}
                 />
               </Grid>
@@ -289,7 +289,7 @@ export const Form = () => {
               />
             </Grid>
           </Grid>
-        </Grid>
+         </Grid>
         <Grid item xs={12} md={6}>
           <RatingField
             value={watch('rating')}

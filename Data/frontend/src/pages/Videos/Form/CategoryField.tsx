@@ -5,7 +5,7 @@ import { GridSelected } from '../../../components/Grid/GridSelected';
 import { GridSelectedItem } from '../../../components/Grid/GridSelectedItem';
 import { categoryHttp } from '../../../util/http/category-http';
 import useCollectionManager from '../../../hooks/useCollectionManager';
-import { Genre } from '../../../util/models';
+import { Genre, Category } from '../../../util/models';
 import { FormControlProps, FormControl, FormHelperText, Typography, makeStyles, Theme } from '@material-ui/core';
 import { getGenresFromCategory } from '../../../util/model-filter';
 import { grey } from '@material-ui/core/colors';
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>( {
 }));
 
 interface CategoryFieldProps {
-  categories: any, 
+  categories: Category[], 
   setCategories: (categories) => void
   genres: Genre[];
   error: any;
