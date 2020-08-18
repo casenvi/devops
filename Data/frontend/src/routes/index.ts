@@ -94,21 +94,21 @@ const routes: MyRouteProp[] = [
   {
     name: 'video.list',
     label: 'Listar vídeos',
-    path: '/videos',
+    path: '/video',
     component: VideoList,
     exact: true
   },
   {
     name: 'video.create',
     label: 'Criar vídeos',
-    path: '/videos/create',
+    path: '/video/create',
     component: VideoForm,
     exact: true
   },
   {
     name: 'video.edit',
     label: 'Editar vídeos',
-    path: '/videos/:id/edit',
+    path: '/video/:id/edit',
     component: VideoForm,
     exact: true
   },

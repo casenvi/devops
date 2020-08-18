@@ -19,7 +19,7 @@ class VideoController extends BasicCrudController
                 'max:255',
                 'min:3'
             ],
-            'decription' => [
+            'description' => [
                 'nullable'
             ],
             'year_launched' => [

@@ -25,8 +25,8 @@ const columnsDefinition: TableColumn[] = [
     }
   },
   {
-    name: "name",
-    label: "Nome",
+    name: "title",
+    label: "Titulo",
     width: '35%',
     options: {
       sortDirection: 'desc',
@@ -34,16 +34,29 @@ const columnsDefinition: TableColumn[] = [
     }
   },
   {
-    name: "is_active",
-    label: "Ativo?",
+    name: "categories",
+    label: "Categorias",
     options: {
-      customBodyRender(value, tableMeta, updateValue) {
-        return value ? <BadgeYes /> : <BadgeNo />
-      },
-      filterList: ['Sim'],
+      filterType: 'multiselect',
       filterOptions: {
-        names: ['Sim', 'Não']
-      }
+        names: []
+      },
+      customBodyRender(value, tableMeta, updateValue) {
+        return value.map((value: any) => value.name).join(', ');
+      },
+    }
+  },
+  {
+    name: "genres",
+    label: "Gêneros",
+    options: {
+      filterType: 'multiselect',
+      filterOptions: {
+        names: []
+      },
+      customBodyRender(value, tableMeta, updateValue) {
+        return value.map((value: any) => value.name).join(', ');
+      },
     }
   },
   {
@@ -66,14 +79,14 @@ const columnsDefinition: TableColumn[] = [
             <IconButton
               color={'primary'}
               component={Link}
-              to={`/videos/${value}/edit`}
+              to={`/video/${value}/edit`}
             >
               <EditIcon fontSize={'inherit'} />
             </IconButton>
             <IconButton
               color={'primary'}
               component={Link}
-              to={`/videos/${value}/delete`}
+              to={`/video/${value}/delete`}
             >
               <DeleteIcon fontSize={'inherit'} />
             </IconButton>

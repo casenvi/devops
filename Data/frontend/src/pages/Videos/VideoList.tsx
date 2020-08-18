@@ -7,14 +7,14 @@ import { Table } from './Table';
 
 export const VideoList = () => {
   return (
-    <Page title='Listagem de categorias'>
+    <Page title='Listagem de video'>
       <Box dir={'rtl'} paddingBottom={2}>
         <Fab
-          title="Adicionar categoria"
+          title="Adicionar video"
           color={"secondary"}
           size="small"
           component={Link}
-          to="/Videos/create"
+          to="/Video/create"
         >
           <AddIcon />
         </Fab>
