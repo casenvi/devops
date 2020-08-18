@@ -17,6 +17,7 @@ import { GridSelectedItem } from '../../../components/Grid/GridSelectedItem';
 import useHttpHandled from '../../../hooks/useHttpHandled';
 import GenreField from './GenreField';
 import CategoryField from './CategoryField';
+import CastMemberField from './CastMemberField';
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardUpload: {
@@ -49,6 +50,9 @@ const validationSchema = yup.object().shape({
   .required(),
   categories: yup.array()
   .label('Categorias')
+  .required(),
+  castMember: yup.array()
+  .label('Elenco')
   .required(),
   rating: yup.string()
     .label('Classificação')
@@ -84,13 +88,15 @@ export const Form = () => {
       year_launched: string,
       duration: string,
       rating: string,
-      genres: [],
-      categories: []
+      genres: any,
+      categories: any,
+      castMembers: any
     }>({
       validationSchema,
       defaultValues: {
         genres: [],
         categories: [],
+        castMembers: [],
       },
       
     });
@@ -219,6 +225,16 @@ export const Form = () => {
               helperText={errors.duration && errors.duration.message}
             />
             </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item md={12}>
+              <CastMemberField
+                castMembers = {watch('castMembers')}
+                setCastMembers = {(value => setValue('castMembers', value, true))}
+                error={errors.castMembers}
+                disabled={loading}
+                />
+              </Grid>
           </Grid>
           <Grid container spacing={2}>
             <Grid item xs={6}>
