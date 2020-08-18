@@ -8,7 +8,6 @@ import useCollectionManager from '../../../hooks/useCollectionManager';
 import { Genre } from '../../../util/models';
 import { FormControlProps, FormControl, FormHelperText, Typography, makeStyles, Theme } from '@material-ui/core';
 import { getGenresFromCategory } from '../../../util/model-filter';
-import classes from '*.module.css';
 import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme: Theme) =>( {
@@ -28,6 +27,7 @@ interface CategoryFieldProps {
 }
 
 const CategoryField: React.FC<CategoryFieldProps> = (props) =>{
+  const classes = useStyles();
   const {categories, setCategories, genres,  error, disabled} = props;     
   const autocompleteHttp = useHttpHandled();
   const {addItem, removeItem} = useCollectionManager(categories, setCategories);
@@ -37,7 +37,7 @@ const CategoryField: React.FC<CategoryFieldProps> = (props) =>{
       genres: genres.map(genre => genre.id).join(','),
       all:""    
     }
-  })).then((data)=> data);
+  })).then((data)=> data.data);
     return (
         <>
         <AsyncAutoComplete

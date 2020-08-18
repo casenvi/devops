@@ -21,14 +21,14 @@ interface GenreFieldProps {
 const GenreField: React.FC<GenreFieldProps> = (props) =>{
     const {genres, setGenres, error, disabled, categories, setCategories} = props; 
     const autocompleteHttp = useHttpHandled();
-    const {addItem, removeItem} = useCollectionManager(categories, setGenres);
-    const {removeItem: removeCategory} = useCollectionManager(genres, setCategories);
+    const {addItem, removeItem} = useCollectionManager(genres, setGenres);
+    const {removeItem: removeCategory} = useCollectionManager(categories, setCategories);
     const fetchOptions = (searchText:string) => autocompleteHttp(genreHttp.list({
     queryParams: {
       search: searchText, 
       all:""    
     }
-  })).then((data)=> data);
+  })).then((data)=> data.data);
     return (
         <>
         <AsyncAutoComplete
@@ -38,12 +38,12 @@ const GenreField: React.FC<GenreFieldProps> = (props) =>{
           error: error !== undefined
         }}
         AutocompleteProps={{
-          getOptionSelected: (options, value) => options.id = value.id,
           clearOnEscape: true,
           freeSolo: true,    
           getOptionLabel: option=>option.name,
+          getOptionSelected: (options, value) => options.id = value.id,
           onChange: (_event, value) => addItem(value),    
-          disabled              
+          disabled                        
         }}
       />
       <FormControl

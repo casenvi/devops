@@ -33,7 +33,6 @@ const AsyncAutoComplete: React.FC<AsyncAutoCompleteProps> = (props) => {
         loadingText: 'Carregando...',
         noOptionsText: 'Nenhum Item Encontrado',
         ...(AutocompleteProps && {...AutocompleteProps}), 
-        //freeSolo: freesolo,       
         open,
         options,
         loading: loading,        
@@ -43,7 +42,7 @@ const AsyncAutoComplete: React.FC<AsyncAutoCompleteProps> = (props) => {
         },
         onClose(){
             setOpen(false);
-           onClose && onClose();
+            onClose && onClose();
         },
         onInputChange(event, value){
             setSearchText(value);

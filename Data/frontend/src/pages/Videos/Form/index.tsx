@@ -223,11 +223,12 @@ export const Form = () => {
           <Grid container spacing={2}>
             <Grid item xs={6}>
               <GenreField
-              categories = {watch('categories')}
-              setCategories = {(value => setValue('categories', value, true))}
-              genres = {watch('genres')}
-              setGenres = {(value => setValue('genres', value, true))}
-              error={errors.genres}
+                categories = {watch('categories')}
+                setCategories = {(value => setValue('categories', value, true))}
+                genres = {watch('genres')}
+                setGenres = {(value => setValue('genres', value, true))}
+                disabled={loading}
+                error={errors.genres}
               />
             </Grid>
             <Grid item xs={6}>
@@ -236,6 +237,7 @@ export const Form = () => {
                 setCategories = {(value => setValue('categories', value, true))}
                 genres = {watch('genres')}
                 error={errors.categories}
+                disabled={loading}
               />
             </Grid>
           </Grid>
