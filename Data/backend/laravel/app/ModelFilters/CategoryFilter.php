@@ -2,6 +2,9 @@
 
 namespace App\ModelFilters;
 
+use Illuminate\Database\Eloquent\Builder;
+
+
 class CategoryFilter extends DefaultModelFilter
 {
     protected $sortable = ['name', 'created_at', 'is_active'];
