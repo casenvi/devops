@@ -12,7 +12,7 @@ class Video extends Model
     use SoftDeletes, Uuid, UploadFiles;
 
     const RATTING = [
-        'free',
+        'L',
         '+10',
         '+12',
         '+14',

@@ -148,7 +148,7 @@ export const Form = () => {
   }, []);
 
   useEffect(() => {
-    const otherFields = ['rating', 'opened', ...fileFields].forEach(name => register(name));
+    const otherFields = ['rating', 'cast_members', 'categories', 'genres', 'opened', ...fileFields].forEach(name => register(name));
   }, [register]);
 
   function onSubmit(formData: any, event: any) {
@@ -265,6 +265,7 @@ export const Form = () => {
                 setCastMembers = {(value => setValue('cast_members', value, true))}
                 error={errors.cast_members}
                 disabled={loading}
+                ref={register}
                 />
               </Grid>
           </Grid>
@@ -276,6 +277,7 @@ export const Form = () => {
                 genres = {watch('genres')}
                 setGenres = {(value => setValue('genres', value, true))}
                 disabled={loading}
+                ref={register}
                 error={errors.genres}
               />
             </Grid>
@@ -286,6 +288,7 @@ export const Form = () => {
                 genres = {watch('genres')}
                 error={errors.categories}
                 disabled={loading}
+                ref={register}
               />
             </Grid>
           </Grid>
