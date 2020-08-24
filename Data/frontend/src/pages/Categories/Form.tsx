@@ -7,6 +7,8 @@ import { categoryHttp } from '../../util/http/category-http';
 import * as yup from '../../util/vendor/yup';
 import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
+import useSnackbarFormError from '../../hooks/useSnackbarFormError';
+import LoadingContext from '../../components/Loading/LoadingContent';
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -43,7 +45,8 @@ export const Form = () => {
     reset,
     setValue,
     triggerValidation,
-    watch } = useForm<{
+    watch,
+    formState } = useForm<{
       name: string, 
       is_active: boolean,
     }>({
@@ -52,11 +55,13 @@ export const Form = () => {
         is_active: true
       }
     });
+   useSnackbarFormError(formState.submitCount, errors);
   const snackbar = useSnackbar();
   const history = useHistory();
   const { id } = useParams();
 
   const [category, setCategory] = useState<{ id: string } | null>(null);
+  const testLoading = React.useContext(LoadingContext);
 
   useEffect(() => {
     register({ name: 'is_active' })

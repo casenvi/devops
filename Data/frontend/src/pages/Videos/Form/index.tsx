@@ -14,6 +14,8 @@ import GenreField, { GenreFieldComponent } from './GenreField';
 import CategoryField, { CategoryFieldComponent } from './CategoryField';
 import CastMemberField, { CastMemberFieldComponent } from './CastMemberField';
 import { omit, zipObject } from 'lodash';
+import useSnackbarFormError from '../../../hooks/useSnackbarFormError';
+import LoadingContext from '../../../components/Loading/LoadingContent';
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardUpload: {
@@ -85,7 +87,9 @@ export const Form = () => {
     reset,
     setValue,
     errors,
-    watch } = useForm<{
+    watch,
+    triggerValidation,
+    formState } = useForm<{
       name: string, 
       year_launched: string,
       duration: string,
@@ -105,6 +109,7 @@ export const Form = () => {
       },
       
     });
+    useSnackbarFormError(formState.submitCount, errors);
   const classes = useStyles();
   const snackbar = useSnackbar();
   const history = useHistory();
@@ -125,6 +130,7 @@ export const Form = () => {
     className: classes.submit,
     disabled: loading
   }
+  const testLoading = React.useContext(LoadingContext);
   useEffect(() => {
     register({ name: 'is_active' })
   }, [register]);
