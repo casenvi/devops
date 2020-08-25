@@ -16,6 +16,9 @@ import CastMemberField, { CastMemberFieldComponent } from './CastMemberField';
 import { omit, zipObject } from 'lodash';
 import useSnackbarFormError from '../../../hooks/useSnackbarFormError';
 import LoadingContext from '../../../components/Loading/LoadingContent';
+import SnackbarUpload from '../../../components/SnackbarUpdate';
+import {useSelector, useDispatch} from 'react-redux';
+import {UploadState as UploadState, Upload, UploadModule} from "../../../store/upload/types"
 
 const useStyles = makeStyles((theme: Theme) => ({
   cardUpload: {
@@ -130,12 +133,28 @@ export const Form = () => {
     className: classes.submit,
     disabled: loading
   }
-  const testLoading = React.useContext(LoadingContext);
+
+  const uploads = useSelector<UploadModule, Upload[]>(
+    (state: UploadModule) => state.upload.uploads
+    );
+
   useEffect(() => {
     register({ name: 'is_active' })
   }, [register]);
 
   useEffect(() => {
+    snackbar.enqueueSnackbar('', {
+      key: 'snackbar-upload',
+      persist: true,
+      anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right'
+      },
+      content: (key, message) => {
+        const id = key as any;
+        return <SnackbarUpload id={id}/>
+      }
+    })
     if (!id) {
       return;
     }

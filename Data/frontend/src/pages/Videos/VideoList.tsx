@@ -14,7 +14,7 @@ export const VideoList = () => {
           color={"secondary"}
           size="small"
           component={Link}
-          to="/Video/create"
+          to="/Videos/create"
         >
           <AddIcon />
         </Fab>
