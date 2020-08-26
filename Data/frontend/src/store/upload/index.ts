@@ -15,8 +15,10 @@ export const { Types, Creators } = createActions<{
   setUploadError(payload: Typings.SetUploadErrorsAction['payload']): Typings.SetUploadErrorsAction, 
 }>
   ({
-    addUpload: ['payload'],
- 
+    addUpload: ['payload'], 
+    removeUpload: ['payload'], 
+    updateProgress: ['payload'], 
+    setUploadError: ['payload'], 
   });
 export const INITIAL_STATE: Typings.UploadState = {
   uploads: []

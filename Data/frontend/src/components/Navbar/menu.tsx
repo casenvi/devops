@@ -16,7 +16,8 @@ export const Menu = () => {
     'category.list' : 'Categorias',
     'castmember.list' : 'Membros do Elenco',
     'genre.list': 'Gêneros',
-    'video.list': 'Vídeos'
+    'video.list': 'Vídeos',
+    'uploads': 'Upload'
   };  
   const menuRoutes = routes.filter(route => Object.keys(listRoutes).includes(route.name));
   const [anchorEl, setAnchorEl] = React.useState(null);
