@@ -5,7 +5,6 @@ import parseIso from 'date-fns/parseISO';
 import { BadgeYes, BadgeNo } from '../../components/Badge';
 import { IconButton, MuiThemeProvider } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from 'react-router-dom';
 import { DefaultTable, TableColumn, makeActionStyles, MuiDataTableComponent } from '../../components/Table';
 import { useSnackbar } from 'notistack';
@@ -73,14 +72,7 @@ const columnsDefinition: TableColumn[] = [
             >
               <EditIcon fontSize={'inherit'} />
             </IconButton>
-            <IconButton
-              color={'primary'}
-              component={Link}
-              to={`/categories/${value}/delete`}
-            >
-              <DeleteIcon fontSize={'inherit'} />
-            </IconButton>
-          </span>
+            </span>
         )
       },
       filter: false
@@ -104,7 +96,6 @@ export const Table = () => {
     filterManager,
     filterState,
     debouncedFilterState,
-    dispatch,
     totalRecords,
     setTotalRecords
   } = useFilter({
@@ -177,7 +168,7 @@ export const Table = () => {
           {variant: 'success'}
         )
         if (
-          rowsToDelete.data.length == filterState.pagination.per_page
+          rowsToDelete.data.length === filterState.pagination.per_page
           && filterState.pagination.page > 1  
         ){
           const page = filterState.pagination.page -2;

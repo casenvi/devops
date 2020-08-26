@@ -3,7 +3,6 @@ import {Autocomplete, AutocompleteProps, UseAutocompleteSingleProps} from '@mate
 import {TextFieldProps} from '@material-ui/core/TextField';
 import {TextField, CircularProgress} from '@material-ui/core';
 import { useState, useEffect, RefAttributes, useImperativeHandle } from 'react';
-import { useSnackbar } from 'notistack';
 import { useDebounce } from 'use-debounce/lib';
 
 interface AsyncAutoCompleteProps extends RefAttributes<AsyncAutoCompleteComponent> {
@@ -16,14 +15,13 @@ export interface AsyncAutoCompleteComponent{
     clear: () => void
   }
 const AsyncAutoComplete = React.forwardRef<AsyncAutoCompleteComponent, AsyncAutoCompleteProps>((props, ref) => {
-    const {AutocompleteProps, debounceTime = 300} = props;  
+    const {AutocompleteProps, debounceTime = 300, fetchOptions} = props;  
     const {freesolo, onOpen, onClose, onInputChange} = AutocompleteProps as any;
     const[open, setOpen] = useState(false);
     const[options, setOptions] = useState([]);
     const[loading, setLoading] = useState(false);
     const[searchText, setSearchText] = useState("");
-    const [debouncedSearchText] = useDebounce(searchText, debounceTime);
-    const snackbar = useSnackbar();
+    const [debouncedSearchText] = useDebounce(searchText, debounceTime);    
     const textFieldProps: TextFieldProps = {
         margin: 'normal',
         variant: 'outlined',
@@ -72,17 +70,20 @@ const AsyncAutoComplete = React.forwardRef<AsyncAutoCompleteComponent, AsyncAuto
         if(!open && !freesolo){
             setOptions([]);
         }
-    },[open]);
+    },[open, freesolo]);
 
-    useEffect( () => {
-        if (!open || debouncedSearchText ==="" && freesolo){
+    useEffect( () => {        
+        if (!open){
+            return;
+        }
+        if (debouncedSearchText === "" && freesolo){
             return;
         }
         let isSubscribe = true;
         (async () => {
             setLoading(true);
             try{
-                const data = await props.fetchOptions(debouncedSearchText);
+                const data = await fetchOptions(debouncedSearchText);
                 if (isSubscribe){
                     setOptions(data);
                 }
@@ -94,7 +95,7 @@ const AsyncAutoComplete = React.forwardRef<AsyncAutoCompleteComponent, AsyncAuto
             isSubscribe = false;
         }
     
-    },[freesolo ? debouncedSearchText : open]);
+    },[freesolo, debouncedSearchText, open, fetchOptions]);
 
     useImperativeHandle(ref, () => ({
         clear: () => {

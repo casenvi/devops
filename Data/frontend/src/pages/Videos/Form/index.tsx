@@ -15,10 +15,9 @@ import CategoryField, { CategoryFieldComponent } from './CategoryField';
 import CastMemberField, { CastMemberFieldComponent } from './CastMemberField';
 import { omit, zipObject } from 'lodash';
 import useSnackbarFormError from '../../../hooks/useSnackbarFormError';
-import LoadingContext from '../../../components/Loading/LoadingContent';
 import SnackbarUpload from '../../../components/SnackbarUpload';
-import {useSelector, useDispatch} from 'react-redux';
-import {UploadState as UploadState, Upload, UploadModule, FileInfo} from "../../../store/upload/types"
+import {useDispatch} from 'react-redux';
+import {FileInfo} from "../../../store/upload/types"
 import { Creators } from '../../../store/upload';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -92,7 +91,6 @@ export const Form = () => {
     setValue,
     errors,
     watch,
-    triggerValidation,
     formState } = useForm<{
       name: string, 
       year_launched: string,
@@ -156,10 +154,10 @@ export const Form = () => {
       .finally(
         () => setLoading(false)
       );
-  }, []);
+  }, [id, reset]);
 
   useEffect(() => {
-    const otherFields = ['rating', 'cast_members', 'categories', 'genres', 'opened', ...fileFields].forEach(name => register(name));
+    ['rating', 'cast_members', 'categories', 'genres', 'opened', ...fileFields].forEach(name => register(name));
   }, [register]);
 
   function onSubmit(formData: any, event: any) {

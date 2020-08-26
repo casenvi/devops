@@ -9,7 +9,6 @@ import * as yup from '../../util/vendor/yup';
 import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
 import useSnackbarFormError from '../../hooks/useSnackbarFormError';
-import LoadingContext from '../../components/Loading/LoadingContent';
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -49,7 +48,6 @@ export const Form = () => {
     setValue,
     errors,
     watch,
-    triggerValidation,
     formState } = useForm<{
       name: string, 
       is_active: boolean,
@@ -65,8 +63,7 @@ export const Form = () => {
   const { id } = useParams();
 
   const [castMember, setCastMember] = useState<{ id: string } | null>(null);
-  const testLoading = React.useContext(LoadingContext);
-
+  
   useEffect(() => {
     register({ name: 'is_active' })
   }, [register]);
@@ -87,7 +84,7 @@ export const Form = () => {
       .finally(
         () => setLoading(false)
       );
-  }, []);
+  }, [id, reset]);
 
   function onSubmit(formData: any, event: any) {
     setLoading(true);
@@ -105,10 +102,10 @@ export const Form = () => {
           event
             ? (
               castMember
-                ? history.replace(`/castMember/${response.data.id}/edit`)
-                : history.push(`/castMember/${response.data.id}/edit`)
+                ? history.replace(`/cast_members/${response.data.id}/edit`)
+                : history.push(`/cast_members/${response.data.id}/edit`)
             )
-            : history.push('/castMember')
+            : history.push('/cast_members')
         });
       })
       .catch((error) => {
@@ -134,6 +131,7 @@ export const Form = () => {
         disabled={loading}
         inputRef={register}
         error={errors.name !== undefined}
+        InputLabelProps={{ shrink: true }}
         helperText={errors.name && errors.name.message}
       />
       <TextField
@@ -144,6 +142,7 @@ export const Form = () => {
         fullWidth
         variant={"outlined"}
         margin={"normal"}
+        InputLabelProps={{ shrink: true }}
         inputRef={register}
         disabled={loading}
       />

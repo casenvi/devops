@@ -1,4 +1,4 @@
-import { Upload, UploadState, FileUpload } from "./types";
+import { Upload, FileUpload } from "./types";
 
 export function countInProgress(uploads: Upload[]){
     return uploads.filter(upload => !isFinished(upload)).length;
@@ -14,7 +14,7 @@ export function hasError(obj: Upload | FileUpload){
         return upload.files.some(file => file.error);
     }else{
         const file = obj as FileUpload;
-        return file.error != undefined;
+        return file.error !== undefined;
     }
 }
 

@@ -1,7 +1,6 @@
 import * as Typings from './types';
 import { createActions, createReducer } from 'reduxsauce';
 import update from 'immutability-helper';
-import { Uploads } from '../../pages/uploads';
 
 export const { Types, Creators } = createActions<{
   ADD_UPLOAD: string,

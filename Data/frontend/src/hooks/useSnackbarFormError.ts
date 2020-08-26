@@ -3,15 +3,15 @@ import { useEffect } from "react";
 
 
 const useSnackbarFormError = (submitCount, errors) => {
-    const snackbar = useSnackbar();
+    const {enqueueSnackbar} = useSnackbar();
     useEffect( () => {
         const hasError = Object.keys(errors).length !== 0;
         if (submitCount > 0 && hasError){
-            snackbar.enqueueSnackbar(
+           enqueueSnackbar(
                 'Formulário inválido. Verifique os campos destacados.',
                 {variant: 'error'}
             )
         }
-    }, [submitCount])
+    }, [submitCount, enqueueSnackbar, errors])
 };
 export default useSnackbarFormError;

@@ -8,7 +8,7 @@ import { GenreList } from "../pages/Genres/GenreList";
 import { GenreForm } from "../pages/Genres/GenreForm";
 import { VideoList } from "../pages/Videos/VideoList";
 import { VideoForm } from "../pages/Videos/VideoForm";
-import { Uploads } from "../pages/uploads/index";
+import { Uploads } from "../pages/Uploads/index";
 
 
 export interface MyRouteProp extends RouteProps {

@@ -6,7 +6,7 @@ import { GridSelectedItem } from '../../../components/Grid/GridSelectedItem';
 import useCollectionManager from '../../../hooks/useCollectionManager';
 import { FormControlProps, FormControl, FormHelperText, Typography} from '@material-ui/core';
 import { castMemberHttp } from '../../../util/http/cast-member-http';
-import { useRef, MutableRefObject, useImperativeHandle } from 'react';
+import { useRef, MutableRefObject, useImperativeHandle, useCallback } from 'react';
 
 interface CastMemberFieldProps {
   castMembers: any, 
@@ -26,12 +26,12 @@ const CastMemberField = React.forwardRef<CastMemberFieldComponent, CastMemberFie
   const {addItem, removeItem} = useCollectionManager(castMembers, setCastMembers);
   const autocompleteRef = useRef() as MutableRefObject<AsyncAutoCompleteComponent>;
 
-  const fetchOptions = (searchText:string) => autocompleteHttp(castMemberHttp.list({
+  const fetchOptions = useCallback((searchText:string) => autocompleteHttp(castMemberHttp.list({
     queryParams: {
       search: searchText, 
       all:""
     }
-  })).then((data)=> data.data);
+  })).then((data)=> data.data), [autocompleteHttp]);
   useImperativeHandle(ref, () => ({
     clear: () => autocompleteRef.current.clear()
   }));

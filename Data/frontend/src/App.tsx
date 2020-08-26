@@ -8,7 +8,6 @@ import Breadcrumb from './components/Breadcrumb/';
 import theme from './theme';
 import { SnackbarProvider } from './components/SnackbarProvider';
 import Spinner from './components/Spinner';
-import LoadingContext from './components/Loading/LoadingContent';
 import { LoadingProvider } from './components/Loading/LoadingProvider';
 
 function App() {

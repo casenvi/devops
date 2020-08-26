@@ -1,6 +1,6 @@
 import {Types, Creators} from './index';
 import { actionChannel, take, call, put } from 'redux-saga/effects';
-import { AddUploadAction, FileUpload, FileInfo } from './types';
+import { AddUploadAction, FileInfo } from './types';
 import { Video } from '../../util/models';
 import { videoHttp } from '../../util/http/video-http';
 import { eventChannel, END } from 'redux-saga';
@@ -11,7 +11,7 @@ export function* uploadWatcherSaga(){
         const{payload}: AddUploadAction = yield take(newFilesChannel);
         for(const fileInfo of payload.files){
             try {
-                const response = yield call(uploadFile, {video: payload.video, fileInfo})                
+                yield call(uploadFile, {video: payload.video, fileInfo})                
             } catch (error) {
                 console.log(error);
             }
@@ -44,7 +44,7 @@ function* uploadFile({video, fileInfo}: {video:Video, fileInfo: FileInfo}){
     }
 }
 
-function* sendUpload({id, fileInfo}: {id:string, fileInfo: FileInfo}){
+function sendUpload({id, fileInfo}: {id:string, fileInfo: FileInfo}){
     return eventChannel(emitter => {
         videoHttp.partialUpdate(id, {
             _method: 'PATCH',

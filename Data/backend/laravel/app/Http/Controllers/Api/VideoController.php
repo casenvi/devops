@@ -89,7 +89,10 @@ class VideoController extends BasicCrudController
     {
         $obj = $this->findOrFail($id);
         $this->addRuleIfGenreHasCategory($request);
-        $validatedData = $this->validate($request, $this->rulesUpdate());
+        $validatedData = $this->validate(
+            $request, 
+            $request->isMethod('PUT') ? $this->rulesUpdate(): $this->rulesPatch() 
+        );
         $obj->update($validatedData);
         return $obj;
     }
@@ -138,5 +141,20 @@ class VideoController extends BasicCrudController
             'categories',
             'castMembers'
         ]);
+    }
+
+    protected function rulesPatch()
+    {
+        return array_map(function($rules){
+            if (is_array($rules)){
+                $exists = in_array("required", $rules);
+                if ($exists){
+                    array_unshift($rules, "sometimes");
+                }
+            }else{
+                return str_replace("required", "sometimes|required", $rules);
+            }
+            return $rules;
+        }, $this->rulesUpdate());
     }
 }

@@ -31,9 +31,7 @@ const useStyles = makeStyles((theme: Theme) => {
 
 export const Form = () => {
   const classes = useStyles();
-
-  const [loading, setLoading] = useState<boolean>(false);
-
+  const loading = React.useContext(LoadingContext);
   const buttonProps: ButtonProps = {
     variant: 'contained',
     color: 'secondary',
@@ -47,7 +45,6 @@ export const Form = () => {
     errors,
     reset,
     watch,
-    triggerValidation,
     formState } = useForm<{
       name: string, 
       is_active: boolean,
@@ -67,25 +64,15 @@ export const Form = () => {
   const [all_categories, setAllCategories] = useState<any[]>([]);
   const categoryChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setCategories(event.target.value as string[]);
-  };
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: 48 * 4.5 + 8,
-        width: '100%',
-      },
-    },
-  };
+  };  
 
   const [genre, setGenre] = useState<{ id: string } | null>(null);
-  const testLoading = React.useContext(LoadingContext);
-
+  
   useEffect(() => {
     register({ name: "categories_id" })
   }, [register]);
 
   useEffect(() => {
-    setLoading(true);
     categoryHttp
       .list()
       .then(
@@ -100,19 +87,15 @@ export const Form = () => {
       .get(id)
       .then(
         ({ data }) => {
-          setGenre(data.data)
-          // setCategories(data.data.category_id)
-          reset(data.data)
+          setGenre(data.data);
+          setCategories(data.data.categories.map((category) => {return category.id}));            
+          reset(data.data);
         }
-      )
-      .finally(
-        () => setLoading(false)
       );
-  }, []);
+  }, [id, reset, snackbar]);
 
   function onSubmit(formData: any, event: any) {
     formData['categories_id'] = categories;
-    setLoading(true);
     const http = !genre
       ? genreHttp.create(formData)
       : genreHttp.update(genre.id, formData);
@@ -138,10 +121,7 @@ export const Form = () => {
           'Não foi possível salvar o Gênero',
           { variant: 'error' }
         )
-      })
-      .finally(
-        () => setLoading(false)
-      );
+      });
   }
 
   return (
@@ -167,7 +147,6 @@ export const Form = () => {
           value={categories}
           onChange={categoryChange}
           input={<Input />}
-          renderValue={(selected) => (selected as string[]).join(', ')}
         >
           <MenuItem value="" disabled>
             <em>Selecione categorias</em>

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import format from 'date-fns/format';
 import parseIso from 'date-fns/parseISO';
-import { BadgeYes, BadgeNo } from '../../components/Badge';
 import { IconButton, MuiThemeProvider } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -82,16 +81,9 @@ const columnsDefinition: TableColumn[] = [
             <IconButton
               color={'primary'}
               component={Link}
-              to={`/video/${value}/edit`}
+              to={`/videos/${value}/edit`}
             >
               <EditIcon fontSize={'inherit'} />
-            </IconButton>
-            <IconButton
-              color={'primary'}
-              component={Link}
-              to={`/video/${value}/delete`}
-            >
-              <DeleteIcon fontSize={'inherit'} />
             </IconButton>
           </span>
         )
@@ -117,7 +109,6 @@ export const Table = () => {
     filterManager,
     filterState,
     debouncedFilterState,
-    dispatch,
     totalRecords,
     setTotalRecords
   } = useFilter({
@@ -191,7 +182,7 @@ export const Table = () => {
           {variant: 'success'}
         )
         if (
-          rowsToDelete.data.length == filterState.pagination.per_page
+          rowsToDelete.data.length === filterState.pagination.per_page
           && filterState.pagination.page > 1  
         ){
           const page = filterState.pagination.page -2;

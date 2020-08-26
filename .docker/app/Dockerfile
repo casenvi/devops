@@ -40,7 +40,7 @@ RUN echo "xdebug.remote_enable=1" | tee -a /usr/local/etc/php/conf.d/docker-php-
 RUN echo "xdebug.remote_connect_back=1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 RUN echo "xdebug.remote_host=172.172.0.1" | tee -a /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini > /dev/null
 
-RUN echo "post_max_size=50M" | tee -a /usr/local/etc/php/conf.d/docker-php-upload.ini > /dev/null
+RUN echo "post_max_size=50G" | tee -a /usr/local/etc/php/conf.d/docker-php-upload.ini > /dev/null
 RUN echo "upload_max_filesize=51200M" | tee -a /usr/local/etc/php/conf.d/docker-php-upload.ini > /dev/null
 #RUN usermod -u 1000 www-data
 #USER www-data

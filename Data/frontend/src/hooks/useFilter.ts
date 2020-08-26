@@ -1,5 +1,5 @@
 import { useState, useReducer, Dispatch, Reducer, useEffect } from "react";
-import { reducer, Creators, INITIAL_STATE } from "../store/filter";
+import { reducer, Creators} from "../store/filter";
 import { State as FilterState, Actions as FilterActions } from "../store/filter/types";
 import { MUIDataTableColumn } from "mui-datatables";
 import { useDebounce } from 'use-debounce';
@@ -8,7 +8,6 @@ import { History } from 'history';
 import { isEqual } from 'lodash';
 import * as yup from '../util/vendor/yup';
 import { MuiDataTableComponent } from "../components/Table";
-import { Schema } from "../util/vendor/yup";
 
 interface FilterManagerOptions {
   columns: MUIDataTableColumn[];
@@ -28,7 +27,7 @@ interface ExtraFilter {
 
 interface UserFilterOptions extends Omit<FilterManagerOptions, 'history'> { }
 
-export default function useFIlter(options: UserFilterOptions) {
+export default function useFilter(options: UserFilterOptions) {
   const history = useHistory();
   const filterManager = new FilterManager({ ...options, history });
   const INITIAL_STATE = filterManager.getStateFromURL();

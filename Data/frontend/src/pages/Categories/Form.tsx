@@ -27,16 +27,17 @@ const useStyles = makeStyles((theme: Theme) => {
 
 export const Form = () => {
   const classes = useStyles();
-
-  const [loading, setLoading] = useState<boolean>(false);
-
+  const loading = React.useContext(LoadingContext);
   const buttonProps: ButtonProps = {
     variant: 'contained',
     color: 'secondary',
     className: classes.submit,
     disabled: loading
   }
-
+  const snackbar = useSnackbar();
+  const history = useHistory();
+  const { id } = useParams();
+  const [category, setCategory] = useState<{ id: string } | null>(null);
   const {
     register,
     handleSubmit,
@@ -56,13 +57,8 @@ export const Form = () => {
       }
     });
    useSnackbarFormError(formState.submitCount, errors);
-  const snackbar = useSnackbar();
-  const history = useHistory();
-  const { id } = useParams();
-
-  const [category, setCategory] = useState<{ id: string } | null>(null);
-  const testLoading = React.useContext(LoadingContext);
-
+  
+  
   useEffect(() => {
     register({ name: 'is_active' })
   }, [register]);
@@ -71,7 +67,6 @@ export const Form = () => {
     if (!id) {
       return;
     }
-    setLoading(true);
     categoryHttp
       .get(id)
       .then(
@@ -79,14 +74,10 @@ export const Form = () => {
           setCategory(data.data)
           reset(data.data)
         }
-      )
-      .finally(
-        () => setLoading(false)
       );
-  }, []);
+  }, [id, reset]);
 
   function onSubmit(formData: any, event: any) {
-    setLoading(true);
     const http = !category
       ? categoryHttp.create(formData)
       : categoryHttp.update(category.id, formData);
@@ -112,10 +103,7 @@ export const Form = () => {
           'Não foi possível salvar a categoria',
           { variant: 'error' }
         )
-      })
-      .finally(
-        () => setLoading(false)
-      );
+      });
   }
   
   return (

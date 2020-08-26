@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import MUIDataTable, { MUIDataTableOptions, MUIDataTableProps, MUIDataTableColumn } from 'mui-datatables';
 import { merge, omit, cloneDeep } from 'lodash';
-import { useTheme, MuiThemeProvider, Theme, useMediaQuery, ThemeProvider } from '@material-ui/core';
+import { useTheme, MuiThemeProvider, Theme, useMediaQuery } from '@material-ui/core';
 import DebouncedTableSearch from './DebouncedTableSearch.js';
 
 const makeDefaultOptions = (debouncedSearchTime?:number,debounceTime?:number): MUIDataTableOptions => ({

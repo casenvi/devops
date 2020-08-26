@@ -5,7 +5,6 @@ import { BadgeYes, BadgeNo } from '../../components/Badge';
 import parseIso from 'date-fns/parseISO';
 import { IconButton, MuiThemeProvider } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from 'react-router-dom';
 import { DefaultTable, TableColumn, makeActionStyles, MuiDataTableComponent } from '../../components/Table';
 import { useSnackbar } from 'notistack';
@@ -13,7 +12,7 @@ import { FilterResetButton } from '../../components/Table/FilterResetButton';
 import useFilter from '../../hooks/useFilter';
 import { genreHttp } from '../../util/http/genre-http';
 import * as yup from '../../util/vendor/yup';
-import { Genre, ListResponse, Category } from '../../util/models';
+import { Genre, ListResponse } from '../../util/models';
 import { categoryHttp } from '../../util/http/category-http';
 import useDeleteCollection from '../../hooks/useDeleteCollection';
 import DeleteDialog from '../../components/DeleteDialog';
@@ -73,13 +72,6 @@ const columnsDefinition: TableColumn[] = [
             >
               <EditIcon fontSize={'inherit'} />
             </IconButton>
-            <IconButton
-              color={'primary'}
-              component={Link}
-              to={`/genres/${value}/delete`}
-            >
-              <DeleteIcon fontSize={'inherit'} />
-            </IconButton>
           </span>
         )
       },
@@ -99,14 +91,12 @@ export const Table = () => {
   const [data, setData] = useState<Genre[]>([]);
   const loading = React.useContext(LoadingContext);
   const {openDeleteDialog, setOpenDeleteDialog, rowsToDelete, setRowsToDelete} = useDeleteCollection();  
-  const [categories, setCategories] = useState<Category[]>();
   const tableRef = React.useRef() as React.MutableRefObject<MuiDataTableComponent>;
   const {
     columns,
     filterManager,
     filterState,
     debouncedFilterState,
-    dispatch,
     totalRecords,
     setTotalRecords
   } = useFilter({
@@ -161,7 +151,6 @@ export const Table = () => {
       try {
         const {data} = await categoryHttp.list({queryParams: {all:''}});
         if (isSubscribed){
-          setCategories(data.data);          
           const arrayWithDuplicates = data.data.map((category: any) => category.name);
           (columnCategories.options as any).filterOptions.names = arrayWithDuplicates.filter((n:any, i:any) => arrayWithDuplicates.indexOf(n) === i);
         }
@@ -243,7 +232,7 @@ export const Table = () => {
           {variant: 'success'}
         )
         if (
-          rowsToDelete.data.length == filterState.pagination.per_page
+          rowsToDelete.data.length === filterState.pagination.per_page
           && filterState.pagination.page > 1  
         ){
           const page = filterState.pagination.page -2;

@@ -13,7 +13,7 @@ import useFilter from '../../hooks/useFilter';
 import { castMemberHttp } from '../../util/http/cast-member-http';
 import { CastMember, ListResponse, CastMemberTypeMap } from "../../util/models"
 import * as yup from '../../util/vendor/yup';
-import { filter, invert } from 'lodash';
+import { invert } from 'lodash';
 import useDeleteCollection from '../../hooks/useDeleteCollection';
 import DeleteDialog from '../../components/DeleteDialog';
 import LoadingContext from '../../components/Loading/LoadingContent';
@@ -64,16 +64,9 @@ const columnsDefinition: TableColumn[] = [
             <IconButton
               color={'primary'}
               component={Link}
-              to={`/castMembers/${value}/edit`}
+              to={`/cast_members/${value}/edit`}
             >
               <EditIcon fontSize={'inherit'} />
-            </IconButton>
-            <IconButton
-              color={'primary'}
-              component={Link}
-              to={`/castMembers/${value}/delete`}
-            >
-              <DeleteIcon fontSize={'inherit'} />
             </IconButton>
           </span>
         )
@@ -95,7 +88,6 @@ export const Table = () => {
     filterManager,
     filterState,
     debouncedFilterState,
-    dispatch,
     totalRecords,
     setTotalRecords
   } = useFilter({
@@ -209,7 +201,7 @@ export const Table = () => {
           {variant: 'success'}
         )
         if (
-          rowsToDelete.data.length == filterState.pagination.per_page
+          rowsToDelete.data.length === filterState.pagination.per_page
           && filterState.pagination.page > 1  
         ){
           const page = filterState.pagination.page -2;

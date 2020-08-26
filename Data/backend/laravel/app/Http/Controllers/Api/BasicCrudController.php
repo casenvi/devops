@@ -21,8 +21,9 @@ abstract class BasicCrudController extends Controller
     protected function findOrFail($id)
     {
         $model = $this->model();
+        $query = $this->queryBuilder();
         $keyName = (new $model)->getRouteKeyName();
-        return $this->model()::where($keyName, $id)->firstOrFail();
+        return $query->where($keyName, $id)->firstOrFail();
     }
 
     public function index(Request $request)
