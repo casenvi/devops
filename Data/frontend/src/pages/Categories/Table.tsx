@@ -106,8 +106,11 @@ export const Table = () => {
     tableRef
   });
   useEffect(() => {
+    if (filterManager.state === filterState){
+      return;
+    }
     filterManager.replaceHistory();
-  }, []);
+  }, [filterManager, filterState]);
 
   useEffect(() => {
     subscribed.current = true;

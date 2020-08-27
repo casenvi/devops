@@ -133,8 +133,11 @@ export const Table = () => {
     }
   });
   useEffect(() => {
+    if (filterManager.state === filterState){
+      return;
+    }
     filterManager.replaceHistory();
-  }, []);
+  }, [filterManager, filterState]);
 
   const indexColumnCategories = columns.findIndex(c => c.name === 'categories');
   const columnCategories = columns[indexColumnCategories];

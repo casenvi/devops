@@ -122,8 +122,11 @@ export const Table = () => {
     }
   });
   useEffect(() => {
+    if (filterManager.state === filterState){
+      return;
+    }
     filterManager.replaceHistory();
-  }, []);
+  }, [filterManager, filterState]);
 
   const indexColumnType = columns.findIndex(c => c.name === 'type');
   const columnType = columns[indexColumnType];
