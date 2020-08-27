@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { makeStyles, Theme, Fade, IconButton, Link, Divider } from '@material-ui/core';
+import { makeStyles, Theme, Fade, Divider, IconButton } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ErrorIcon from '@material-ui/icons/Error';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -59,7 +60,7 @@ const UploadAction: React.FC<UploadActionProps> = (props) => {
                                 </IconButton>                
                                 <IconButton
                                     component={Link}
-                                    //to={`/videos/${videoId}/edit`}                        
+                                    to={`/videos/${videoId}/edit`}
                                 >
                                     <EditIcon color={'primary'}/>
                                 </IconButton>

@@ -62,7 +62,7 @@ function addUpload(state = INITIAL_STATE, action: Typings.AddUploadAction): Typi
 
 function removeUpload( state: Typings.UploadState = INITIAL_STATE, action: Typings.RemoveUploadAction): Typings.UploadState {
   const index = findIndexUpload(state, action.payload.id);
-  if (index!==-1){
+  if (index===-1){
     return state;
   }
   return {

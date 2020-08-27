@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Theme, makeStyles, CardContent, Card, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Grid, List, Divider } from '@material-ui/core';
+import { Theme, makeStyles, CardContent, Card, ExpansionPanelSummary, Typography, ExpansionPanelDetails, Grid, List, Divider, ExpansionPanel } from '@material-ui/core';
 import { Page } from '../../components/Page';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import UploadItem from './UploadItem';
@@ -38,29 +38,31 @@ export const Uploads: React.FC<UploadsProps> = () => {
                             <UploadItem uploadOrFile={upload}>
                                 {upload.video.title}
                             </UploadItem>
-                            <ExpansionPanelSummary
-                                className={classes.panelSummary}
-                                expandIcon={
-                                    <ExpandMoreIcon className={classes.expandedIcon}/>
-                                }
-                            >                    
-                                <Typography> Ver Detalhes</Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails style={{padding:'0px'}}>
-                                <Grid item xs={12}>
-                                    <List dense={true} style={{padding:'0px'}}>
-                                        { upload.files.map((file, key) => (
-                                            <React.Fragment key={key}>
-                                                <Divider/>
-                                                <UploadItem uploadOrFile={file}>
-                                                    {`${VideoFileFieldsMap[file.fileField]} - ${file.filename}`}
-                                                </UploadItem>
-                                            </React.Fragment>
-                                        ))
-                                        }
-                                    </List>
-                                </Grid>
-                            </ExpansionPanelDetails>
+                            <ExpansionPanel>
+                                <ExpansionPanelSummary
+                                    className={classes.panelSummary}
+                                    expandIcon={
+                                        <ExpandMoreIcon className={classes.expandedIcon}/>
+                                    }
+                                >                    
+                                    <Typography> Ver Detalhes</Typography>
+                                </ExpansionPanelSummary>
+                                <ExpansionPanelDetails style={{padding:'0px'}}>
+                                    <Grid item xs={12}>
+                                        <List dense={true} style={{padding:'0px'}}>
+                                            { upload.files.map((file, key) => (
+                                                <React.Fragment key={key}>
+                                                    <Divider/>
+                                                    <UploadItem uploadOrFile={file}>
+                                                        {`${VideoFileFieldsMap[file.fileField]} - ${file.filename}`}
+                                                    </UploadItem>
+                                                </React.Fragment>
+                                            ))
+                                            }
+                                        </List>
+                                    </Grid>
+                                </ExpansionPanelDetails>
+                            </ExpansionPanel>
                         </CardContent>
                     </Card>
                 ))

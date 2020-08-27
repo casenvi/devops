@@ -37,14 +37,14 @@ const UploadItem: React.FC<UploadItemProps> = (props) => {
             <Tooltip
                 disableFocusListener
                 disableTouchListener
-                onMouseOver={() => setItemHover(true)}
-                onMouseLeave={() => setItemHover(true)}
                 title={error ? "Não foi possível fazer o upload, clique para mais detalhes" : ""}
                 placement={'left'}
-            >
+                >
                 <ListItem
                     className={classes.listItem}
                     button
+                    onMouseOver={() => setItemHover(true)}
+                    onMouseLeave={() => setItemHover(false)}
                     >
                         <ListItemIcon className={classes.movieIcon}>
                             <MovieIcon/>

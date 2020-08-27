@@ -35,7 +35,7 @@ const UploadAction: React.FC<UploadActionProps> = (props) => {
     React.useEffect(() => {
         setShow(isFinished(upload));
     }, [upload]);
-    return (
+    return (        
         <Fade in={show} timeout={{enter:1000}}>
             <ListItemSecondaryAction>
                 <span hidden={hover}>
@@ -54,12 +54,12 @@ const UploadAction: React.FC<UploadActionProps> = (props) => {
                     }
                 </span>
                 <span hidden={!hover}>
-                        <IconButton 
-                            className={classes.deleteIcon} 
-                            edge={'end'} 
-                            onClick={() => dispatch(Creators.removeUpload({id: upload.video.id}))}
-                        >
-                            <DeleteIcon/>
+                    <IconButton 
+                        className={classes.deleteIcon} 
+                        edge={'end'} 
+                        onClick={() => dispatch(Creators.removeUpload({id: upload.video.id}))}
+                    >
+                        <DeleteIcon/>
                         </IconButton>
                 </span>
             </ListItemSecondaryAction>

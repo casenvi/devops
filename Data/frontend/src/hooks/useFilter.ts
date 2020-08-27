@@ -38,8 +38,11 @@ export default function useFilter(options: UserFilterOptions) {
   filterManager.dispatch = dispatch;
   filterManager.applyOrderInColumns();
   useEffect(() => {
+    if (filterManager.state === filterState){
+      return;
+    }
     filterManager.replaceHistory();
-  }, []);
+  }, [filterManager, filterState]);
   return {
     columns: filterManager.columns,
     filterManager,
