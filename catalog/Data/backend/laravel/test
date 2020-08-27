@@ -1,0 +1,1512 @@
+PHPUnit 8.5.0 by Sebastian Bergmann and contributors.
+
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE  63 / 115 ( 54%)
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE            115 / 115 (100%)
+
+Time: 7.6 seconds, Memory: 28.00 MB
+
+There were 115 errors:
+
+1) Tests\Unit\ExampleTest::testBasicTest
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+2) Tests\Unit\Models\CastMemberUnitTest::testIfUseTraits
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CastMemberUnitTest.php:18
+
+3) Tests\Unit\Models\CastMemberUnitTest::testFillableAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CastMemberUnitTest.php:18
+
+4) Tests\Unit\Models\CastMemberUnitTest::testDatesAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CastMemberUnitTest.php:18
+
+5) Tests\Unit\Models\CastMemberUnitTest::testCastsAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CastMemberUnitTest.php:18
+
+6) Tests\Unit\Models\CastMemberUnitTest::testIncrementingAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CastMemberUnitTest.php:18
+
+7) Tests\Unit\Models\CategoryUnitTest::testIfUseTraits
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CategoryUnitTest.php:18
+
+8) Tests\Unit\Models\CategoryUnitTest::testFillableAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CategoryUnitTest.php:18
+
+9) Tests\Unit\Models\CategoryUnitTest::testDatesAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CategoryUnitTest.php:18
+
+10) Tests\Unit\Models\CategoryUnitTest::testCastsAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CategoryUnitTest.php:18
+
+11) Tests\Unit\Models\CategoryUnitTest::testIncrementingAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/CategoryUnitTest.php:18
+
+12) Tests\Unit\Models\GenreUnitTest::testIfUseTraits
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/GenreUnitTest.php:17
+
+13) Tests\Unit\Models\GenreUnitTest::testFillableAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/GenreUnitTest.php:17
+
+14) Tests\Unit\Models\GenreUnitTest::testDatesAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/GenreUnitTest.php:17
+
+15) Tests\Unit\Models\GenreUnitTest::testCastsAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/GenreUnitTest.php:17
+
+16) Tests\Unit\Models\GenreUnitTest::testIncrementingAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/GenreUnitTest.php:17
+
+17) Tests\Unit\Models\Traits\UploadFilesUnitTest::testUploadFile
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/Traits/UploadFilesUnitTest.php:15
+
+18) Tests\Unit\Models\Traits\UploadFilesUnitTest::testUploadFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/Traits/UploadFilesUnitTest.php:15
+
+19) Tests\Unit\Models\Traits\UploadFilesUnitTest::testDeleteFile
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/Traits/UploadFilesUnitTest.php:15
+
+20) Tests\Unit\Models\Traits\UploadFilesUnitTest::testDeleteFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/Traits/UploadFilesUnitTest.php:15
+
+21) Tests\Unit\Models\Traits\UploadFilesUnitTest::testExtractFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/Traits/UploadFilesUnitTest.php:15
+
+22) Tests\Unit\Models\Traits\UploadFilesUnitTest::testDeleteOldFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/Traits/UploadFilesUnitTest.php:15
+
+23) Tests\Unit\Models\VideoUnitTest::testIfUseTraits
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/VideoUnitTest.php:18
+
+24) Tests\Unit\Models\VideoUnitTest::testFillableAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/VideoUnitTest.php:18
+
+25) Tests\Unit\Models\VideoUnitTest::testDatesAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/VideoUnitTest.php:18
+
+26) Tests\Unit\Models\VideoUnitTest::testCastsAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/VideoUnitTest.php:18
+
+27) Tests\Unit\Models\VideoUnitTest::testIncrementingAttribute
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Unit/Models/VideoUnitTest.php:18
+
+28) Tests\Unit\Rules\GenreHasCategoriesRuleUnitTest::testCategoriesIdField
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+29) Tests\Unit\Rules\GenreHasCategoriesRuleUnitTest::testGenresIdValue
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+30) Tests\Unit\Rules\GenreHasCategoriesRuleUnitTest::testPassesReturnsFalseWhenCategoriesOrGenresIsArrayEmpty
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+31) Tests\Unit\Rules\GenreHasCategoriesRuleUnitTest::testReturnsFalseWhenHasCategoryWithoutGenres
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+32) Tests\Unit\Rules\GenreHasCategoriesRuleUnitTest::testPassesReturnsFalseWhenGetRowsIsEmpty
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+33) Tests\Unit\Rules\GenreHasCategoriesRuleUnitTest::testPassesIsValid
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+34) Tests\Feature\ExampleTest::testBasicTest
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+35) Tests\Feature\Http\Controllers\Api\BasicCrudControllerTest::testIndex
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/BasicCrudControllerTest.php:18
+
+36) Tests\Feature\Http\Controllers\Api\BasicCrudControllerTest::testInvalidationDataInStore
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/BasicCrudControllerTest.php:18
+
+37) Tests\Feature\Http\Controllers\Api\BasicCrudControllerTest::testStore
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/BasicCrudControllerTest.php:18
+
+38) Tests\Feature\Http\Controllers\Api\BasicCrudControllerTest::testShow
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/BasicCrudControllerTest.php:18
+
+39) Tests\Feature\Http\Controllers\Api\BasicCrudControllerTest::testUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/BasicCrudControllerTest.php:18
+
+40) Tests\Feature\Http\Controllers\Api\BasicCrudControllerTest::testDestroy
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/BasicCrudControllerTest.php:18
+
+41) Tests\Feature\Http\Controllers\Api\CastMemberControllerTest::testIndex
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php:32
+
+42) Tests\Feature\Http\Controllers\Api\CastMemberControllerTest::testShow
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php:32
+
+43) Tests\Feature\Http\Controllers\Api\CastMemberControllerTest::testStore
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php:32
+
+44) Tests\Feature\Http\Controllers\Api\CastMemberControllerTest::testUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php:32
+
+45) Tests\Feature\Http\Controllers\Api\CastMemberControllerTest::testInvalidationData
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php:32
+
+46) Tests\Feature\Http\Controllers\Api\CastMemberControllerTest::testDestroy
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CastMemberControllerTest.php:32
+
+47) Tests\Feature\Http\Controllers\Api\CategoryControllerTest::testIndex
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CategoryControllerTest.php:37
+
+48) Tests\Feature\Http\Controllers\Api\CategoryControllerTest::testShow
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CategoryControllerTest.php:37
+
+49) Tests\Feature\Http\Controllers\Api\CategoryControllerTest::testStore
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CategoryControllerTest.php:37
+
+50) Tests\Feature\Http\Controllers\Api\CategoryControllerTest::testInvalidationData
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CategoryControllerTest.php:37
+
+51) Tests\Feature\Http\Controllers\Api\CategoryControllerTest::testDestroy
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CategoryControllerTest.php:37
+
+52) Tests\Feature\Http\Controllers\Api\CategoryControllerTest::testUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/CategoryControllerTest.php:37
+
+53) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testIndex
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+54) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testShow
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+55) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testStore
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+56) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testInvalidationData
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+57) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testRollbackStore
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+58) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testRollBackUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+59) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testDestroy
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+60) Tests\Feature\Http\Controllers\Api\GenreControllerTest::testSyncCategories
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/GenreControllerTest.php:45
+
+61) Tests\Feature\Http\Controllers\Api\VideoCrudControllerTest::testIndex
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoCrudControllerTest.php:56
+
+62) Tests\Feature\Http\Controllers\Api\VideoCrudControllerTest::testShow
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoCrudControllerTest.php:56
+
+63) Tests\Feature\Http\Controllers\Api\VideoCrudControllerTest::testDestroy
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoCrudControllerTest.php:56
+
+64) Tests\Feature\Http\Controllers\Api\VideoCrudControllerTest::testStoreWithOutFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoCrudControllerTest.php:56
+
+65) Tests\Feature\Http\Controllers\Api\VideoCrudControllerTest::testInvalidationData
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoCrudControllerTest.php:56
+
+66) Tests\Feature\Http\Controllers\Api\VideoCrudControllerTest::testSyncCategories
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoCrudControllerTest.php:56
+
+67) Tests\Feature\Http\Controllers\Api\VideoCrudControllerTest::testSyncGenres
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoCrudControllerTest.php:56
+
+68) Tests\Feature\Http\Controllers\Api\VideoUploadControllerTest::testInvalidationVideoField
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoUploadControllerTest.php:23
+
+69) Tests\Feature\Http\Controllers\Api\VideoUploadControllerTest::testInvalidationThumbField
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoUploadControllerTest.php:23
+
+70) Tests\Feature\Http\Controllers\Api\VideoUploadControllerTest::testInvalidationBannerField
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoUploadControllerTest.php:23
+
+71) Tests\Feature\Http\Controllers\Api\VideoUploadControllerTest::testInvalidationTrailerField
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoUploadControllerTest.php:23
+
+72) Tests\Feature\Http\Controllers\Api\VideoUploadControllerTest::testStoreWithFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoUploadControllerTest.php:23
+
+73) Tests\Feature\Http\Controllers\Api\VideoUploadControllerTest::testUpdateWithFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoBaseControllerTest.php:23
+/var/www/backend/tests/Feature/Http/Controllers/Api/VideoUploadControllerTest.php:23
+
+74) Tests\Feature\Models\CastMemberTest::testList
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+75) Tests\Feature\Models\CastMemberTest::testCreate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+76) Tests\Feature\Models\CastMemberTest::testCreateIsActive
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+77) Tests\Feature\Models\CastMemberTest::testUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+78) Tests\Feature\Models\CastMemberTest::testDelete
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+79) Tests\Feature\Models\CategoryTest::testList
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+80) Tests\Feature\Models\CategoryTest::testCreate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+81) Tests\Feature\Models\CategoryTest::testCreateDescription
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+82) Tests\Feature\Models\CategoryTest::testCreateIsActive
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+83) Tests\Feature\Models\CategoryTest::testUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+84) Tests\Feature\Models\CategoryTest::testDelete
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+85) Tests\Feature\Models\GenreTest::testList
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+86) Tests\Feature\Models\GenreTest::testCreate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+87) Tests\Feature\Models\GenreTest::testCreateIsActive
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+88) Tests\Feature\Models\GenreTest::testUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+89) Tests\Feature\Models\GenreTest::testDelete
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+
+90) UploadFilesTest::testMakeOldFieldsOnSaving
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/Traits/UploadFilesTest.php:11
+
+91) UploadFilesTest::testMakeOldFilesNullOnSaving
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/Traits/UploadFilesTest.php:11
+
+92) Tests\Feature\Models\VideoCrudTest::testList
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+93) Tests\Feature\Models\VideoCrudTest::testCreateWithBasicsFields
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+94) Tests\Feature\Models\VideoCrudTest::testCreateWithRelations
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+95) Tests\Feature\Models\VideoCrudTest::testUpdateWithBasicsFields
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+96) Tests\Feature\Models\VideoCrudTest::testUpdateWithRelations
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+97) Tests\Feature\Models\VideoCrudTest::testDelete
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+98) Tests\Feature\Models\VideoCrudTest::testRollBackCreate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+99) Tests\Feature\Models\VideoCrudTest::testRollBackUpdate
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+100) Tests\Feature\Models\VideoCrudTest::testHandleRelations
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+101) Tests\Feature\Models\VideoCrudTest::testSyncCategories
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+102) Tests\Feature\Models\VideoCrudTest::testSyncGenres
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoCrudTest.php:15
+
+103) Tests\Feature\Models\VideoUploadTest::testCreateWithBasicsFields
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoUploadTest.php:16
+
+104) Tests\Feature\Models\VideoUploadTest::testUpdateWithFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoUploadTest.php:16
+
+105) Tests\Feature\Models\VideoUploadTest::testCreatedWithFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoUploadTest.php:16
+
+106) Tests\Feature\Models\VideoUploadTest::testCreateIfRollbackFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoUploadTest.php:16
+
+107) Tests\Feature\Models\VideoUploadTest::testUpdateIfRollbackFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoUploadTest.php:16
+
+108) Tests\Feature\Models\VideoUploadTest::testFileUrlsIfNullWhenFiledAreNull
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Models/VideoBaseTest.php:16
+/var/www/backend/tests/Feature/Models/VideoUploadTest.php:16
+
+109) Tests\Feature\Rules\GenresHasCategoriesRuleTest::testPassesIsValid
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Rules/GenreHasCategoriesRuleTest.php:26
+
+110) Tests\Feature\Rules\GenresHasCategoriesRuleTest::testPassesIsNotValid
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Feature/Rules/GenreHasCategoriesRuleTest.php:26
+
+111) Tests\Prod\Models\Traits\UploadFilesProdTest::testUploadFile
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Prod/Models/Traits/UploadFilesProdTest.php:18
+
+112) Tests\Prod\Models\Traits\UploadFilesProdTest::testUploadFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Prod/Models/Traits/UploadFilesProdTest.php:18
+
+113) Tests\Prod\Models\Traits\UploadFilesProdTest::testDeleteFile
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Prod/Models/Traits/UploadFilesProdTest.php:18
+
+114) Tests\Prod\Models\Traits\UploadFilesProdTest::testDeleteFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Prod/Models/Traits/UploadFilesProdTest.php:18
+
+115) Tests\Prod\Models\Traits\UploadFilesProdTest::testDeleteOldFiles
+explode() expects parameter 2 to be string, array given
+
+/var/www/backend/config/cors.php:36
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:72
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/LoadConfiguration.php:39
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:212
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:320
+/var/www/backend/tests/CreatesApplication.php:18
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:102
+/var/www/backend/vendor/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php:79
+/var/www/backend/tests/Prod/Models/Traits/UploadFilesProdTest.php:18
+
+ERRORS!
+Tests: 115, Assertions: 0, Errors: 115.

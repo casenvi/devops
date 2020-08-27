@@ -1,0 +1,72 @@
+version: '3'
+
+services: 
+
+    app:
+        build: .docker/app
+        depends_on: 
+            - mysql
+            - redis
+        container_name: Catalog-app
+        volumes: 
+            - ./Data/laravel:/var/www
+            - .docker/app:/opt/docker
+        networks: 
+            - app-network
+        #entrypoint: 
+        #    dockerize -template /opt/docker/.env:.env -template /opt/docker/.env.testing:.env.testing --wait tcp://mysql:3306 -timeout 40s /opt/docker/entrypoint.sh
+        environment: 
+            - _DB_HOST=Catalog-mysql
+            - _DB_DATABASE=catalog_prod
+            - _DB_USERNAME=root
+            - _DB_PASSWORD=root
+            - _DB_DATABASE_TEST=catalog_test
+    
+    nginx:
+        build: .docker/nginx
+        container_name: Catalog-nginx
+        restart: always
+        tty: true
+        ports: 
+            - "80:80"
+        volumes: 
+            - ./Data/laravel:/var/www
+            - .docker/nginx:/opt/docker
+        networks: 
+            - app-network
+        depends_on: 
+            - app
+        entrypoint: 
+            dockerize -template /opt/docker/nginx.conf:/etc/nginx/conf.d/default.conf nginx -g 'daemon off;'
+        environment: 
+            - PHP_FPM_HOST=app
+            - PHP_FPM_PORT=9000
+
+    redis:
+        image: redis:alpine
+        container_name: Catalog-redis
+        expose: 
+            - 6379
+        networks: 
+            - app-network
+    
+    mysql:
+        image: mysql:5.7
+        command: --innodb-use-native-aio=0
+        container_name: Catalog-mysql
+        restart: always
+        tty: true
+        ports: 
+            - "3306:3306"
+        networks: 
+            - app-network
+        environment: 
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_USER=root
+        volumes: 
+            - ./Data/database:/var/lib/mysql
+            - ./.docker/mysql:/docker-entrypoint-initdb.d #para rodar scripts na criação da máquina
+
+networks:
+    app-network:
+        driver: bridge
