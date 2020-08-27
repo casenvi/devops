@@ -4,7 +4,6 @@ import format from 'date-fns/format';
 import parseIso from 'date-fns/parseISO';
 import { IconButton, MuiThemeProvider } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from 'react-router-dom';
 import { DefaultTable, TableColumn, makeActionStyles, MuiDataTableComponent } from '../../components/Table';
 import { useSnackbar } from 'notistack';

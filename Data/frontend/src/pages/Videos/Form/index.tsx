@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const validationSchema = yup.object().shape({
-  name: yup.string()
+  title: yup.string()
     .label('Título')
     .max(255)
     .required(),
@@ -92,7 +92,7 @@ export const Form = () => {
     errors,
     watch,
     formState } = useForm<{
-      name: string, 
+      title: string, 
       year_launched: string,
       duration: string,
       rating: any,
@@ -176,7 +176,7 @@ export const Form = () => {
           { variant: 'success' }
         );
         uploadFiles(response.data);
-        id && resetForm(video);
+        id && resetForm(response.data);
         setTimeout(() => {
           event
             ? (
@@ -203,15 +203,15 @@ export const Form = () => {
     Object.keys(uploadRef.current).forEach(
       field => uploadRef.current[field].current.clear()
     );
-    castMemberRef.current.clear();
-    genreRef.current.clear();
-    categoryRef.current.clear();
+    castMemberRef.current?.clear();
+    genreRef.current?.clear();
+    categoryRef.current?.clear();
     reset(data);
   }
 
   function uploadFiles(video){
     const files : FileInfo[] = fileFields
-      .filter(fileField => getValues()[fileField])
+      .filter(fileField => getValues()[fileField] && getValues()[fileField] !== video[fileField])
       .map(fileField => ({fileField, file:getValues()[fileField]}));
     dispatch(Creators.addUpload({video,files}));
     if (files.length){
@@ -243,8 +243,8 @@ export const Form = () => {
             inputRef={register}
             disabled={loading}
             InputLabelProps={{ shrink: true }}
-            error={errors.name !== undefined}
-            helperText={errors.name && errors.name.message}
+            error={errors.title !== undefined}
+            helperText={errors.title && errors.title.message}
           />          
           <TextField
             name="description"

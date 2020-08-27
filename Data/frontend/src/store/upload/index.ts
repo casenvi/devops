@@ -31,7 +31,7 @@ export const upload = createReducer<Typings.UploadState, Typings.Actions>(INITIA
 });
 
 function addUpload(state = INITIAL_STATE, action: Typings.AddUploadAction): Typings.UploadState {
-  if(action.payload.files.length){
+  if(!action.payload.files.length){
     return state;
   }
   const index = findIndexUpload(state, action.payload.video.id);
