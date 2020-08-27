@@ -12,7 +12,7 @@ class Video extends Model
     use SoftDeletes, Uuid, UploadFiles;
 
     const RATTING = [
-        'free',
+        'L',
         '+10',
         '+12',
         '+14',
@@ -24,7 +24,7 @@ class Video extends Model
     const THUMB_FILE_MAX_SIZE = 1024 * 5; //5MB
     const BANNER_FILE_MAX_SIZE = 1024 * 10; //10MB
     const TRAILER_FILE_MAX_SIZE = 1024 * 1024 * 1; //1GB
-
+    protected $keyType = 'string';
     protected $fillable = [
         'title',
         'description',
@@ -102,6 +102,9 @@ class Video extends Model
         if (isset($att['genres_id'])) {
             $video->genres()->sync($att['genres_id']);
         }
+        if (isset($att['cast_members_id'])) {
+            $video->castMembers()->sync($att['cast_members_id']);
+        }
     }
 
     public function categories()
@@ -112,6 +115,11 @@ class Video extends Model
     public function genres()
     {
         return $this->belongsToMany(Genre::class)->withTrashed();
+    }
+
+    public function castMembers()
+    {
+        return $this->belongsToMany(CastMember::class)->withTrashed();
     }
 
     protected function uploadDir()

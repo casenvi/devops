@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme: Theme) => {
   return {
-    variantSucces: {
+    variantSuccess: {
       backgroundColor: theme.palette.success.main
     },
     variantError: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 export const SnackbarProvider: React.FC<SnackbarProviderProps> = (props) => {
-  let SnackbarProviderRef;
+  let SnackbarProviderRef: any;
   const classes = useStyles();
   const defaultProps: SnackbarProviderProps = {
     classes,

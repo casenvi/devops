@@ -8,6 +8,7 @@ import { History } from 'history';
 import { isEqual } from 'lodash';
 import * as yup from '../util/vendor/yup';
 import { MuiDataTableComponent } from "../components/Table";
+import { Schema } from "../util/vendor/yup";
 
 interface FilterManagerOptions {
   columns: MUIDataTableColumn[];
@@ -52,7 +53,7 @@ export default function useFIlter(options: UserFilterOptions) {
 }
 
 export class FilterManager {
-  schema;
+  schema: any;
   state: FilterState = null as any;
   dispatch: Dispatch<FilterActions> = null as any;
   columns: MUIDataTableColumn[];
@@ -77,16 +78,16 @@ export class FilterManager {
     this.tableRef.current.changeRowsPerPage(this.rowsPerPage);
     this.tableRef.current.changePage(0);
   }
-  changeExtraFilter(value) {
+  changeExtraFilter(value: any) {
     this.dispatch(Creators.updateExtraFilter(value));
   }
-  changeSearch(value) {
+  changeSearch(value: string) {
     this.dispatch(Creators.setSearch({ search: value }));
   }
-  changePage(page) {
+  changePage(page: number) {
     this.dispatch(Creators.setPage({ page: page + 1 }));
   }
-  changeRowsPerPage(perPage) {
+  changeRowsPerPage(perPage: number) {
     this.dispatch(Creators.setPerPage({ per_page: perPage }));
   }
 
@@ -101,7 +102,7 @@ export class FilterManager {
     this.resetTablePagination();
   }
 
-  changeColumnSort(changedColumn, direction) {
+  changeColumnSort(changedColumn:any, direction: string) {
     this.dispatch(Creators.setOrder({
       sort: changedColumn,
       dir: direction.includes('desc') ? 'desc' : 'asc'
@@ -124,7 +125,7 @@ export class FilterManager {
     })
   }
 
-  cleanSearchText(text) {
+  cleanSearchText(text:any) {
     let newText = text;
     if (text && text.value !== undefined) {
       newText = text.value;

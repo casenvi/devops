@@ -13,7 +13,7 @@ export const { Types, Creators } = createActions<{
   setPage(payload: Typings.SetPageAction['payload']): Typings.SetPageAction,
   setPerPage(payload: Typings.SetPerPageAction['payload']): Typings.SetPerPageAction,
   setOrder(payload: Typings.SetOrderAction['payload']): Typings.SetOrderAction,
-  setReset(payload: Typings.SetResetAction['payload']),
+  setReset(payload: Typings.SetResetAction['payload']):any,
   updateExtraFilter(payload: Typings.UpdateExtraFilterAction['payload']): Typings.UpdateExtraFilterAction
 
 }>

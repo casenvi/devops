@@ -7,7 +7,7 @@
       "request": "launch",
       "port": 9000,
       "pathMappings": {
-        "/var/www": "${workspaceRoot}/Data/backend"
+        "/var/www/backend": "${workspaceRoot}/Data/backend/laravel"
       }
     }
   ]

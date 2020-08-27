@@ -8,6 +8,8 @@ import { castMemberHttp } from '../../util/http/cast-member-http';
 import * as yup from '../../util/vendor/yup';
 import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
+import useSnackbarFormError from '../../hooks/useSnackbarFormError';
+import LoadingContext from '../../components/Loading/LoadingContent';
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -45,18 +47,25 @@ export const Form = () => {
     getValues,
     reset,
     setValue,
-    watch } = useForm({
+    errors,
+    watch,
+    triggerValidation,
+    formState } = useForm<{
+      name: string, 
+      is_active: boolean,
+    }>({
       validationSchema,
       defaultValues: {
         is_active: true
       }
     });
-
+  useSnackbarFormError(formState.submitCount, errors);
   const snackbar = useSnackbar();
   const history = useHistory();
   const { id } = useParams();
 
-  const [castMember, setcastMember] = useState<{ id: string } | null>(null);
+  const [castMember, setCastMember] = useState<{ id: string } | null>(null);
+  const testLoading = React.useContext(LoadingContext);
 
   useEffect(() => {
     register({ name: 'is_active' })
@@ -71,7 +80,7 @@ export const Form = () => {
       .get(id)
       .then(
         ({ data }) => {
-          setcastMember(data.data)
+          setCastMember(data.data)
           reset(data.data)
         }
       )
@@ -80,7 +89,7 @@ export const Form = () => {
       );
   }, []);
 
-  function onSubmit(formData, event) {
+  function onSubmit(formData: any, event: any) {
     setLoading(true);
     formData['type'] = typeValue;
     const http = !castMember
@@ -124,6 +133,8 @@ export const Form = () => {
         margin={"normal"}
         disabled={loading}
         inputRef={register}
+        error={errors.name !== undefined}
+        helperText={errors.name && errors.name.message}
       />
       <TextField
         name="description"
@@ -156,7 +167,7 @@ export const Form = () => {
       Ativo?
       <Box dir="rtl">
         <Button {...buttonProps} onClick={() => onSubmit(getValues(), null)}>Salvar</Button>
-        <Button {...buttonProps} type="submit">Salvar e continur editando</Button>
+        <Button {...buttonProps} type="submit">Salvar e continuar editando</Button>
       </Box>
     </form>
   );

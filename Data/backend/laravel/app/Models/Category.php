@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use SoftDeletes, Traits\Uuid, Filterable;
-
+    protected $keyType = 'string';
     protected $fillable = ['name', 'description', 'is_active'];
     protected $dates = ['deleted_at'];
     protected $casts = [
@@ -23,11 +23,11 @@ class Category extends Model
         return $this->provideFilter(CategoryFilter::class);
     }
 
-    /*public function genres()
+    public function genres()
     {
-        return $this->belongsToMany(Genre::class);
+        return $this->belongsToMany(Genre::class)->withTrashed();
     }
-
+/*
     public function videos()
     {
         return $this->belongsToMany(Video::class);

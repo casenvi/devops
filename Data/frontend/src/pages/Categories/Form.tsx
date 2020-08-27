@@ -7,6 +7,8 @@ import { categoryHttp } from '../../util/http/category-http';
 import * as yup from '../../util/vendor/yup';
 import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
+import useSnackbarFormError from '../../hooks/useSnackbarFormError';
+import LoadingContext from '../../components/Loading/LoadingContent';
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -39,19 +41,27 @@ export const Form = () => {
     register,
     handleSubmit,
     getValues,
+    errors,
     reset,
     setValue,
-    watch } = useForm({
+    triggerValidation,
+    watch,
+    formState } = useForm<{
+      name: string, 
+      is_active: boolean,
+    }>({
       validationSchema,
       defaultValues: {
         is_active: true
       }
     });
+   useSnackbarFormError(formState.submitCount, errors);
   const snackbar = useSnackbar();
   const history = useHistory();
   const { id } = useParams();
 
   const [category, setCategory] = useState<{ id: string } | null>(null);
+  const testLoading = React.useContext(LoadingContext);
 
   useEffect(() => {
     register({ name: 'is_active' })
@@ -75,7 +85,7 @@ export const Form = () => {
       );
   }, []);
 
-  function onSubmit(formData, event) {
+  function onSubmit(formData: any, event: any) {
     setLoading(true);
     const http = !category
       ? categoryHttp.create(formData)
@@ -107,19 +117,20 @@ export const Form = () => {
         () => setLoading(false)
       );
   }
-
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField
-        name="name"
+        name={"name"}
         label="Nome"
         fullWidth
         variant={"outlined"}
         margin={"normal"}
         inputRef={register}
         disabled={loading}
-        InputLabelProps={{ shrink: true }}
-
+        InputLabelProps={{ shrink: true }}                
+        error={errors.name !== undefined}
+        helperText={errors.name && errors.name.message}
       />
       <TextField
         name="description"
@@ -148,8 +159,14 @@ export const Form = () => {
         disabled={loading}
       />
       <Box dir="rtl">
-        <Button {...buttonProps} onClick={() => onSubmit(getValues(), null)}>Salvar</Button>
-        <Button {...buttonProps} type="submit">Salvar e continur editando</Button>
+        <Button 
+          {...buttonProps} 
+          onClick={() => triggerValidation().then(isValid => {
+            isValid && onSubmit(getValues(), null)
+            })
+          }
+          >Salvar</Button>
+        <Button {...buttonProps} type="submit">Salvar e continuar editando</Button>
       </Box>
     </form>
   )

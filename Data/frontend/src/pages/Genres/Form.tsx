@@ -11,6 +11,8 @@ import { useParams, useHistory } from 'react-router';
 import { useSnackbar } from 'notistack';
 import Select from '@material-ui/core/Select';
 import Input from '@material-ui/core/Input';
+import useSnackbarFormError from '../../hooks/useSnackbarFormError';
+import LoadingContext from '../../components/Loading/LoadingContent';
 
 const validationSchema = yup.object().shape({
   name: yup.string()
@@ -42,8 +44,14 @@ export const Form = () => {
     handleSubmit,
     getValues,
     setValue,
+    errors,
     reset,
-    watch } = useForm(
+    watch,
+    triggerValidation,
+    formState } = useForm<{
+      name: string, 
+      is_active: boolean,
+    }>(
       {
         validationSchema,
         defaultValues: {
@@ -51,7 +59,7 @@ export const Form = () => {
         }
       }
     );
-
+    useSnackbarFormError(formState.submitCount, errors);
   const snackbar = useSnackbar();
   const history = useHistory();
   const { id } = useParams();
@@ -70,6 +78,7 @@ export const Form = () => {
   };
 
   const [genre, setGenre] = useState<{ id: string } | null>(null);
+  const testLoading = React.useContext(LoadingContext);
 
   useEffect(() => {
     register({ name: "categories_id" })
@@ -101,7 +110,7 @@ export const Form = () => {
       );
   }, []);
 
-  function onSubmit(formData, event) {
+  function onSubmit(formData: any, event: any) {
     formData['categories_id'] = categories;
     setLoading(true);
     const http = !genre
@@ -110,7 +119,7 @@ export const Form = () => {
     http
       .then((response) => {
         snackbar.enqueueSnackbar(
-          'Genero salva com sucesso',
+          'Gênero salva com sucesso',
           { variant: 'success' }
         )
         setTimeout(() => {
@@ -126,7 +135,7 @@ export const Form = () => {
       .catch((error) => {
         console.log(error);
         snackbar.enqueueSnackbar(
-          'Não foi possível salvar o Genero',
+          'Não foi possível salvar o Gênero',
           { variant: 'error' }
         )
       })
@@ -146,6 +155,8 @@ export const Form = () => {
         disabled={loading}
         inputRef={register}
         InputLabelProps={{ shrink: true }}
+        error={errors.name !== undefined}
+        helperText={errors.name && errors.name.message}
       />
       <Box width={1}>
         <InputLabel id="categories_id_label">Categorias</InputLabel>
@@ -186,7 +197,7 @@ export const Form = () => {
       />
       <Box dir="rtl">
         <Button {...buttonProps} onClick={() => onSubmit(getValues(), null)}>Salvar</Button>
-        <Button {...buttonProps} type="submit">Salvar e continur editando</Button>
+        <Button {...buttonProps} type="submit">Salvar e continuar editando</Button>
       </Box>
     </form>
   )

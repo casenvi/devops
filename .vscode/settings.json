@@ -1,5 +1,14 @@
 {
   "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": true,
   "intelephense.diagnostics.deprecated": false,
-  "intelephense.maxMemory": 512
+  "intelephense.maxMemory": 512,
+  "cSpell.words": [
+    "Noistack",
+    "datatables",
+    "esnext",
+    "formdata",
+    "freesolo",
+    "multiselect",
+    "testid"
+  ]
 }
